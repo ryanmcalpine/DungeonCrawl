@@ -1,6 +1,6 @@
 ### CS-470 Final Project 
  #### by Nick Ivanov, Jason Juarez, and Ryan McAlpine
-
+---
  ### Description
  A turn-based RPG battler where you control a party of three and delve into dungeons fighting a relentless gauntlet of randomized monsters while gathering loot from victorious battles. When the player’s party is defeated, they retain the new items and equipment that they found, as well as the experience they've gained, so the next time they start a playthrough they will be stronger and ready to push deeper into the dungeon!
 
@@ -14,8 +14,10 @@
  - MiMU STUDIO - 2D SD Monster Pack
    - https://assetstore.unity.com/packages/2d/characters/2d-sd-monster-pack-75733
 
-
+---
  ### References
+ - Express Documentation
+  - https://expressjs.com/
  - Javascript Documentation
    - https://devdocs.io/javascript/
  - MUI Documentation
