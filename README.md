@@ -1,5 +1,3 @@
-# DungeonCrawl
-
  # DUNGEON CRAWL
  ### CS-470 Final Project 
  #### by Nick Ivanov, Jason Juarez, and Ryan McAlpine
