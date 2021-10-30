@@ -21,39 +21,57 @@ export default function Battle(props)
     const handleAttack1 = () =>
     {
         if(turn === 1) return;
-        console.log('handle attack 1 called');
-        console.log(`current enemy hp ${enemyHP}`);
-        console.log('We finna do 10 damage');
+        //setTimeout(null,1000);
+        setStatusBar("Fighter uses [movename]");
+        setTimeout(null,1000);
         setTimeout(setEnemyHP(enemyHP-10),1500);
+        setStatusBar("Enemy took 10 damage!");
+        setTimeout(null,1000);
         console.log(`current enemy hp ${enemyHP}`);
         //int damage = move.getDamage()
         //setEnemyHP()
         handleEndofRound();
+        setTurn(1);
+        setTimeout(enemyAttack,1500);
     }
     const handleAttack2 = () =>
     {
         if(turn === 1) return;
         console.log('handle attack 2 called');
+        setStatusBar("Fighter uses [movename]");
+        setStatusBar("Enemy takes [DMG] damage!");
         handleEndofRound();
     }
     const handleAttack3 = () =>
     {
         if(turn === 1) return;
         console.log('handle attack 3 called');
+        setStatusBar("Fighter uses [movename]");
+        setStatusBar("Enemy takes [DMG] damage!");
         handleEndofRound();
     }
     const handleAttack4 = () =>
     {
         if(turn === 1) return;
         console.log('handle attack 4 called');
+        setStatusBar("Fighter uses [movename]");
+        setTimeout(null,500);
+        setStatusBar("Enemy takes [DMG] damage!");
         handleEndofRound();
     }
     const enemyAttack = () =>
     {
         console.log('enemy attack called');
+        setTimeout(null,500);
+        setStatusBar("Slime uses tackle!");
+        setTimeout(null,500);
+        setFighterHP(fighterHP-10);
+        setStatusBar("Fighter takes 10 damage!");
+        setTimeout(null,500);
         handleEndofRound();
+        setTurn(0);
     }
-    const handleEndofRound=()=>
+    const handleEndofRound = () =>
     {
         console.log('handle end of turn is called');
         if(fighterHP <=0)
@@ -67,17 +85,19 @@ export default function Battle(props)
             setStatusBar("YOU WON!");
         }
         else setEndOfRound(0);
-        if(turn === 0)
+        //console.log(`turn is ${turn}`);
+        /*if(turn === 0)
         {
+            //console.log(`hewooooooooooooo`);
             setTurn(1);
+            //console.log(`turn should be 1: ${turn}`);
             setTimeout(enemyAttack,1500);
+
         }
-        if(turn === 1)
+        else if(turn === 1)
         {
             setTurn(0);
-
-
-        }
+        }*/
     }
     const spriteData = {
         w: 160,
@@ -106,6 +126,13 @@ export default function Battle(props)
                     left:740
                 }}>
                     <Actor sprite={testSlime} data={spriteData} />
+                </div>
+                <div style={{
+                    position: 'absolute',
+                    top: 550,
+                    left:520
+                }}>
+                    {statusBar}
                 </div>
                 <div style={{
                     position: 'absolute',
