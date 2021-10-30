@@ -136,6 +136,21 @@ export default function Battle(props)
                 </div>
                 <div style={{
                     position: 'absolute',
+                    top: 550,
+                    left:320
+                }}>
+                    fighterHP: {fighterHP}
+                </div>
+                <div style={{
+                    position: 'absolute',
+                    top: 550,
+                    left:820
+                }}>
+                    enemyHP: {enemyHP}
+                </div>
+
+                <div style={{
+                    position: 'absolute',
                     top: 600,
                     left:180
                 }}>
