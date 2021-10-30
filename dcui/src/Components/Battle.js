@@ -23,6 +23,28 @@ export default function Battle(props)
     {
         return new Promise(resolve => setTimeout( resolve, ms ));
     }
+     useEffect(() =>
+    {
+        console.log(`handle end of round called`);
+        console.log(`enemy hp ${enemyHP}`);
+        console.log(enemyHP <= 0);
+        if(fighterHP <=0)
+        {
+            setEndOfRound(2);
+            setStatusBar("YOUR PARTY HAS BEEN DEFEATED!");
+            //await sleep(2500)
+        }
+        else if(enemyHP <= 0)
+        {
+            console.log(`enemy should be dead`);
+            setEndOfRound(1);
+            setStatusBar("YOU WON!");
+            //await sleep(2500)
+        }
+        else setEndOfRound(0);
+        console.log(`end of round: ${endOfRound}`);
+        return endOfRound;
+        }, [fighterHP,endOfRound,enemyHP]);
 
     async function handleAttack1()
     {
@@ -38,8 +60,9 @@ export default function Battle(props)
         console.log(`current enemy hp ${enemyHP}`);
         //int damage = move.getDamage()
         //setEnemyHP()
-        await handleEndofRound();
-        await enemyAttack();
+        //await handleEndofRound();
+        if(enemyHP-10>0)await enemyAttack();
+        else handleEndofRound();
     }
     async function handleAttack2()
     {
@@ -52,8 +75,9 @@ export default function Battle(props)
         await sleep(800);
         setStatusBar("Enemy takes 50 damage!");
         await sleep(2200);
-        await handleEndofRound();
-        await enemyAttack();
+        //await handleEndofRound();
+       if(enemyHP-50>0) await enemyAttack();
+       else handleEndofRound();
     }
     async function handleAttack3()
     {
@@ -66,7 +90,7 @@ export default function Battle(props)
         await sleep(800);
         setStatusBar("Enemy takes [DMG] damage!");
         await sleep(2200);
-        await handleEndofRound();
+        //await handleEndofRound();
         await enemyAttack();
     }
     async function handleAttack4()
@@ -84,9 +108,12 @@ export default function Battle(props)
         await enemyAttack();
     }
     async function enemyAttack() {
+        setEndOfRound();
+        console.log(`end of round: ${endOfRound}`);
         if (endOfRound > 0) return;
         setStatusBar("ENEMY TURN");
         console.log('enemy attack called');
+        console.log(`end of round: ${endOfRound}`);
         await sleep(2200);
         setStatusBar("Slime uses TACKLE");
         await sleep(1300);
@@ -99,12 +126,13 @@ export default function Battle(props)
         setStatusBar(`Fighter takes ${dmg} damage!`);
         await sleep(2500)
         //setTimeout(null,500);
-        await handleEndofRound();
-        if (endOfRound === 0)
+        //await handleEndofRound();
+        if (fighterHP -dmg>0)
         {
             setTurn(0);
             setStatusBar("Player Turn!");
         }
+        else handleEndofRound();
 
     }
     async function handleEndofRound()
@@ -115,7 +143,6 @@ export default function Battle(props)
         console.log(enemyHP <= 0);
         if(fighterHP <=0)
         {
-            setEndOfRound(2);
             setStatusBar("YOUR PARTY HAS BEEN DEFEATED!");
             await sleep(2500)
         }
