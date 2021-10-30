@@ -26,7 +26,7 @@ export default function Battle(props)
 
     async function handleAttack1()
     {
-        if(turn === 1) return;
+        if(turn === 1 || endOfRound > 0) return;
         //setTimeout(null,1000);
         setStatusBar("Fighter uses [MOVE 1]");
         await sleep(1200);
@@ -43,7 +43,7 @@ export default function Battle(props)
     }
     async function handleAttack2()
     {
-        if(turn === 1) return;
+        if(turn === 1 || endOfRound > 0) return;
         console.log('handle attack 2 called');
         setStatusBar("Fighter uses [MOVE 2]");
         await sleep(1200);
@@ -52,10 +52,12 @@ export default function Battle(props)
         setStatusBar("Enemy takes [DMG] damage!");
         await sleep(2200);
         handleEndofRound();
+        setTurn(1);
+        enemyAttack();
     }
     async function handleAttack3()
     {
-        if(turn === 1) return;
+        if(turn === 1 || endOfRound > 0) return;
         console.log('handle attack 3 called');
         setStatusBar("Fighter uses [MOVE 3]");
         await sleep(1200);
@@ -64,10 +66,12 @@ export default function Battle(props)
         setStatusBar("Enemy takes [DMG] damage!");
         await sleep(2200);
         handleEndofRound();
+        setTurn(1);
+        enemyAttack();
     }
     async function handleAttack4()
     {
-        if(turn === 1) return;
+        if(turn === 1 || endOfRound > 0) return;
         console.log('handle attack 4 called');
         setStatusBar("Fighter uses [MOVE 4]");
         await sleep(1200);
@@ -76,9 +80,12 @@ export default function Battle(props)
         setStatusBar("Enemy takes [DMG] damage!");
         await sleep(2200);
         handleEndofRound();
+        setTurn(1);
+        enemyAttack();
     }
     async function enemyAttack()
     {
+        if(endOfRound > 0) return;
         setStatusBar("ENEMY TURN");
         console.log('enemy attack called');
         await sleep(2200);
