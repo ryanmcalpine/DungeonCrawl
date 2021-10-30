@@ -1,9 +1,12 @@
 import React, {useState, useEffect, Fragment} from 'react';
+import Button from '@mui/material/Button';
+import color from "color";
+
 import Actor from "./Actor";
 import forest from './sprites/backgrounds/Forest.png';
 import testFighter from './sprites/player/test-fighter.png';
 import testSlime from './sprites/enemy/test-slime.png';
-import color from "color";
+
 
 export default function Battle(props)
 {
@@ -34,6 +37,17 @@ export default function Battle(props)
                     left:740
                 }}>
                     <Actor sprite={testSlime} data={spriteData} />
+                </div>
+                <div style={{
+                    position: 'absolute',
+                    top: 600,
+                    left:180
+                }}>
+                    <Button variant="outlined">Attack 1</Button>
+                    <Button variant="outlined">Attack 2</Button>
+                    <div />
+                    <Button variant="outlined">Attack 3</Button>
+                    <Button variant="outlined">Attack 4</Button>
                 </div>
             </div>
         }
