@@ -18,58 +18,84 @@ export default function Battle(props)
     const [endOfRound, setEndOfRound] = useState(0);
     // 0 -> game is still going, 1 -> enemy died, 2 -> we died ;-;
     const [turn,setTurn] = useState(0);//0 -> players turn 1->enemy's turn
-    const handleAttack1 = () =>
+
+    function sleep( ms )
+    {
+        return new Promise(resolve => setTimeout( resolve, ms ));
+    }
+
+    async function handleAttack1()
     {
         if(turn === 1) return;
         //setTimeout(null,1000);
-        setStatusBar("Fighter uses [movename]");
-        setTimeout(null,1000);
-        setTimeout(setEnemyHP(enemyHP-10),1500);
-        setStatusBar("Enemy took 10 damage!");
-        setTimeout(null,1000);
+        setStatusBar("Fighter uses [MOVE 1]");
+        await sleep(1200);
+        setEnemyHP(enemyHP-10);
+        await sleep(800);
+        setStatusBar("Enemy takes 10 damage!");
+        await sleep(2200);
         console.log(`current enemy hp ${enemyHP}`);
         //int damage = move.getDamage()
         //setEnemyHP()
         handleEndofRound();
         setTurn(1);
-        setTimeout(enemyAttack,1500);
+        enemyAttack();
     }
-    const handleAttack2 = () =>
+    async function handleAttack2()
     {
         if(turn === 1) return;
         console.log('handle attack 2 called');
-        setStatusBar("Fighter uses [movename]");
+        setStatusBar("Fighter uses [MOVE 2]");
+        await sleep(1200);
+        // set enemy hp
+        await sleep(800);
         setStatusBar("Enemy takes [DMG] damage!");
+        await sleep(2200);
         handleEndofRound();
     }
-    const handleAttack3 = () =>
+    async function handleAttack3()
     {
         if(turn === 1) return;
         console.log('handle attack 3 called');
-        setStatusBar("Fighter uses [movename]");
+        setStatusBar("Fighter uses [MOVE 3]");
+        await sleep(1200);
+        // set enemy hp
+        await sleep(800);
         setStatusBar("Enemy takes [DMG] damage!");
+        await sleep(2200);
         handleEndofRound();
     }
-    const handleAttack4 = () =>
+    async function handleAttack4()
     {
         if(turn === 1) return;
         console.log('handle attack 4 called');
-        setStatusBar("Fighter uses [movename]");
-        setTimeout(null,500);
+        setStatusBar("Fighter uses [MOVE 4]");
+        await sleep(1200);
+        // set enemy hp
+        await sleep(800);
         setStatusBar("Enemy takes [DMG] damage!");
+        await sleep(2200);
         handleEndofRound();
     }
-    const enemyAttack = () =>
+    async function enemyAttack()
     {
+        setStatusBar("ENEMY TURN");
         console.log('enemy attack called');
-        setTimeout(null,500);
-        setStatusBar("Slime uses tackle!");
-        setTimeout(null,500);
-        setFighterHP(fighterHP-10);
-        setStatusBar("Fighter takes 10 damage!");
-        setTimeout(null,500);
+        await sleep(2200);
+        setStatusBar("Slime uses TACKLE");
+        await sleep(1300);
+        // Get randomized damage value
+        let dmgMin = 6;
+        let dmgMax = 11;
+        let dmg = Math.floor(Math.random() * (dmgMax - dmgMin) + dmgMin);
+        setFighterHP(fighterHP - dmg);
+        await sleep(1000);
+        setStatusBar(`Fighter takes ${dmg} damage!`);
+        await sleep(2500)
+        //setTimeout(null,500);
         handleEndofRound();
         setTurn(0);
+        setStatusBar("Player Turn!");
     }
     const handleEndofRound = () =>
     {
@@ -77,7 +103,7 @@ export default function Battle(props)
         if(fighterHP <=0)
         {
             setEndOfRound(2);
-            setStatusBar("YOU DIED");
+            setStatusBar("YOUR PARTY HAS BEEN DEFEATED!");
         }
         else if(enemyHP <= 0)
         {
