@@ -21,8 +21,20 @@ export default function Battle(props)
                 height:'540px',
                 width:'1250px',
                 }}>
-                <Actor sprite={testFighter} data={spriteData} />
-                <Actor sprite={testSlime} data={spriteData} />
+                <div style={{
+                    position: 'absolute',
+                    top: 220,
+                    left: 300
+                }}>
+                    <Actor sprite={testFighter} data={spriteData} />
+                </div>
+                <div style={{
+                    position: 'absolute',
+                    top: 220,
+                    left:740
+                }}>
+                    <Actor sprite={testSlime} data={spriteData} />
+                </div>
             </div>
         }
     </Fragment>
