@@ -7,7 +7,7 @@ export default function Actor({ sprite, data, step = 0}) {
         <Sprite
             image={sprite}
             data={{
-                x: 0,
+                x: step * w,
                 y: 0,
                 w,
                 h
