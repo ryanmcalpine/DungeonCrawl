@@ -61,8 +61,8 @@ export default function Battle(props)
         //int damage = move.getDamage()
         //setEnemyHP()
         //await handleEndofRound();
-        if(enemyHP-10>0)await enemyAttack();
-        else handleEndofRound();
+        //if(enemyHP-10>0)await enemyAttack();
+        //else handleEndofRound();
     }
     async function handleAttack2()
     {
@@ -76,8 +76,8 @@ export default function Battle(props)
         setStatusBar("Enemy takes 50 damage!");
         await sleep(2200);
         //await handleEndofRound();
-       if(enemyHP-50>0) await enemyAttack();
-       else handleEndofRound();
+       //if(enemyHP-50>0) await enemyAttack();
+       //else handleEndofRound();
     }
     async function handleAttack3()
     {
@@ -91,7 +91,7 @@ export default function Battle(props)
         setStatusBar("Enemy takes [DMG] damage!");
         await sleep(2200);
         //await handleEndofRound();
-        await enemyAttack();
+        //await enemyAttack();
     }
     async function handleAttack4()
     {
@@ -104,8 +104,8 @@ export default function Battle(props)
         await sleep(800);
         setStatusBar("Enemy takes [DMG] damage!");
         await sleep(2200);
-        await handleEndofRound();
-        await enemyAttack();
+        //await handleEndofRound();
+        //await enemyAttack();
     }
     async function enemyAttack() {
         setEndOfRound();
@@ -125,8 +125,8 @@ export default function Battle(props)
         await sleep(1000);
         setStatusBar(`Fighter takes ${dmg} damage!`);
         await sleep(2500)
-        //setTimeout(null,500);
-        //await handleEndofRound();
+        setTimeout(null,500);
+        await handleEndofRound();
         if (fighterHP -dmg>0)
         {
             setTurn(0);
@@ -154,6 +154,12 @@ export default function Battle(props)
             await sleep(2500)
         }
         else setEndOfRound(0);
+
+    }
+    async function endTurn()
+    {
+        await handleEndofRound();
+        await enemyAttack();
 
     }
     /*const handleEndofRound = () =>
@@ -244,6 +250,13 @@ export default function Battle(props)
                     <div />
                     <Button onClick={handleAttack3} variant="outlined">Attack 3</Button>
                     <Button onClick={handleAttack4} variant="outlined">Attack 4</Button>
+                </div>
+                <div style={{
+                    position: 'absolute',
+                    top: 600,
+                    left:380
+                }}>
+                    <Button onClick={endTurn} variant="outlined">End Turn</Button>
                 </div>
             </div>
         }
