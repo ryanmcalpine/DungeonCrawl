@@ -18,6 +18,8 @@ export default function Battle(props)
     const [endOfRound, setEndOfRound] = useState(0);
     // 0 -> game is still going, 1 -> enemy died, 2 -> we died ;-;
     const [turn,setTurn] = useState(0);//0 -> players turn 1->enemy's turn
+    const [animationStep, setAnimationStep] = useState(0); // 0 = idle, 1 = attack
+    const [enemyAnimationStep, setEnemyAnimationStep] = useState(0);
 
     function sleep( ms )
     {
@@ -52,10 +54,12 @@ export default function Battle(props)
         setTurn(1);
         //setTimeout(null,1000);
         setStatusBar("Fighter uses [MOVE 1]");
+        setAnimationStep(1);
         await sleep(1200);
         setEnemyHP(enemyHP-10);
         await sleep(800);
         setStatusBar("Enemy takes 10 damage!");
+        setAnimationStep(0);
         await sleep(2200);
         console.log(`current enemy hp ${enemyHP}`);
         //int damage = move.getDamage()
@@ -70,10 +74,12 @@ export default function Battle(props)
         setTurn(1);
         console.log('handle attack 2 called');
         setStatusBar("Fighter uses [MOVE 2]");
+        setAnimationStep(1);
         await sleep(1200);
         setEnemyHP(enemyHP-50);
         await sleep(800);
         setStatusBar("Enemy takes 50 damage!");
+        setAnimationStep(0);
         await sleep(2200);
         //await handleEndofRound();
        //if(enemyHP-50>0) await enemyAttack();
@@ -85,10 +91,12 @@ export default function Battle(props)
         setTurn(1);
         console.log('handle attack 3 called');
         setStatusBar("Fighter uses [MOVE 3]");
+        setAnimationStep(1);
         await sleep(1200);
         // set enemy hp
         await sleep(800);
         setStatusBar("Enemy takes [DMG] damage!");
+        setAnimationStep(0);
         await sleep(2200);
         //await handleEndofRound();
         //await enemyAttack();
@@ -99,10 +107,12 @@ export default function Battle(props)
         setTurn(1);
         console.log('handle attack 4 called');
         setStatusBar("Fighter uses [MOVE 4]");
+        setAnimationStep(1);
         await sleep(1200);
         // set enemy hp
         await sleep(800);
         setStatusBar("Enemy takes [DMG] damage!");
+        setAnimationStep(0);
         await sleep(2200);
         //await handleEndofRound();
         //await enemyAttack();
@@ -116,6 +126,7 @@ export default function Battle(props)
         console.log(`end of round: ${endOfRound}`);
         await sleep(2200);
         setStatusBar("Slime uses TACKLE");
+        setEnemyAnimationStep(1);
         await sleep(1300);
         // Get randomized damage value
         let dmgMin = 6;
@@ -124,6 +135,7 @@ export default function Battle(props)
         setFighterHP(fighterHP - dmg);
         await sleep(1000);
         setStatusBar(`Fighter takes ${dmg} damage!`);
+        setEnemyAnimationStep(0);
         await sleep(2500)
         setTimeout(null,500);
         await handleEndofRound();
@@ -190,6 +202,7 @@ export default function Battle(props)
             setTurn(0);
         }
     }*/
+
     const spriteData = {
         w: 160,
         h: 200
@@ -209,14 +222,14 @@ export default function Battle(props)
                     top: 220,
                     left: 300
                 }}>
-                    <Actor sprite={testFighter} data={spriteData} />
+                    <Actor sprite={testFighter} data={spriteData} step={animationStep} />
                 </div>
                 <div style={{
                     position: 'absolute',
                     top: 220,
                     left:740
                 }}>
-                    <Actor sprite={testSlime} data={spriteData} />
+                    <Actor sprite={testSlime} data={spriteData} step={enemyAnimationStep} />
                 </div>
                 <div style={{
                     position: 'absolute',
