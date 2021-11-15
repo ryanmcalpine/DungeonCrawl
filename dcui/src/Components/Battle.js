@@ -3,15 +3,32 @@ import Button from '@mui/material/Button';
 import color from "color";
 
 import Actor from "./Actor";
+import cave from './sprites/backgrounds/Cave.png';
+import field from './sprites/backgrounds/Field.png';
+import lavaCave from './sprites/backgrounds/Lava_Cave.png';
+import lavaMountain from './sprites/backgrounds/Lava_Mountain.png';
+import snowMountain from './sprites/backgrounds/Snow_Mountain.png';
 import forest from './sprites/backgrounds/Forest.png';
 import testFighter from './sprites/player/test-fighter.png';
-import testSlime from './sprites/enemy/test-slime.png';
+import slime from './sprites/enemy/test-slime.png';
+import bat from './sprites/enemy/bat.png';
+import beholder from './sprites/enemy/beholder.png';
+import crow from './sprites/enemy/crow.png';
+import cyclops from './sprites/enemy/cyclops.png';
+import demon from './sprites/enemy/demon.png';
+import ghost from './sprites/enemy/ghost.png';
+import goblin from './sprites/enemy/goblin.png';
+import orc from './sprites/enemy/orc.png';
+import rat from './sprites/enemy/rat.png';
+import skeleton from './sprites/enemy/skeleton.png';
+import worm from './sprites/enemy/worm.png';
+import zombie from './sprites/enemy/zombie.png';
 
 
 export default function Battle(props)
 {
     const [enemyHP,setEnemyHP] = useState(50);
-    const [fighterHP,setFighterHP] = useState(50);
+    const [fighterHP,setFighterHP] = useState(500000);
     const [rogueHP,setRogueHP] = useState(50);
     const [mageHP,setMageHP] = useState(50);
     const [statusBar,setStatusBar] = useState("Sic em!");
@@ -20,6 +37,11 @@ export default function Battle(props)
     const [turn,setTurn] = useState(0);//0 -> players turn 1->enemy's turn
     const [animationStep, setAnimationStep] = useState(0); // 0 = idle, 1 = attack
     const [enemyAnimationStep, setEnemyAnimationStep] = useState(0);
+    const [stage,setStage] = useState(0);
+    const [defeated,setDefeated] = useState(0);
+    const [currEnemy,setCurrEnemy] = useState(0);
+    const stages = [field,forest,cave,lavaMountain,snowMountain,lavaCave];
+    const enemies = [slime,bat,crow,rat,goblin,worm,cyclops,demon,ghost,orc,skeleton,zombie,beholder];
     const [hasUsedMove, setHasUsedMove] = useState(false);
 
     function sleep( ms )
@@ -80,7 +102,7 @@ export default function Battle(props)
 
         setTurn(1);
         console.log('handle attack 2 called');
-        setStatusBar("Fighter uses [MOVE 2]");
+        setStatusBar("Fighter uses DEV ONE HITTER");
         setAnimationStep(1);
         await sleep(1200);
         setEnemyHP(enemyHP-50);
@@ -131,7 +153,7 @@ export default function Battle(props)
         //await enemyAttack();
     }
     async function enemyAttack() {
-        setEndOfRound();
+        //setEndOfRound();
         console.log(`end of round: ${endOfRound}`);
         if (endOfRound > 0) return;
         setStatusBar("ENEMY TURN");
@@ -185,8 +207,25 @@ export default function Battle(props)
     async function endTurn()
     {
         await handleEndofRound();
-        await enemyAttack();
+        if(endOfRound === 0) await enemyAttack();
+    }
+    async function advance()
+    {
+        if(endOfRound === 0) return;
+        if(defeated === 3)
+        {
+            if(stage<6)setStage(stage+1);
+            else setStage(0);
+            setDefeated(0);
+        }
+        else setDefeated(defeated+1);
 
+        setEndOfRound(0);
+        setEnemyHP(50);
+        if(currEnemy<enemies.length-1)setCurrEnemy(currEnemy+1);
+        else setCurrEnemy(0);
+        await endTurn();
+        await enemyAttack();
     }
     /*const handleEndofRound = () =>
     {
@@ -224,7 +263,7 @@ export default function Battle(props)
     return <Fragment>
         {
             <div style={{
-                backgroundImage: `url(${forest})`,
+                backgroundImage: `url(${stages[stage]})`,
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
@@ -243,7 +282,7 @@ export default function Battle(props)
                     top: 220,
                     left:740
                 }}>
-                    <Actor sprite={testSlime} data={spriteData} step={enemyAnimationStep} />
+                    <Actor sprite={enemies[currEnemy]} data={spriteData} step={enemyAnimationStep} />
                 </div>
                 <div style={{
                     position: 'absolute',
@@ -304,6 +343,7 @@ export default function Battle(props)
                     left:380
                 }}>
                     <Button onClick={endTurn} variant="outlined">End Turn</Button>
+                    <Button onClick={advance} variant="outlined">Move Forward</Button>
                 </div>
             </div>
         }
