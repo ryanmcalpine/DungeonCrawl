@@ -6,7 +6,11 @@ import crusader from "./sprites/player/fighter_crusader.png";
 import folk from "./sprites/player/fighter_folk.png";
 import knight from "./sprites/player/fighter_knight.png";
 import samurai from "./sprites/player/fighter_samurai.png";
-
+import archer from "./sprites/player/rogue_archer.png";
+import rFolk from "./sprites/player/rogue_folk.png";
+import musketeer from "./sprites/player/rogue_musketeer.png";
+import ninja from "./sprites/player/rogue_ninja.png";
+import socialist from "./sprites/player/rogue_thief.png";
 export default function Armory()
 {
     const spriteData = {
@@ -19,7 +23,7 @@ export default function Armory()
             top: 50,
             left: 50
         }}>
-            <Actor sprite={testFighter} data={spriteData} />
+            <Actor sprite={folk} data={spriteData} />
         </div>
         <div style={{
             position: 'absolute',
@@ -40,7 +44,7 @@ export default function Armory()
             top: 50,
             left: 650
         }}>
-            <Actor sprite={folk} data={spriteData} />
+            <Actor sprite={samurai} data={spriteData} />
         </div>
         <div style={{
             position: 'absolute',
@@ -51,11 +55,41 @@ export default function Armory()
         </div>
         <div style={{
             position: 'absolute',
-            top: 50,
-            left: 1050
+            top: 250,
+            left: 50
         }}>
-            <Actor sprite={samurai} data={spriteData} />
+            <Actor sprite={rFolk} data={spriteData} />
         </div>
+        <div style={{
+            position: 'absolute',
+            top: 250,
+            left: 250
+        }}>
+            <Actor sprite={socialist} data={spriteData} />
+        </div>
+        <div style={{
+            position: 'absolute',
+            top: 250,
+            left: 450
+        }}>
+            <Actor sprite={archer} data={spriteData} />
+        </div>
+        <div style={{
+            position: 'absolute',
+            top: 250,
+            left: 650
+        }}>
+            <Actor sprite={musketeer} data={spriteData} />
+        </div>
+        <div style={{
+            position: 'absolute',
+            top: 250,
+            left: 850
+        }}>
+            <Actor sprite={ninja} data={spriteData} />
+        </div>
+
+
 
     </Fragment>
 
