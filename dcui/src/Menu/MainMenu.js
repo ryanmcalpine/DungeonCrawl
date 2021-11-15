@@ -2,6 +2,7 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Dungeon from '../Components/Dungeon.js';
 import Battle from '../Components/Battle';
+import Armory from '../Components/Armory';
 
 export default function MainMenu({}){
     const [showMenu, setShowMenu] = React.useState(true);
@@ -12,9 +13,14 @@ export default function MainMenu({}){
         setShowMenu(false);
         setShowBattle(true);
     }
-    const handleEndGame = () => {
+    const handleShowArmory = () => {
+        setShowMenu(false);
+        setShowArmory(true);
+    }
+    const handleReturnToMenu = () => {
         setShowMenu(true);
         setShowBattle(false);
+        setShowArmory(false);
     }
 
     if( showMenu === true )
@@ -25,7 +31,7 @@ export default function MainMenu({}){
                 <h1>DUNGEON CRAWL</h1>
                 <Button variant={"outlined"} onClick={handleStartGame}>Start Game</Button>
                 <div/>
-                <Button variant={"outlined"}>Armory</Button>
+                <Button variant={"outlined"} onClick={handleShowArmory}>Armory</Button>
             </div>
         )
     }
@@ -33,10 +39,18 @@ export default function MainMenu({}){
     {
         return(
             <div>
-                <Button variant={"outlined"} onClick={handleEndGame}>Return to Menu</Button>
+                <Button variant={"outlined"} onClick={handleReturnToMenu}>Return to Menu</Button>
                 <Battle/>
             </div>
         )
     }
-
+    else if( showArmory === true )
+    {
+        return(
+            <div>
+                <Button variant={"outlined"} onClick={handleReturnToMenu}>Return to Menu</Button>
+                <Armory/>
+            </div>
+        )
+    }
 }
