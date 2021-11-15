@@ -11,6 +11,12 @@ import rFolk from "./sprites/player/rogue_folk.png";
 import musketeer from "./sprites/player/rogue_musketeer.png";
 import ninja from "./sprites/player/rogue_ninja.png";
 import socialist from "./sprites/player/rogue_thief.png";
+import sorcFolk from "./sprites/player/sorceress_folk.png";
+import priest from "./sprites/player/sorceress_priest.png";
+import acolyte from "./sprites/player/sorceress_acolyte.png";
+import mage from "./sprites/player/sorceress_mage.png";
+import wizard from "./sprites/player/sorceress_wizard.png";
+
 export default function Armory()
 {
     const spriteData = {
@@ -89,7 +95,41 @@ export default function Armory()
             <Actor sprite={ninja} data={spriteData} />
         </div>
 
-
+        <div style={{
+            position: 'absolute',
+            top: 450,
+            left: 50
+        }}>
+            <Actor sprite={sorcFolk} data={spriteData} />
+        </div>
+        <div style={{
+            position: 'absolute',
+            top: 450,
+            left: 250
+        }}>
+            <Actor sprite={priest} data={spriteData} />
+        </div>
+        <div style={{
+            position: 'absolute',
+            top: 450,
+            left: 450
+        }}>
+            <Actor sprite={acolyte} data={spriteData} />
+        </div>
+        <div style={{
+            position: 'absolute',
+            top: 450,
+            left: 650
+        }}>
+            <Actor sprite={mage} data={spriteData} />
+        </div>
+        <div style={{
+            position: 'absolute',
+            top: 450,
+            left: 850
+        }}>
+            <Actor sprite={wizard} data={spriteData} />
+        </div>
 
     </Fragment>
 
