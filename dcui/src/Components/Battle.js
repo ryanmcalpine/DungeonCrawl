@@ -348,14 +348,14 @@ export default function Battle(props)
                 <div style={{
                     position: 'absolute',
                     top: 620,
-                    left: 740
+                    left: 850
                 }}>
                     <Button onClick={endTurn} variant="outlined" disabled>Inventory</Button>
                 </div>
                 <div style={{
                     position: 'absolute',
                     top: 657,
-                    left: 740
+                    left: 850
                 }}>
                     <Button onClick={endTurn} variant="outlined" disabled>Party Members</Button>
                 </div>
