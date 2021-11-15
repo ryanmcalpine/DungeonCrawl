@@ -1,11 +1,11 @@
 const express = require('express')
 const db = require('../database/mySQLconnection')
 
-const userDB = db
+const monsterDB = db
 
-userDB.allUsers = () => {
+monsterDB.allMonsters = () => {
     return new Promise ((resolve, reject) => {
-        userDB.query(`SELECT * FROM USERS`, (err, result) => {
+        monsterDB.query(`SELECT * FROM MONSTERS`, (err, result) => {
             if (err) {
                 return reject(err)
             }
@@ -14,9 +14,9 @@ userDB.allUsers = () => {
     })
 }
 
-userDB.newUser = (username) => {
+monsterDB.monsterMoves = (moveName, damageType, damageValue, selfStatusEffects, targetStatusEffects) => {
     return new Promise ((resolve, reject) => {
-        userDB.query(`INSERT INTO USERS (\`userName\`) VALUES ('${username}')`, (err, result) => {
+        monsterDB.query(`SELECT * FROM MONSTERMOVES`, (err, result) => {
             if (err) {
                 return reject(err)
             }
@@ -25,4 +25,4 @@ userDB.newUser = (username) => {
     })
 }
 
-module.exports = userDB
+module.exports = monsterDB
