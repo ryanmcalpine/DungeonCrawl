@@ -1,31 +1,34 @@
 const { Router } = require('express')
-const userDB = require('../controllers/UserController')
-const router = Router()
+const userController = require('../controllers/userController')
 
-router.get('/allusers', async(req, res) => {
-    try {
-        let results = await userDB.promise().all()
-        console.log(results)
-        res.json(results)
-    }
-    catch(e) {
-        console.log('ERROR on /')
-        res.sendStatus(500)
-    }
+const userRouter = Router()
+
+userRouter.use((req, res, next) => {
+   console.log('Request made to /USERS ROUTE')
+   next()
 })
 
-router.post('/', async(req, res) => {
-    const {username, email, password} = res.body()
-    if (username, email, password) {
-        try {
-            let injection = await userDB.promise.newUser()
-            res.status(201).send({msg: 'SUCCESSFUL user creation!'})
-        }
-        catch(e) {
-            console.log('ERROR CREATING NEW USER')
-            res.sendStatus(500)
-        }
-    }
+userRouter.get('/allusers', async(req, res) => {
+   try {
+      let results = await userController.allUsers()
+      res.json(results);
+   }
+   catch(e) {
+      console.log(e)
+      res.status(500)
+   }
 })
 
-module.exports = router;
+userRouter.post('/createnewaccount', async(req, res) => {
+   const {username} = req.body
+   console.log(req.body)
+   try {
+      await userController.newUser(username)
+      res.status(201).send({msg: 'Created User'})
+   }
+   catch(e) {
+      console.log(e)
+   }
+})
+
+module.exports = userRouter;

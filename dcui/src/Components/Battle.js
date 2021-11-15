@@ -42,6 +42,8 @@ export default function Battle(props)
     const [currEnemy,setCurrEnemy] = useState(0);
     const stages = [field,forest,cave,lavaMountain,snowMountain,lavaCave];
     const enemies = [slime,bat,crow,rat,goblin,worm,cyclops,demon,ghost,orc,skeleton,zombie,beholder];
+    const [hasUsedMove, setHasUsedMove] = useState(false);
+
     function sleep( ms )
     {
         return new Promise(resolve => setTimeout( resolve, ms ));
@@ -72,6 +74,9 @@ export default function Battle(props)
     async function handleAttack1()
     {
         if(turn === 1 || endOfRound>0) return;
+
+        setHasUsedMove(true);
+
         setTurn(1);
         //setTimeout(null,1000);
         setStatusBar("Fighter uses [MOVE 1]");
@@ -92,6 +97,9 @@ export default function Battle(props)
     async function handleAttack2()
     {
         if(turn === 1 || endOfRound >0) return;
+
+        setHasUsedMove(true);
+
         setTurn(1);
         console.log('handle attack 2 called');
         setStatusBar("Fighter uses DEV ONE HITTER");
@@ -109,6 +117,9 @@ export default function Battle(props)
     async function handleAttack3()
     {
         if(turn === 1 || endOfRound >0) return;
+
+        setHasUsedMove(true);
+
         setTurn(1);
         console.log('handle attack 3 called');
         setStatusBar("Fighter uses [MOVE 3]");
@@ -125,6 +136,9 @@ export default function Battle(props)
     async function handleAttack4()
     {
         if(turn === 1 || endOfRound >0) return;
+
+        setHasUsedMove(true);
+
         setTurn(1);
         console.log('handle attack 4 called');
         setStatusBar("Fighter uses [MOVE 4]");
@@ -171,6 +185,7 @@ export default function Battle(props)
     async function handleEndofRound()
     {
         setEndOfRound(3);
+        setHasUsedMove(false);
         console.log(`handle end of round called`);
         console.log(`enemy hp ${enemyHP}`);
         console.log(enemyHP <= 0);
@@ -296,11 +311,31 @@ export default function Battle(props)
                     top: 600,
                     left:180
                 }}>
-                    <Button onClick={handleAttack1} variant="outlined">Attack 1</Button>
-                    <Button onClick={handleAttack2} variant="outlined">Attack 2</Button>
+                    {hasUsedMove ? (
+                        <Button onClick={handleAttack1} variant="outlined" disabled>Attack 1</Button>
+                    ) : (
+                        <Button onClick={handleAttack1} variant="outlined">Attack 1</Button>
+                    )
+                    }
+                    {hasUsedMove ? (
+                        <Button onClick={handleAttack2} variant="outlined" disabled>Attack 2</Button>
+                    ) : (
+                        <Button onClick={handleAttack2} variant="outlined">Attack 2</Button>
+                    )
+                    }
                     <div />
-                    <Button onClick={handleAttack3} variant="outlined">Attack 3</Button>
-                    <Button onClick={handleAttack4} variant="outlined">Attack 4</Button>
+                    {hasUsedMove ? (
+                        <Button onClick={handleAttack3} variant="outlined" disabled>Attack 3</Button>
+                    ) : (
+                        <Button onClick={handleAttack3} variant="outlined">Attack 3</Button>
+                    )
+                    }
+                    {hasUsedMove ? (
+                        <Button onClick={handleAttack4} variant="outlined" disabled>Attack 4</Button>
+                    ) : (
+                        <Button onClick={handleAttack4} variant="outlined">Attack 4</Button>
+                    )
+                    }
                 </div>
                 <div style={{
                     position: 'absolute',
