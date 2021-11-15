@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Battle from "./Components/Battle";
+import MainMenu from "./Menu/MainMenu.js";
 
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Battle />
+    <MainMenu />
   </React.StrictMode>,
   document.getElementById('root')
 );
