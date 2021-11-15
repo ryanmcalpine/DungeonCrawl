@@ -286,30 +286,30 @@ export default function Battle(props)
                 </div>
                 <div style={{
                     position: 'absolute',
-                    top: 550,
-                    left:520
+                    top: 580,
+                    left: 570
                 }}>
                     {statusBar}
                 </div>
                 <div style={{
                     position: 'absolute',
-                    top: 550,
-                    left:320
+                    top: 580,
+                    left: 320
                 }}>
                     fighterHP: {fighterHP}
                 </div>
                 <div style={{
                     position: 'absolute',
-                    top: 550,
-                    left:820
+                    top: 580,
+                    left: 780
                 }}>
                     enemyHP: {enemyHP}
                 </div>
 
                 <div style={{
                     position: 'absolute',
-                    top: 600,
-                    left:180
+                    top: 620,
+                    left:300
                 }}>
                     {hasUsedMove ? (
                         <Button onClick={handleAttack1} variant="outlined" disabled>Attack 1</Button>
@@ -339,11 +339,25 @@ export default function Battle(props)
                 </div>
                 <div style={{
                     position: 'absolute',
-                    top: 600,
-                    left:380
+                    top: 620,
+                    left: 560
                 }}>
                     <Button onClick={endTurn} variant="outlined">End Turn</Button>
                     <Button onClick={advance} variant="outlined">Move Forward</Button>
+                </div>
+                <div style={{
+                    position: 'absolute',
+                    top: 620,
+                    left: 850
+                }}>
+                    <Button onClick={endTurn} variant="outlined" disabled>Inventory</Button>
+                </div>
+                <div style={{
+                    position: 'absolute',
+                    top: 657,
+                    left: 850
+                }}>
+                    <Button onClick={endTurn} variant="outlined" disabled>Party Members</Button>
                 </div>
             </div>
         }
