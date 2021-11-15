@@ -42,6 +42,8 @@ export default function Battle(props)
     const [currEnemy,setCurrEnemy] = useState(0);
     const stages = [field,forest,cave,lavaMountain,snowMountain,lavaCave];
     const enemies = [slime,bat,crow,rat,goblin,worm,cyclops,demon,ghost,orc,skeleton,zombie,beholder];
+    const enemyNames = ["Slime","Bat","Crow","Rat", "Gerblin","Wurm","Cyclops","Duo Mobile [demon]",
+        "Ghost of Christmas Past","Orc","Skellington","Nicholas Ivanov","Hermaeus Mora"];
     const [hasUsedMove, setHasUsedMove] = useState(false);
 
     function sleep( ms )
@@ -160,7 +162,7 @@ export default function Battle(props)
         console.log('enemy attack called');
         console.log(`end of round: ${endOfRound}`);
         await sleep(2200);
-        setStatusBar("Slime uses TACKLE");
+        setStatusBar(`${enemyNames[currEnemy]} attacks!`);
         setEnemyAnimationStep(1);
         await sleep(1300);
         // Get randomized damage value
@@ -224,8 +226,7 @@ export default function Battle(props)
         setEnemyHP(50);
         if(currEnemy<enemies.length-1)setCurrEnemy(currEnemy+1);
         else setCurrEnemy(0);
-        await endTurn();
-        await enemyAttack();
+        setHasUsedMove(true);
     }
     /*const handleEndofRound = () =>
     {
@@ -301,7 +302,7 @@ export default function Battle(props)
                 <div style={{
                     position: 'absolute',
                     top: 580,
-                    left: 780
+                    left: 800
                 }}>
                     enemyHP: {enemyHP}
                 </div>
