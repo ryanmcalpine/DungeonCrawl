@@ -9,7 +9,9 @@ import lavaCave from './sprites/backgrounds/Lava_Cave.png';
 import lavaMountain from './sprites/backgrounds/Lava_Mountain.png';
 import snowMountain from './sprites/backgrounds/Snow_Mountain.png';
 import forest from './sprites/backgrounds/Forest.png';
-import testFighter from './sprites/player/test-fighter.png';
+import testFighter from './sprites/player/fighter_crusader.png';
+import testRogue from './sprites/player/rogue_thief.png';
+import testSorc from './sprites/player/sorceress_mage.png';
 import slime from './sprites/enemy/test-slime.png';
 import bat from './sprites/enemy/bat.png';
 import beholder from './sprites/enemy/beholder.png';
@@ -44,9 +46,11 @@ export default function Battle(props)
     const enemies = [slime,bat,crow,rat,goblin,worm,cyclops,demon,ghost,orc,skeleton,zombie,beholder];
     const enemyNames = ["Slime","Bat","Crow","Rat", "Gerblin","Wurm","Cyclops","Duo Mobile [demon]",
         "Ghost of Christmas Past","Orc","Skellington","Nicholas Ivanov","Hermaeus Mora"];
-    const [hasUsedMove, setHasUsedMove] = useState(false);
+    const [hasUsedMove, setHasUsedMove] = useState(false);  // for use in enabling/disabling buttons
+    const [currentCharacter, setCurrentCharacter] = useState(0);
+    const [hasSwappedCharacter, setHasSwappedCharacter] = useState(false);  // for enabling/disabling button
 
-    function sleep( ms )
+    function sleep( ms )    // Pause program execution for duration in milliseconds
     {
         return new Promise(resolve => setTimeout( resolve, ms ));
     }
@@ -79,7 +83,6 @@ export default function Battle(props)
 
         setHasUsedMove(true);
 
-        setTurn(1);
         //setTimeout(null,1000);
         setStatusBar("Fighter uses [MOVE 1]");
         setAnimationStep(1);
@@ -102,7 +105,6 @@ export default function Battle(props)
 
         setHasUsedMove(true);
 
-        setTurn(1);
         console.log('handle attack 2 called');
         setStatusBar("Fighter uses DEV ONE HITTER");
         setAnimationStep(1);
@@ -122,7 +124,6 @@ export default function Battle(props)
 
         setHasUsedMove(true);
 
-        setTurn(1);
         console.log('handle attack 3 called');
         setStatusBar("Fighter uses [MOVE 3]");
         setAnimationStep(1);
@@ -141,7 +142,6 @@ export default function Battle(props)
 
         setHasUsedMove(true);
 
-        setTurn(1);
         console.log('handle attack 4 called');
         setStatusBar("Fighter uses [MOVE 4]");
         setAnimationStep(1);
@@ -188,6 +188,7 @@ export default function Battle(props)
     {
         setEndOfRound(3);
         setHasUsedMove(false);
+        setHasSwappedCharacter(false);
         console.log(`handle end of round called`);
         console.log(`enemy hp ${enemyHP}`);
         console.log(enemyHP <= 0);
@@ -201,6 +202,7 @@ export default function Battle(props)
             console.log(`enemy should be dead`);
             setEndOfRound(1);
             setStatusBar("YOU WON!");
+            setTurn(0);
             await sleep(2500)
         }
         else setEndOfRound(0);
@@ -208,6 +210,7 @@ export default function Battle(props)
     }
     async function endTurn()
     {
+        setTurn(1);
         await handleEndofRound();
         if(endOfRound === 0) await enemyAttack();
     }
@@ -224,9 +227,29 @@ export default function Battle(props)
 
         setEndOfRound(0);
         setEnemyHP(50);
+        setTurn(0);
+        setHasUsedMove(false);
+        setHasSwappedCharacter(false);
         if(currEnemy<enemies.length-1)setCurrEnemy(currEnemy+1);
         else setCurrEnemy(0);
         setHasUsedMove(true);
+    }
+
+    function handleSwapCharacter()  // Rotate through active party members (fighter->rogue->sorceress)
+    {
+        setHasSwappedCharacter(true);
+        console.log("handleSwapCharacter():: currentCharacter=" + currentCharacter);
+        switch(currentCharacter)
+        {
+            case 0:
+                setCurrentCharacter(1);
+                break;
+            case 1:
+                setCurrentCharacter(2);
+                break;
+            case 2:
+                setCurrentCharacter(0);
+        }
     }
     /*const handleEndofRound = () =>
     {
@@ -276,7 +299,18 @@ export default function Battle(props)
                     top: 220,
                     left: 300
                 }}>
-                    <Actor sprite={testFighter} data={spriteData} step={animationStep} />
+                    {
+                        (currentCharacter === 0) &&
+                        <Actor sprite={testFighter} data={spriteData} step={animationStep}/>
+                    }
+                    {
+                        (currentCharacter === 1) &&
+                        <Actor sprite={testRogue} data={spriteData} step={animationStep}/>
+                    }
+                    {
+                        (currentCharacter === 2) &&
+                        <Actor sprite={testSorc} data={spriteData} step={animationStep}/>
+                    }
                 </div>
                 <div style={{
                     position: 'absolute',
@@ -312,30 +346,34 @@ export default function Battle(props)
                     top: 620,
                     left:300
                 }}>
-                    {hasUsedMove ? (
-                        <Button onClick={handleAttack1} variant="outlined" disabled>Attack 1</Button>
-                    ) : (
-                        <Button onClick={handleAttack1} variant="outlined">Attack 1</Button>
-                    )
+                    {
+                        ( hasUsedMove || turn === 1 ) ? (
+                            <Button onClick={handleAttack1} variant="outlined" disabled>Attack 1</Button>
+                        ) : (
+                            <Button onClick={handleAttack1} variant="outlined">Attack 1</Button>
+                        )
                     }
-                    {hasUsedMove ? (
-                        <Button onClick={handleAttack2} variant="outlined" disabled>Attack 2</Button>
-                    ) : (
-                        <Button onClick={handleAttack2} variant="outlined">Attack 2</Button>
-                    )
+                    {
+                        ( hasUsedMove || turn === 1 ) ? (
+                            <Button onClick={handleAttack2} variant="outlined" disabled>Attack 2</Button>
+                        ) : (
+                            <Button onClick={handleAttack2} variant="outlined">Attack 2</Button>
+                        )
                     }
                     <div />
-                    {hasUsedMove ? (
-                        <Button onClick={handleAttack3} variant="outlined" disabled>Attack 3</Button>
-                    ) : (
-                        <Button onClick={handleAttack3} variant="outlined">Attack 3</Button>
-                    )
+                    {
+                        ( hasUsedMove || turn === 1 ) ? (
+                            <Button onClick={handleAttack3} variant="outlined" disabled>Attack 3</Button>
+                        ) : (
+                            <Button onClick={handleAttack3} variant="outlined">Attack 3</Button>
+                        )
                     }
-                    {hasUsedMove ? (
-                        <Button onClick={handleAttack4} variant="outlined" disabled>Attack 4</Button>
-                    ) : (
-                        <Button onClick={handleAttack4} variant="outlined">Attack 4</Button>
-                    )
+                    {
+                        ( hasUsedMove || turn === 1 ) ? (
+                            <Button onClick={handleAttack4} variant="outlined" disabled>Attack 4</Button>
+                        ) : (
+                            <Button onClick={handleAttack4} variant="outlined">Attack 4</Button>
+                        )
                     }
                 </div>
                 <div style={{
@@ -343,8 +381,20 @@ export default function Battle(props)
                     top: 620,
                     left: 560
                 }}>
-                    <Button onClick={endTurn} variant="outlined">End Turn</Button>
-                    <Button onClick={advance} variant="outlined">Move Forward</Button>
+                    {
+                        ( turn === 1 ) ? (
+                            <Button onClick={endTurn} variant="outlined" disabled>End Turn</Button>
+                        ) : (
+                            <Button onClick={endTurn} variant="outlined">End Turn</Button>
+                        )
+                    }
+                    {
+                        ( turn === 1 ) ? (
+                            <Button onClick={advance} variant="outlined" disabled>Move Forward</Button>
+                        ) : (
+                            <Button onClick={advance} variant="outlined">Move Forward</Button>
+                        )
+                    }
                 </div>
                 <div style={{
                     position: 'absolute',
@@ -358,7 +408,13 @@ export default function Battle(props)
                     top: 657,
                     left: 850
                 }}>
-                    <Button onClick={endTurn} variant="outlined" disabled>Party Members</Button>
+                    {
+                        ( hasSwappedCharacter || turn === 1 ) ? (
+                            <Button onClick={handleSwapCharacter} variant="outlined" disabled>Swap Party Member</Button>
+                        ) : (
+                            <Button onClick={handleSwapCharacter} variant="outlined">Swap Party Member</Button>
+                        )
+                    }
                 </div>
             </div>
         }
