@@ -389,7 +389,7 @@ export default function Battle(props)
                         )
                     }
                     {
-                        ( turn === 1 ) ? (
+                        ( turn === 1 || endOfRound !== 1 ) ? (
                             <Button onClick={advance} variant="outlined" disabled>Move Forward</Button>
                         ) : (
                             <Button onClick={advance} variant="outlined">Move Forward</Button>
