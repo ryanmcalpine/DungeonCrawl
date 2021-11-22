@@ -41,6 +41,18 @@ userRouter.get('/login/:username', async(req, res) => {
       console.log(e)
    }
 })
+userRouter.get('/highScores', async(req, res) => {
+   //const {username} = req.body
+   //console.log(req.body)
+   try {
+      let results = await userController.highScores()
+      res.json(results);
+   }
+   catch(e) {
+      console.log(e)
+   }
+})
+
 
 
 module.exports = userRouter;
