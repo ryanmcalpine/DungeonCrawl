@@ -38,7 +38,7 @@ export default function Login({setUser}) {
             api.getUserInfo(userInput)
                 .then( userInfo => {
                     console.log(`api returns user info and it is: ${JSON.stringify(userInfo)}`);
-                    const user = userInfo.user;
+                    const user = userInfo.userName;
                     if( userInfo.status === "OK" ) {
                         setUser(user);
                     } else  {

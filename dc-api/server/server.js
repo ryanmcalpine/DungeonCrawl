@@ -2,9 +2,11 @@ const express = require('express')
 const userRoutes = require('./routes/userRouter')
 const monsterRoutes = require('./routes/monsterRouter')
 const app = express()
-
+const cors = require('cors')
+app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded())
+
 
 app.use('/users', userRoutes)
 app.use('/monsters', monsterRoutes)

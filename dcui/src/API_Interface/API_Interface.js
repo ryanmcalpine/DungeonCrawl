@@ -6,7 +6,7 @@ const AxiosConfigured = () => {
 
     // Set the baseURL for all requests to the API domain instead of the current domain
     // axios.defaults.baseURL = `http://localhost:8443/api/v1`;
-    axios.defaults.baseURL = `http://localhost:3000`;
+    axios.defaults.baseURL = `http://localhost:3000/api`;
 
 
     // Allow the browser to send cookies to the API domain (which include auth_token)

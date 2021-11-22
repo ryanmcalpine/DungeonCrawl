@@ -1,7 +1,7 @@
 const { Router } = require('express')
 const userController = require('../controllers/userController')
-
 const userRouter = Router()
+
 
 userRouter.use((req, res, next) => {
    console.log('Request made to /USERS ROUTE')
