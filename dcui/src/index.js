@@ -6,6 +6,7 @@ import Battle from "./Components/Battle";
 import MainMenu from "./Menu/MainMenu.js";
 
 import reportWebVitals from './reportWebVitals';
+import Main from "./Main";
 
 ReactDOM.render(
   <React.StrictMode>

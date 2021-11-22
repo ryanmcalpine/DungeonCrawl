@@ -25,4 +25,14 @@ userDB.newUser = (username) => {
     })
 }
 
+userDB.userLogin = (username) => {
+    return new Promise ((resolve, reject) => {
+        userDB.query(`SELECT * FROM USERS WHERE \`userName\` = ?`, [username], (err, result) => {
+            if (err) {
+                return reject(err)
+            }
+            return resolve(result)
+        })
+    })
+}
 module.exports = userDB
