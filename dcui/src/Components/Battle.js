@@ -26,13 +26,15 @@ import skeleton from './sprites/enemy/skeleton.png';
 import worm from './sprites/enemy/worm.png';
 import zombie from './sprites/enemy/zombie.png';
 
+import LinearProgress from '@mui/material/LinearProgress';
+import Box from '@mui/material/Box';
 
 export default function Battle(props)
 {
     const [enemyHP,setEnemyHP] = useState(50);
     const [fighterHP,setFighterHP] = useState(500000);
     const [rogueHP,setRogueHP] = useState(50);
-    const [mageHP,setMageHP] = useState(50);
+    const [sorceressHP,setSorceressHP] = useState(50);
     const [statusBar,setStatusBar] = useState("Sic em!");
     const [endOfRound, setEndOfRound] = useState(0);
     // 0 -> game is still going, 1 -> enemy died, 2 -> we died ;-;
@@ -49,6 +51,11 @@ export default function Battle(props)
     const [hasUsedMove, setHasUsedMove] = useState(false);  // for use in enabling/disabling buttons
     const [currentCharacter, setCurrentCharacter] = useState(0);
     const [hasSwappedCharacter, setHasSwappedCharacter] = useState(false);  // for enabling/disabling button
+
+    const [fHealthPercent, setFHealthPercent] = useState(100);  // Fighter health as percentage of max
+    const [rHealthPercent, setRHealthPercent] = useState(100);  // Rogue health as percentage of max
+    const [sHealthPercent, setSHealthPercent] = useState(100);  // Sorceress health as percentage of max
+    const [eHealthPercent, setEHealthPercent] = useState(100);  // Enemy health as percentage of max
 
     function sleep( ms )    // Pause program execution for duration in milliseconds
     {
@@ -88,6 +95,7 @@ export default function Battle(props)
         setAnimationStep(1);
         await sleep(1200);
         setEnemyHP(enemyHP-10);
+        setEHealthPercent( (enemyHP/50) * 100 ); // change to (currentEnemyHP/maxEnemyHP) * 100
         await sleep(800);
         setStatusBar("Enemy takes 10 damage!");
         setAnimationStep(0);
@@ -170,6 +178,16 @@ export default function Battle(props)
         let dmgMax = 11;
         let dmg = Math.floor(Math.random() * (dmgMax - dmgMin) + dmgMin);
         setFighterHP(fighterHP - dmg);
+        switch (currentCharacter) {
+            case 0:
+                setFHealthPercent((fighterHP / 500000) * 100 );
+                break;
+            case 1:
+                setRHealthPercent( (rogueHP / 500000) * 100 );
+                break;
+            case 2:
+                setSHealthPercent( (sorceressHP / 500000) * 100 );
+        }
         await sleep(1000);
         setStatusBar(`Fighter takes ${dmg} damage!`);
         setEnemyAnimationStep(0);
@@ -232,7 +250,7 @@ export default function Battle(props)
         setHasSwappedCharacter(false);
         if(currEnemy<enemies.length-1)setCurrEnemy(currEnemy+1);
         else setCurrEnemy(0);
-        setHasUsedMove(true);
+        setHasUsedMove(false);
     }
 
     function handleSwapCharacter()  // Rotate through active party members (fighter->rogue->sorceress)
@@ -331,13 +349,41 @@ export default function Battle(props)
                     top: 580,
                     left: 320
                 }}>
-                    fighterHP: {fighterHP}
+                    <Box sx={{ width: '180%' }}>
+                        {
+                            (currentCharacter === 0) ? (
+                                <LinearProgress variant={"buffer"} value={fHealthPercent} valueBuffer={100}/>
+                            ) : ('')
+                        }
+                        {
+                            (currentCharacter === 1) ? (
+                                <LinearProgress variant={"buffer"} value={rHealthPercent} valueBuffer={100}/>
+                            ) : ('')
+                        }
+                        {
+                            ( currentCharacter === 2 ) ? (
+                                <LinearProgress variant={"buffer"} value={sHealthPercent} valueBuffer={100}/>
+                            ) : ('')
+                        }
+                    </Box>
+                    {
+                        (currentCharacter === 0) ? (<text>fighterHP: {fighterHP}</text>) : ('')
+                    }
+                    {
+                        (currentCharacter === 1) ? (<text>rogueHP: {rogueHP}</text>) : ('')
+                    }
+                    {
+                        (currentCharacter === 2) ? (<text>sorceressHP: {sorceressHP}</text>) : ('')
+                    }
                 </div>
                 <div style={{
                     position: 'absolute',
                     top: 580,
-                    left: 800
+                    left: 820
                 }}>
+                    <Box sx={{ width: '180%' }}>
+                        <LinearProgress variant={"buffer"} value={eHealthPercent} valueBuffer={100} />
+                    </Box>
                     enemyHP: {enemyHP}
                 </div>
 
