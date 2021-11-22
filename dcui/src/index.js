@@ -8,9 +8,11 @@ import MainMenu from "./Menu/MainMenu.js";
 import reportWebVitals from './reportWebVitals';
 import Main from "./Main";
 
+
+
 ReactDOM.render(
   <React.StrictMode>
-    <MainMenu />
+    <Main />
   </React.StrictMode>,
   document.getElementById('root')
 );

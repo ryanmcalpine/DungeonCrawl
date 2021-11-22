@@ -13,6 +13,16 @@ userDB.allUsers = () => {
         })
     })
 }
+userDB.highScores = () => {
+    return new Promise ((resolve, reject) => {
+        userDB.query(`select userName,highScore from users order by highScore desc`, (err, result) => {
+            if (err) {
+                return reject(err)
+            }
+            return resolve(result)
+        })
+    })
+}
 
 userDB.newUser = (username) => {
     return new Promise ((resolve, reject) => {
