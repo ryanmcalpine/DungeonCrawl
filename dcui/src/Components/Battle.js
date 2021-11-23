@@ -304,165 +304,169 @@ export default function Battle(props)
     }
     return <Fragment>
         {
-            <div style={{
-                backgroundImage: `url(${stages[stage]})`,
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
-                height:'540px',
-                width:'1250px',
-                }}>
+            <Box bgcolor={'#E1ECF7'} height={'660px'}>
                 <div style={{
-                    position: 'absolute',
-                    top: 220,
-                    left: 300
-                }}>
-                    {
-                        (currentCharacter === 0) &&
-                        <Actor sprite={testFighter} data={spriteData} step={animationStep}/>
-                    }
-                    {
-                        (currentCharacter === 1) &&
-                        <Actor sprite={testRogue} data={spriteData} step={animationStep}/>
-                    }
-                    {
-                        (currentCharacter === 2) &&
-                        <Actor sprite={testSorc} data={spriteData} step={animationStep}/>
-                    }
-                </div>
-                <div style={{
-                    position: 'absolute',
-                    top: 220,
-                    left:740
-                }}>
-                    <Actor sprite={enemies[currEnemy]} data={spriteData} step={enemyAnimationStep} />
-                </div>
-                <div style={{
-                    position: 'absolute',
-                    top: 580,
-                    left: 570
-                }}>
-                    {statusBar}
-                </div>
-                <div style={{
-                    position: 'absolute',
-                    top: 580,
-                    left: 320
-                }}>
-                    <Box sx={{ width: '180%' }}>
+                    backgroundImage: `url(${stages[stage]})`,
+                    backgroundPosition: 'center',
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat',
+                    height:'540px',
+                    width:'1250px',
+                    }}>
+                    <div style={{
+                        position: 'absolute',
+                        top: 220,
+                        left: 300
+                    }}>
                         {
-                            (currentCharacter === 0) ? (
-                                <LinearProgress variant={"buffer"} value={fHealthPercent} valueBuffer={100}/>
-                            ) : ('')
+                            (currentCharacter === 0) &&
+                            <Actor sprite={testFighter} data={spriteData} step={animationStep}/>
                         }
                         {
-                            (currentCharacter === 1) ? (
-                                <LinearProgress variant={"buffer"} value={rHealthPercent} valueBuffer={100}/>
-                            ) : ('')
+                            (currentCharacter === 1) &&
+                            <Actor sprite={testRogue} data={spriteData} step={animationStep}/>
                         }
                         {
-                            ( currentCharacter === 2 ) ? (
-                                <LinearProgress variant={"buffer"} value={sHealthPercent} valueBuffer={100}/>
-                            ) : ('')
+                            (currentCharacter === 2) &&
+                            <Actor sprite={testSorc} data={spriteData} step={animationStep}/>
                         }
-                    </Box>
-                    {
-                        (currentCharacter === 0) ? (<text>fighterHP: {fighterHP}</text>) : ('')
-                    }
-                    {
-                        (currentCharacter === 1) ? (<text>rogueHP: {rogueHP}</text>) : ('')
-                    }
-                    {
-                        (currentCharacter === 2) ? (<text>sorceressHP: {sorceressHP}</text>) : ('')
-                    }
-                </div>
-                <div style={{
-                    position: 'absolute',
-                    top: 580,
-                    left: 820
-                }}>
-                    <Box sx={{ width: '180%' }}>
-                        <LinearProgress variant={"buffer"} value={eHealthPercent} valueBuffer={100} />
-                    </Box>
-                    enemyHP: {enemyHP}
-                </div>
+                    </div>
+                    <div style={{
+                        position: 'absolute',
+                        top: 220,
+                        left:740
+                    }}>
+                        <Actor sprite={enemies[currEnemy]} data={spriteData} step={enemyAnimationStep} />
+                    </div>
 
-                <div style={{
-                    position: 'absolute',
-                    top: 620,
-                    left:300
-                }}>
-                    {
-                        ( hasUsedMove || turn === 1 ) ? (
-                            <Button onClick={handleAttack1} variant="outlined" disabled>Attack 1</Button>
-                        ) : (
-                            <Button onClick={handleAttack1} variant="outlined">Attack 1</Button>
-                        )
-                    }
-                    {
-                        ( hasUsedMove || turn === 1 ) ? (
-                            <Button onClick={handleAttack2} variant="outlined" disabled>Attack 2</Button>
-                        ) : (
-                            <Button onClick={handleAttack2} variant="outlined">Attack 2</Button>
-                        )
-                    }
-                    <div />
-                    {
-                        ( hasUsedMove || turn === 1 ) ? (
-                            <Button onClick={handleAttack3} variant="outlined" disabled>Attack 3</Button>
-                        ) : (
-                            <Button onClick={handleAttack3} variant="outlined">Attack 3</Button>
-                        )
-                    }
-                    {
-                        ( hasUsedMove || turn === 1 ) ? (
-                            <Button onClick={handleAttack4} variant="outlined" disabled>Attack 4</Button>
-                        ) : (
-                            <Button onClick={handleAttack4} variant="outlined">Attack 4</Button>
-                        )
-                    }
+                        <div style={{
+                            position: 'absolute',
+                            top: 580,
+                            left: 570
+                        }}>
+                            {statusBar}
+                        </div>
+                        <div style={{
+                            position: 'absolute',
+                            top: 580,
+                            left: 320
+                        }}>
+                            <Box sx={{ width: '180%' }}>
+                                {
+                                    (currentCharacter === 0) ? (
+                                        <LinearProgress variant={"buffer"} value={fHealthPercent} valueBuffer={100}/>
+                                    ) : ('')
+                                }
+                                {
+                                    (currentCharacter === 1) ? (
+                                        <LinearProgress variant={"buffer"} value={rHealthPercent} valueBuffer={100}/>
+                                    ) : ('')
+                                }
+                                {
+                                    ( currentCharacter === 2 ) ? (
+                                        <LinearProgress variant={"buffer"} value={sHealthPercent} valueBuffer={100}/>
+                                    ) : ('')
+                                }
+                            </Box>
+                            {
+                                (currentCharacter === 0) ? (<text>fighterHP: {fighterHP}</text>) : ('')
+                            }
+                            {
+                                (currentCharacter === 1) ? (<text>rogueHP: {rogueHP}</text>) : ('')
+                            }
+                            {
+                                (currentCharacter === 2) ? (<text>sorceressHP: {sorceressHP}</text>) : ('')
+                            }
+                        </div>
+                        <div style={{
+                            position: 'absolute',
+                            top: 580,
+                            left: 820
+                        }}>
+                            <Box sx={{ width: '180%' }}>
+                                <LinearProgress variant={"buffer"} value={eHealthPercent} valueBuffer={100} />
+                            </Box>
+                            enemyHP: {enemyHP}
+                        </div>
+
+                        <div style={{
+                            position: 'absolute',
+                            top: 620,
+                            left:300
+                        }}>
+                            {
+                                ( hasUsedMove || turn === 1 ) ? (
+                                    <Button onClick={handleAttack1} variant="outlined" disabled>Attack 1</Button>
+                                ) : (
+                                    <Button onClick={handleAttack1} style={{backgroundColor:"#212738"}} variant="contained">Attack 1</Button>
+                                )
+                            }
+                            {
+                                ( hasUsedMove || turn === 1 ) ? (
+                                    <Button onClick={handleAttack2} variant="outlined" disabled>Attack 2</Button>
+                                ) : (
+                                    <Button onClick={handleAttack2} style={{backgroundColor:"#212738"}}  variant="contained">Attack 2</Button>
+                                )
+                            }
+                            <div />
+                            {
+                                ( hasUsedMove || turn === 1 ) ? (
+                                    <Button onClick={handleAttack3} variant="outlined" disabled>Attack 3</Button>
+                                ) : (
+                                    <Button onClick={handleAttack3} style={{backgroundColor:"#212738"}} variant="contained">Attack 3</Button>
+                                )
+                            }
+                            {
+                                ( hasUsedMove || turn === 1 ) ? (
+                                    <Button onClick={handleAttack4} variant="outlined" disabled>Attack 4</Button>
+                                ) : (
+                                    <Button onClick={handleAttack4} style={{backgroundColor:"#212738"}} variant="contained">Attack 4</Button>
+                                )
+                            }
+                        </div>
+                        <div style={{
+                            position: 'absolute',
+                            top: 620,
+                            left: 560
+                        }}>
+                            {
+                                ( turn === 1 ) ? (
+                                    <Button onClick={endTurn} variant="outlined" disabled>End Turn</Button>
+                                ) : (
+                                    <Button onClick={endTurn} style={{backgroundColor:"#212738"}} variant="contained">End Turn</Button>
+                                )
+                            }
+                            {
+                                ( turn === 1 || endOfRound !== 1 ) ? (
+                                    <Button onClick={advance} variant="outlined" disabled>Move Forward</Button>
+                                ) : (
+                                    <Button onClick={advance} style={{backgroundColor:"#212738"}} variant="contained">Move Forward</Button>
+                                )
+                            }
+                        </div>
+                        <div style={{
+                            position: 'absolute',
+                            top: 620,
+                            left: 850
+                        }}>
+                            <Button onClick={endTurn} variant="outlined" disabled>Inventory</Button>
+                        </div>
+                        <div style={{
+                            position: 'absolute',
+                            top: 657,
+                            left: 850
+                        }}>
+                            {
+                                ( hasSwappedCharacter || turn === 1 ) ? (
+                                    <Button onClick={handleSwapCharacter} variant="outlined" disabled>Swap Party Member</Button>
+                                ) : (
+                                    <Button onClick={handleSwapCharacter} style={{backgroundColor:"#212738"}} variant="contained">Swap Party Member</Button>
+                                )
+                            }
+                        </div>
+
                 </div>
-                <div style={{
-                    position: 'absolute',
-                    top: 620,
-                    left: 560
-                }}>
-                    {
-                        ( turn === 1 ) ? (
-                            <Button onClick={endTurn} variant="outlined" disabled>End Turn</Button>
-                        ) : (
-                            <Button onClick={endTurn} variant="outlined">End Turn</Button>
-                        )
-                    }
-                    {
-                        ( turn === 1 || endOfRound !== 1 ) ? (
-                            <Button onClick={advance} variant="outlined" disabled>Move Forward</Button>
-                        ) : (
-                            <Button onClick={advance} variant="outlined">Move Forward</Button>
-                        )
-                    }
-                </div>
-                <div style={{
-                    position: 'absolute',
-                    top: 620,
-                    left: 850
-                }}>
-                    <Button onClick={endTurn} variant="outlined" disabled>Inventory</Button>
-                </div>
-                <div style={{
-                    position: 'absolute',
-                    top: 657,
-                    left: 850
-                }}>
-                    {
-                        ( hasSwappedCharacter || turn === 1 ) ? (
-                            <Button onClick={handleSwapCharacter} variant="outlined" disabled>Swap Party Member</Button>
-                        ) : (
-                            <Button onClick={handleSwapCharacter} variant="outlined">Swap Party Member</Button>
-                        )
-                    }
-                </div>
-            </div>
+            </Box>
         }
     </Fragment>
 }
