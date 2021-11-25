@@ -39,8 +39,8 @@ export default function MainMenu({}){
     if( showMenu === true )
     {
         return(
-            <div style={{position: 'absolute', left: '50%', top: '50%', backgroundColor: '#E1ECF7', borderRadius: '10px', padding:'5px'}}>
-                <h1>DUNGEON CRAWL</h1>
+            <div style={{position: 'absolute', left: '50%', top: '50%', outlineStyle:'groove', outlineColor:'#F4B860', backgroundColor: '#E1ECF7', borderRadius: '10px', padding:'10px'}}>
+                <h1 style={{color:'#F4B860', outlineStyle:'outset', outlineColor:'#F4B860', backgroundColor:'#212738', borderRadius:'5px', padding:'5px'}}>DUNGEON CRAWL</h1>
                 <Button variant={"outlined"} style={{backgroundColor:"black", color:"#E1ECF7"}} onClick={handleStartGame}>Start Game</Button>
                 <div style={{padding: '4px'}}/>
                 <Button variant={"outlined"} style={{backgroundColor:"black", color:"#E1ECF7"}} onClick={handleShowArmory}>Armory</Button>
