@@ -1,6 +1,8 @@
 import React, {useState, useEffect, Fragment} from 'react';
 import Button from '@mui/material/Button';
-import color from "color";
+import {Avatar} from "@mui/material";
+import LinearProgress from '@mui/material/LinearProgress';
+import Box from '@mui/material/Box';
 
 import Actor from "./Actor";
 import cave from './sprites/backgrounds/Cave.png';
@@ -25,9 +27,8 @@ import rat from './sprites/enemy/rat.png';
 import skeleton from './sprites/enemy/skeleton.png';
 import worm from './sprites/enemy/worm.png';
 import zombie from './sprites/enemy/zombie.png';
-
-import LinearProgress from '@mui/material/LinearProgress';
-import Box from '@mui/material/Box';
+import inventoryIcon from './sprites/ui/Bag.png';
+import heartIcon from './sprites/ui/Heart.png';
 
 export default function Battle(props)
 {
@@ -91,7 +92,16 @@ export default function Battle(props)
         setHasUsedMove(true);
 
         //setTimeout(null,1000);
-        setStatusBar("Fighter uses [MOVE 1]");
+        switch (currentCharacter) {
+            case 0:
+                setStatusBar("Fighter uses [MOVE 1]");
+                break;
+            case 1:
+                setStatusBar("Rogue uses [MOVE 1]");
+                break;
+            case 2:
+                setStatusBar("Sorceress uses [MOVE 1]");
+        }
         setAnimationStep(1);
         await sleep(1200);
         setEnemyHP(enemyHP-10);
@@ -114,7 +124,16 @@ export default function Battle(props)
         setHasUsedMove(true);
 
         console.log('handle attack 2 called');
-        setStatusBar("Fighter uses DEV ONE HITTER");
+        switch (currentCharacter) {
+            case 0:
+                setStatusBar("Fighter uses DEV ONE HITTER");
+                break;
+            case 1:
+                setStatusBar("Rogue uses DEV ONE HITTER");
+                break;
+            case 2:
+                setStatusBar("Sorceress uses DEV ONE HITTER");
+        }
         setAnimationStep(1);
         await sleep(1200);
         setEnemyHP(enemyHP-50);
@@ -133,7 +152,16 @@ export default function Battle(props)
         setHasUsedMove(true);
 
         console.log('handle attack 3 called');
-        setStatusBar("Fighter uses [MOVE 3]");
+        switch (currentCharacter) {
+            case 0:
+                setStatusBar("Fighter uses [MOVE 3]");
+                break;
+            case 1:
+                setStatusBar("Rogue uses [MOVE 3]");
+                break;
+            case 2:
+                setStatusBar("Sorceress uses [MOVE 3]");
+        }
         setAnimationStep(1);
         await sleep(1200);
         // set enemy hp
@@ -151,7 +179,16 @@ export default function Battle(props)
         setHasUsedMove(true);
 
         console.log('handle attack 4 called');
-        setStatusBar("Fighter uses [MOVE 4]");
+        switch (currentCharacter) {
+            case 0:
+                setStatusBar("Fighter uses [MOVE 4]");
+                break;
+            case 1:
+                setStatusBar("Rogue uses [MOVE 4]");
+                break;
+            case 2:
+                setStatusBar("Sorceress uses [MOVE 4]");
+        }
         setAnimationStep(1);
         await sleep(1200);
         // set enemy hp
@@ -177,19 +214,25 @@ export default function Battle(props)
         let dmgMin = 6;
         let dmgMax = 11;
         let dmg = Math.floor(Math.random() * (dmgMax - dmgMin) + dmgMin);
-        setFighterHP(fighterHP - dmg);
         switch (currentCharacter) {
             case 0:
+                setFighterHP(fighterHP - dmg);
                 setFHealthPercent((fighterHP / 500000) * 100 );
+                await sleep(1000);
+                setStatusBar(`Fighter takes ${dmg} damage!`);
                 break;
             case 1:
-                setRHealthPercent( (rogueHP / 500000) * 100 );
+                setRogueHP(rogueHP - dmg);
+                setRHealthPercent( (rogueHP / 50) * 100 );
+                await sleep(1000);
+                setStatusBar(`Rogue takes ${dmg} damage!`);
                 break;
             case 2:
-                setSHealthPercent( (sorceressHP / 500000) * 100 );
+                setSorceressHP(sorceressHP - dmg);
+                setSHealthPercent( (sorceressHP / 50) * 100 );
+                await sleep(1000);
+                setStatusBar(`Sorceress takes ${dmg} damage!`);
         }
-        await sleep(1000);
-        setStatusBar(`Fighter takes ${dmg} damage!`);
         setEnemyAnimationStep(0);
         await sleep(2500)
         setTimeout(null,500);
@@ -369,13 +412,28 @@ export default function Battle(props)
                                 }
                             </Box>
                             {
-                                (currentCharacter === 0) ? (<text>fighterHP: {fighterHP}</text>) : ('')
+                                (currentCharacter === 0) ? (
+                                    <div style={{display:'flex', alignItems:'center'}}>
+                                        <Avatar src={heartIcon} sx={{height:'20px', width:'20px'}} />
+                                        <span> Fighter: {fighterHP}</span>
+                                    </div>
+                                ) : ('')
                             }
                             {
-                                (currentCharacter === 1) ? (<text>rogueHP: {rogueHP}</text>) : ('')
+                                (currentCharacter === 1) ? (
+                                    <div style={{display:'flex', alignItems:'center'}}>
+                                        <Avatar src={heartIcon} sx={{height:'20px', width:'20px'}} />
+                                        <span> Rogue: {rogueHP}</span>
+                                    </div>
+                                ) : ('')
                             }
                             {
-                                (currentCharacter === 2) ? (<text>sorceressHP: {sorceressHP}</text>) : ('')
+                                (currentCharacter === 2) ? (
+                                    <div style={{display:'flex', alignItems:'center'}}>
+                                        <Avatar src={heartIcon} sx={{height:'20px', width:'20px'}} />
+                                        <span> Sorceress: {sorceressHP}</span>
+                                    </div>
+                                ) : ('')
                             }
                         </div>
                         <div style={{
@@ -386,7 +444,10 @@ export default function Battle(props)
                             <Box sx={{ width: '180%' }}>
                                 <LinearProgress variant={"buffer"} value={eHealthPercent} valueBuffer={100} />
                             </Box>
-                            enemyHP: {enemyHP}
+                            <div style={{display:'flex', alignItems:'center'}}>
+                                <Avatar src={heartIcon} sx={{height:'20px', width:'20px'}} />
+                                <span> {enemyNames[currEnemy]}: {enemyHP}</span>
+                            </div>
                         </div>
 
                         <div style={{
@@ -449,7 +510,7 @@ export default function Battle(props)
                             top: 620,
                             left: 850
                         }}>
-                            <Button onClick={endTurn} variant="outlined" disabled>Inventory</Button>
+                            <Button onClick={endTurn} startIcon={<Avatar src={inventoryIcon} sx={{width:24, height:24}} />} variant="outlined" disabled>Inventory</Button>
                         </div>
                         <div style={{
                             position: 'absolute',

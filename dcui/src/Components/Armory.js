@@ -1,4 +1,6 @@
 import React, {Fragment} from "react";
+import {Box, Table, TableCell, TableRow} from "@mui/material/";
+
 import Actor from "./Actor";
 import testFighter from "./sprites/player/test-fighter.png";
 import barb from "./sprites/player/fighter_barbarian.png";
@@ -16,121 +18,167 @@ import priest from "./sprites/player/sorceress_priest.png";
 import acolyte from "./sprites/player/sorceress_acolyte.png";
 import mage from "./sprites/player/sorceress_mage.png";
 import wizard from "./sprites/player/sorceress_wizard.png";
+import Button from "@mui/material/Button";
 
 export default function Armory()
 {
+    // TODO: useEffect to get data on unlocked armor from user account ?
+
+    // TODO: onClick functions for purchasing & equipping armor sets
+
     const spriteData = {
         w: 160,
         h: 200
     }
     return<Fragment>
-        <div style={{
-            position: 'absolute',
-            top: 50,
-            left: 50
-        }}>
-            <Actor sprite={folk} data={spriteData} />
+        <div style={{padding:'6%'}}>
+            <Table>
+                <text style={{color:'white', fontSize:'18px', fontWeight:'bold'}}>FIGHTER</text>
+                <TableRow>
+                    <TableCell component={"div"} align={'center'}>
+                        <Actor sprite={folk} data={spriteData} />
+                        <div />
+                        <b style={{color:'white'}}>Folk</b>
+                        <div />
+                        <Box bgcolor={'#E1ECF7'} padding={'3px'} borderRadius={'6px'}>
+                            <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                        </Box>
+                    </TableCell>
+                    <TableCell component={"div"} align={'center'}>
+                        <Actor sprite={barb} data={spriteData} />
+                        <div />
+                        <b style={{color:'white'}}>Barbarian</b>
+                        <div />
+                        <Box bgcolor={'#E1ECF7'} padding={'3px'} borderRadius={'6px'}>
+                            <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                        </Box>
+                    </TableCell>
+                    <TableCell component={"div"} align={'center'}>
+                        <Actor sprite={crusader} data={spriteData} />
+                        <div />
+                        <b style={{color:'white'}}>Crusader</b>
+                        <div />
+                        <Box bgcolor={'#E1ECF7'} padding={'3px'} borderRadius={'6px'}>
+                            <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                        </Box>
+                    </TableCell>
+                    <TableCell component={"div"} align={'center'}>
+                        <Actor sprite={samurai} data={spriteData} />
+                        <div />
+                        <b style={{color:'white'}}>Samurai</b>
+                        <div />
+                        <Box bgcolor={'#E1ECF7'} padding={'3px'} borderRadius={'6px'}>
+                            <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                        </Box>
+                    </TableCell>
+                    <TableCell component={"div"} align={'center'}>
+                        <Actor sprite={knight} data={spriteData} />
+                        <div />
+                        <b style={{color:'white'}}>Knight</b>
+                        <div />
+                        <Box bgcolor={'#E1ECF7'} padding={'3px'} borderRadius={'6px'}>
+                            <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                        </Box>
+                    </TableCell>
+                </TableRow>
+                <text style={{color:'white', fontSize:'18px', fontWeight:'bold'}}>ROGUE</text>
+                <TableRow>
+                    <TableCell component={"div"} align={'center'}>
+                        <Actor sprite={rFolk} data={spriteData} />
+                        <div />
+                        <b style={{color:'white'}}>Folk</b>
+                        <div />
+                        <Box bgcolor={'#E1ECF7'} padding={'3px'} borderRadius={'6px'}>
+                            <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                        </Box>
+                    </TableCell>
+                    <TableCell component={"div"} align={'center'}>
+                        <Actor sprite={socialist} data={spriteData} />
+                        <div />
+                        <b style={{color:'white'}}>Thief</b>
+                        <div />
+                        <Box bgcolor={'#E1ECF7'} padding={'3px'} borderRadius={'6px'}>
+                            <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                        </Box>
+                    </TableCell>
+                    <TableCell component={"div"} align={'center'}>
+                        <Actor sprite={archer} data={spriteData} />
+                        <div />
+                        <b style={{color:'white'}}>Archer</b>
+                        <div />
+                        <Box bgcolor={'#E1ECF7'} padding={'3px'} borderRadius={'6px'}>
+                            <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                        </Box>
+                    </TableCell>
+                    <TableCell component={"div"} align={'center'}>
+                        <Actor sprite={musketeer} data={spriteData} />
+                        <div />
+                        <b style={{color:'white'}}>Witch Hunter</b>
+                        <div />
+                        <Box bgcolor={'#E1ECF7'} padding={'3px'} borderRadius={'6px'}>
+                            <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                        </Box>
+                    </TableCell>
+                    <TableCell component={"div"} align={'center'}>
+                        <Actor sprite={ninja} data={spriteData} />
+                        <div />
+                        <b style={{color:'white'}}>Ninja</b>
+                        <div />
+                        <Box bgcolor={'#E1ECF7'} padding={'3px'} borderRadius={'6px'}>
+                            <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                        </Box>
+                    </TableCell>
+                </TableRow>
+                <text style={{color:'white', fontSize:'18px', fontWeight:'bold'}}>SORCERESS</text>
+                <TableRow>
+                    <TableCell component={"div"} align={'center'}>
+                        <Actor sprite={sorcFolk} data={spriteData} />
+                        <div />
+                        <b style={{color:'white'}}>Folk</b>
+                        <div />
+                        <Box bgcolor={'#E1ECF7'} padding={'3px'} borderRadius={'6px'}>
+                            <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                        </Box>
+                    </TableCell>
+                    <TableCell component={"div"} align={'center'}>
+                        <Actor sprite={priest} data={spriteData} />
+                        <div />
+                        <b style={{color:'white'}}>Acolyte</b>
+                        <div />
+                        <Box bgcolor={'#E1ECF7'} padding={'3px'} borderRadius={'6px'}>
+                            <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                        </Box>
+                    </TableCell>
+                    <TableCell component={"div"} align={'center'}>
+                        <Actor sprite={acolyte} data={spriteData} />
+                        <div />
+                        <b style={{color:'white'}}>Priestess</b>
+                        <div />
+                        <Box bgcolor={'#E1ECF7'} padding={'3px'} borderRadius={'6px'}>
+                            <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                        </Box>
+                    </TableCell>
+                    <TableCell component={"div"} align={'center'}>
+                        <Actor sprite={mage} data={spriteData} />
+                        <div />
+                        <b style={{color:'white'}}>Mage</b>
+                        <div />
+                        <Box bgcolor={'#E1ECF7'} padding={'3px'} borderRadius={'6px'}>
+                            <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                        </Box>
+                    </TableCell>
+                    <TableCell component={"div"} align={'center'}>
+                        <Actor sprite={wizard} data={spriteData} />
+                        <div />
+                        <b style={{color:'white'}}>Dark Wizard</b>
+                        <div />
+                        <Box bgcolor={'#E1ECF7'} padding={'3px'} borderRadius={'6px'}>
+                            <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                        </Box>
+                    </TableCell>
+                </TableRow>
+            </Table>
         </div>
-        <div style={{
-            position: 'absolute',
-            top: 50,
-            left: 250
-        }}>
-            <Actor sprite={barb} data={spriteData} />
-        </div>
-        <div style={{
-            position: 'absolute',
-            top: 50,
-            left: 450
-        }}>
-            <Actor sprite={crusader} data={spriteData} />
-        </div>
-        <div style={{
-            position: 'absolute',
-            top: 50,
-            left: 650
-        }}>
-            <Actor sprite={samurai} data={spriteData} />
-        </div>
-        <div style={{
-            position: 'absolute',
-            top: 50,
-            left: 850
-        }}>
-            <Actor sprite={knight} data={spriteData} />
-        </div>
-        <div style={{
-            position: 'absolute',
-            top: 250,
-            left: 50
-        }}>
-            <Actor sprite={rFolk} data={spriteData} />
-        </div>
-        <div style={{
-            position: 'absolute',
-            top: 250,
-            left: 250
-        }}>
-            <Actor sprite={socialist} data={spriteData} />
-        </div>
-        <div style={{
-            position: 'absolute',
-            top: 250,
-            left: 450
-        }}>
-            <Actor sprite={archer} data={spriteData} />
-        </div>
-        <div style={{
-            position: 'absolute',
-            top: 250,
-            left: 650
-        }}>
-            <Actor sprite={musketeer} data={spriteData} />
-        </div>
-        <div style={{
-            position: 'absolute',
-            top: 250,
-            left: 850
-        }}>
-            <Actor sprite={ninja} data={spriteData} />
-        </div>
-
-        <div style={{
-            position: 'absolute',
-            top: 450,
-            left: 50
-        }}>
-            <Actor sprite={sorcFolk} data={spriteData} />
-        </div>
-        <div style={{
-            position: 'absolute',
-            top: 450,
-            left: 250
-        }}>
-            <Actor sprite={priest} data={spriteData} />
-        </div>
-        <div style={{
-            position: 'absolute',
-            top: 450,
-            left: 450
-        }}>
-            <Actor sprite={acolyte} data={spriteData} />
-        </div>
-        <div style={{
-            position: 'absolute',
-            top: 450,
-            left: 650
-        }}>
-            <Actor sprite={mage} data={spriteData} />
-        </div>
-        <div style={{
-            position: 'absolute',
-            top: 450,
-            left: 850
-        }}>
-            <Actor sprite={wizard} data={spriteData} />
-        </div>
-
     </Fragment>
 
 }
