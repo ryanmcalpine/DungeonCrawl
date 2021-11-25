@@ -1,5 +1,6 @@
 import React, {useState, useEffect, Fragment} from 'react';
 import Button from '@mui/material/Button';
+import {Avatar} from "@mui/material";
 import color from "color";
 
 import Actor from "./Actor";
@@ -25,6 +26,8 @@ import rat from './sprites/enemy/rat.png';
 import skeleton from './sprites/enemy/skeleton.png';
 import worm from './sprites/enemy/worm.png';
 import zombie from './sprites/enemy/zombie.png';
+import InventoryIcon from './sprites/ui/Bag.png';
+
 
 import LinearProgress from '@mui/material/LinearProgress';
 import Box from '@mui/material/Box';
@@ -449,7 +452,7 @@ export default function Battle(props)
                             top: 620,
                             left: 850
                         }}>
-                            <Button onClick={endTurn} variant="outlined" disabled>Inventory</Button>
+                            <Button onClick={endTurn} startIcon={<Avatar src={InventoryIcon} sx={{width:24, height:24}} />} variant="outlined" disabled>Inventory</Button>
                         </div>
                         <div style={{
                             position: 'absolute',
