@@ -24,6 +24,8 @@ export default function Armory()
 {
     // TODO: useEffect to get data on unlocked armor from user account ?
 
+    // TODO: onClick functions for purchasing & equipping armor sets
+
     const spriteData = {
         w: 160,
         h: 200
