@@ -6,12 +6,14 @@
 
 
  ### Assets Used
- - Danil Chernyaev - Simple 2D Background Pack
+ - Cainos - "Pixel Art Icon Pack - RPG"
+   - https://assetstore.unity.com/packages/2d/gui/icons/pixel-art-icon-pack-rpg-158343
+ - Danil Chernyaev - "Simple 2D Background Pack"
    - https://assetstore.unity.com/packages/2d/environments/simple-2d-background-pack-179115
- - MiMU STUDIO - 2D SD Character Packs V.1 & V.2
+ - MiMU STUDIO - "2D SD Character Packs V.1 & V.2"
    - https://assetstore.unity.com/packages/2d/characters/2d-sd-character-pack-v-1-62141
    - https://assetstore.unity.com/packages/2d/characters/2d-sd-character-pack-v-2-66822
- - MiMU STUDIO - 2D SD Monster Pack
+ - MiMU STUDIO - "2D SD Monster Pack"
    - https://assetstore.unity.com/packages/2d/characters/2d-sd-monster-pack-75733
 
 ---
