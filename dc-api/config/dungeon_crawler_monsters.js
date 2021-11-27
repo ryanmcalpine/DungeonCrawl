@@ -42,16 +42,15 @@ const monstersRouter = require('koa-router')({
 });
 
 monstersRouter.use(VerifyJWT);
-monstersRouter.get('/:cycleID', Authorize('admin'),MonstersController.numTransactions, err => console.log(`numTransactions ran into an error: ${err}`));
-monstersRouter.get('/:cycleID/:accountID/one-account', Authorize('admin'), MonstersController.one_account,err => console.log(`one_account ran into an error: ${err}`));
-monstersRouter.get('/:cycleID/:routeID/trans-for-route', Authorize('admin'),MonstersController.trans_for_route, err => console.log(`trans_for_route ran into an error: ${err}`));
-monstersRouter.get('/:cycleID/all-routes', Authorize('admin'), MonstersController.all_routes,err => console.log(`trans_for_route ran into an error: ${err}`));
-monstersRouter.get('/:cycleID/:marketID/trans-for-market', Authorize('admin'), MonstersController.trans_for_market,err => console.log(`trans_for_route ran into an error: ${err}`));
-monstersRouter.get('/get-cycleIDS/cid',Authorize('admin'),MonstersController.get_cycleIDS,err => console.log(`get_cycleIDS ran into an error: ${err}`));
-monstersRouter.get('/get-marketIDS/mid',Authorize('admin'),MonstersController.get_marketIDS,err => console.log(`get_marketIDS ran into an error: ${err}`));
-monstersRouter.get('/get-routeIDS/rid',Authorize('admin'),MonstersController.get_routeIDS,err => console.log(`get_routeIDS ran into an error: ${err}`));
-monstersRouter.get('/get-CurrCycle/gcc',Authorize('admin'),MonstersController.get_CurrCycle,err => console.log(`get_CurrCycle ran into an error: ${err}`));
-monstersRouter.get('/getAcctName/:accountID',Authorize('admin'),MonstersController.get_AcctName,err => console.log(`get_AcctName ran into an error: ${err}`));
+monstersRouter.get('/allMonsters',MonstersController.allMonsters, err => console.log(`allMonsters ran into an error: ${err}`));
+monstersRouter.get('/getMonster/:monsterID/',MonstersController.getMonster, err => console.log(`getMonster ran into an error: ${err}`));
+monstersRouter.get('/getMaxHP/:monsterID/',MonstersController.getMaxHP, err => console.log(`getMaxHP ran into an error: ${err}`));
+monstersRouter.get('/getPhysicalATK/:monsterID/',MonstersController.getPhysicalATK, err => console.log(`getPhysicalATK ran into an error: ${err}`));
+monstersRouter.get('/getPhysicalDEF/:monsterID/',MonstersController.getPhysicalDEF, err => console.log(`getPhysicalDEF ran into an error: ${err}`));
+monstersRouter.get('/getMagicATK/:monsterID/',MonstersController.getMagicATK, err => console.log(`getMagicATK ran into an error: ${err}`));
+monstersRouter.get('/getMagicDEF/:monsterID/',MonstersController.getMagicDEF, err => console.log(`getMagicDEF ran into an error: ${err}`));
+monstersRouter.get('/getSpeed/:monsterID/',MonstersController.getSpeed, err => console.log(`getSpeed ran into an error: ${err}`));
+
 
 /**
  * Register all of the controllers into the default controller.
