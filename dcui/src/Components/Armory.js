@@ -18,6 +18,14 @@ import s_priestess from "./sprites/player/sorceress_acolyte.png";
 import s_mage from "./sprites/player/sorceress_mage.png";
 import s_wizard from "./sprites/player/sorceress_wizard.png";
 
+const armoryTableAttributes = [
+    {
+        attributeName: 'Total Transactions',
+        attributeDBName: 'totalTransactions',
+        align: 'left'
+    }
+];
+
 export default function Armory()
 {
     const [fighterEquipped, setFighterEquipped] = React.useState(0);
@@ -70,7 +78,7 @@ export default function Armory()
                                 (fighterEquipped === 0) ? (
                                     <Button variant={"contained"} style={{backgroundColor:"#F4B860"}} onClick={''}>Equipped</Button>
                                 ) : (
-                                    <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                                    <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={ () => handleEquipFighter(0) }>Equip</Button>
                                 )
                             }
                         </Box>
@@ -104,7 +112,7 @@ export default function Armory()
                                 (fighterEquipped === 1) ? (
                                     <Button variant={"contained"} style={{backgroundColor:"#F4B860"}} onClick={''}>Equipped</Button>
                                 ) : (
-                                    <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                                    <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={ () => handleEquipFighter(1) }>Equip</Button>
                                 )
                             }
                             </div>
