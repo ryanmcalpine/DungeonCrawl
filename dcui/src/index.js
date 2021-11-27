@@ -12,7 +12,7 @@ import Main from "./Main";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Main />
+    <MainMenu />
   </React.StrictMode>,
   document.getElementById('root')
 );

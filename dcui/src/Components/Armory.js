@@ -2,7 +2,6 @@ import React, {Fragment} from "react";
 import {Box, Table, TableCell, TableRow} from "@mui/material/";
 
 import Actor from "./Actor";
-import testFighter from "./sprites/player/test-fighter.png";
 import barb from "./sprites/player/fighter_barbarian.png";
 import crusader from "./sprites/player/fighter_crusader.png";
 import folk from "./sprites/player/fighter_folk.png";
@@ -32,15 +31,33 @@ export default function Armory()
     }
     return<Fragment>
         <div style={{padding:'6%'}}>
-            <Table>
-                <text style={{color:'white', fontSize:'18px', fontWeight:'bold'}}>FIGHTER</text>
+            <Table sx={{border:'5px outset #E1ECF7'}}>
+                <text style={{position:'relative', left:'2%', color:'white', fontSize:'18px', fontWeight:'bold'}}>FIGHTER</text>
                 <TableRow>
                     <TableCell component={"div"} align={'center'}>
                         <Actor sprite={folk} data={spriteData} />
                         <div />
-                        <b style={{color:'white'}}>Folk</b>
+                        <b style={{color:'white', fontSize:'20px'}}>Folk</b>
                         <div />
-                        <Box bgcolor={'#E1ECF7'} padding={'3px'} borderRadius={'6px'}>
+                        <Box bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px inset #F4B860'}}>
+                            <text style={{fontWeight:'bold', textDecoration:'underline'}}>Moves</text>
+                            <div />
+                            [List all four moves here]
+                            <div style={{padding:'4px'}}/>
+                            <div style={{padding:'5px', textAlign:'center', backgroundColor:'#E1ECF7', outlineStyle:'outset', outlineColor:'#F4B860', borderRadius:'5px'}}>
+                                <body>
+                                    <text style={{fontWeight:'bold', textDecoration:'underline'}}>Stats</text>
+                                    <div />
+                                    <span>HP: </span>
+                                    <div />
+                                    <span>Physical Defense: </span>
+                                    <div />
+                                    <span>Magical Defense: </span>
+                                    <div />
+                                    <span>Speed: </span>
+                                </body>
+                            </div>
+                            <div style={{padding:'4px'}}/>
                             <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
                         </Box>
                     </TableCell>
@@ -81,7 +98,7 @@ export default function Armory()
                         </Box>
                     </TableCell>
                 </TableRow>
-                <text style={{color:'white', fontSize:'18px', fontWeight:'bold'}}>ROGUE</text>
+                <text style={{position:'relative', left:'2%', color:'white', fontSize:'18px', fontWeight:'bold'}}>ROGUE</text>
                 <TableRow>
                     <TableCell component={"div"} align={'center'}>
                         <Actor sprite={rFolk} data={spriteData} />
@@ -129,7 +146,7 @@ export default function Armory()
                         </Box>
                     </TableCell>
                 </TableRow>
-                <text style={{color:'white', fontSize:'18px', fontWeight:'bold'}}>SORCERESS</text>
+                <text style={{position:'relative', left:'2%', color:'white', fontSize:'18px', fontWeight:'bold'}}>SORCERESS</text>
                 <TableRow>
                     <TableCell component={"div"} align={'center'}>
                         <Actor sprite={sorcFolk} data={spriteData} />
