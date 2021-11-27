@@ -6,7 +6,7 @@ const AxiosConfigured = () => {
 
     // Set the baseURL for all requests to the API domain instead of the current domain
     // axios.defaults.baseURL = `http://localhost:8443/api/v1`;
-    axios.defaults.baseURL = `http://localhost:3000/api`;
+    axios.defaults.baseURL = `http://localhost:8443/api`;
 
 
     // Allow the browser to send cookies to the API domain (which include auth_token)
@@ -24,7 +24,7 @@ const axiosAgent = AxiosConfigured();
 export default class APIInterface {
 
     async getUserInfo(user_id) {
-        return axiosAgent.get(`users/login/${user_id}`)
+        return axiosAgent.get(`login/${user_id}`)
             .then(userInfo => userInfo.data)
             .catch(error => (
                 {

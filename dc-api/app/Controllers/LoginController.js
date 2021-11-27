@@ -13,7 +13,7 @@ class LoginController {
 	    // For example, if user ids are suppose to be email addresses,
 	    // you can at least make sure that user's input is consistent
 	    // with the format of email addresses. 
-	    
+	        console.log(`Logging in: ${ctx.params.userName}`);
             let query = "SELECT * FROM users WHERE userName = ?";
             dbConnection.query(
                 {

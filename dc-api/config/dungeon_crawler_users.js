@@ -12,7 +12,7 @@ const VerifyJWT = require('../app/Middleware/VerifyJWT.js');
 |
 */
 const router = require('koa-router')({
-    prefix: '/api/v1'
+    prefix: '/api'
 });
 
 router.get('/', function (ctx) {
@@ -34,7 +34,7 @@ const LoginController = new (require('../app/Controllers/LoginController.js'))()
 const loginRouter = require('koa-router')({
     prefix: '/login'
 });
-loginRouter.get('/:user_id', LoginController.authorizeUser, (err) => console.log("routers.js: loginRouter error:", err));
+loginRouter.get('/:userName', LoginController.authorizeUser, (err) => console.log("routers.js: loginRouter error:", err));
 
 const UsersController = new (require('../app/Controllers/UsersController.js'))();
 const userRouter = require('koa-router')({
