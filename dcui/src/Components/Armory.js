@@ -20,9 +20,17 @@ import s_wizard from "./sprites/player/sorceress_wizard.png";
 
 export default function Armory()
 {
+    const [fighterEquipped, setFighterEquipped] = React.useState(0);
+
     // TODO: useEffect to get data on unlocked armor from user account ?
 
     // TODO: onClick functions for purchasing & equipping armor sets
+
+    function handleEquipFighter( idx ) {
+        setFighterEquipped(idx);
+        console.log("Fighter set changed to index " + idx);
+        // TODO: update Users DB entry for equipped fighter set
+    }
 
     const spriteData = {
         w: 160,
@@ -36,8 +44,6 @@ export default function Armory()
                 <TableRow>
                     <TableCell component={"div"} align={'center'}>
                         <Actor sprite={f_folk} data={spriteData} />
-                        <div />
-                        <b style={{color:'white', fontSize:'20px'}}>Folk</b>
                         <div />
                         <b style={{color:'white', fontSize:'20px'}}>Folk</b>
                         <div />
@@ -60,16 +66,48 @@ export default function Armory()
                                 </body>
                             </div>
                             <div style={{padding:'4px'}}/>
-                            <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                            {
+                                (fighterEquipped === 0) ? (
+                                    <Button variant={"contained"} style={{backgroundColor:"#F4B860"}} onClick={''}>Equipped</Button>
+                                ) : (
+                                    <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                                )
+                            }
                         </Box>
                     </TableCell>
                     <TableCell component={"div"} align={'center'}>
                         <Actor sprite={f_barbarian} data={spriteData} />
                         <div />
-                        <b style={{color:'white'}}>Barbarian</b>
+                        <b style={{color:'white', fontSize:'20px'}}>Barbarian</b>
                         <div />
-                        <Box bgcolor={'#E1ECF7'} padding={'3px'} borderRadius={'6px'}>
-                            <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                        <Box bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
+                            <div bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
+                                <text style={{fontWeight:'bold', textDecoration:'underline'}}>Moves</text>
+                                <div />
+                                [List all four moves here]
+                                <div style={{padding:'4px'}}/>
+                                <div style={{padding:'5px', textAlign:'center', backgroundColor:'#212738', outlineStyle:'outset', outlineColor:'#F4B860', borderRadius:'5px'}}>
+                                    <body>
+                                    <text style={{fontWeight:'bold', textDecoration:'underline', color:'#F4B860'}}>Stats</text>
+                                    <div />
+                                    <span style={{color:'#E1ECF7'}}>HP: </span>
+                                    <div />
+                                    <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
+                                    <div />
+                                    <span style={{color:'#E1ECF7'}}>Magical Defense: </span>
+                                    <div />
+                                    <span style={{color:'#E1ECF7'}}>Speed: </span>
+                                    </body>
+                                </div>
+                                <div style={{padding:'4px'}}/>
+                            {
+                                (fighterEquipped === 1) ? (
+                                    <Button variant={"contained"} style={{backgroundColor:"#F4B860"}} onClick={''}>Equipped</Button>
+                                ) : (
+                                    <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                                )
+                            }
+                            </div>
                         </Box>
                     </TableCell>
                     <TableCell component={"div"} align={'center'}>
