@@ -2,6 +2,7 @@ import React, {Fragment} from "react";
 import {Box, Button, Table, TableCell, TableRow} from "@mui/material/";
 
 import Actor from "./Actor";
+import goldIcon from '../Components/sprites/ui/GoldenCoin.png';
 import f_barbarian from "./sprites/player/fighter_barbarian.png";
 import f_crusader from "./sprites/player/fighter_crusader.png";
 import f_folk from "./sprites/player/fighter_folk.png";
@@ -17,6 +18,7 @@ import s_acolyte from "./sprites/player/sorceress_priest.png";
 import s_priestess from "./sprites/player/sorceress_acolyte.png";
 import s_mage from "./sprites/player/sorceress_mage.png";
 import s_wizard from "./sprites/player/sorceress_wizard.png";
+import {Avatar} from "@mui/material";
 
 const armoryTableAttributes = [
     {
@@ -29,10 +31,26 @@ const armoryTableAttributes = [
 export default function Armory()
 {
     const [fighterEquipped, setFighterEquipped] = React.useState(0);
+    const [f1Purchased, setF1Purchased] = React.useState(true);
+    const [f2Purchased, setF2Purchased] = React.useState(false);
+    const [f3Purchased, setF3Purchased] = React.useState(false);
+    const [f4Purchased, setF4Purchased] = React.useState(false);
+
+    const [rogueEquipped, setRogueEquipped] = React.useState(0);
+    const [r1Purchased, setR1Purchased] = React.useState(false);
+    const [r2Purchased, setR2Purchased] = React.useState(false);
+    const [r3Purchased, setR3Purchased] = React.useState(false);
+    const [r4Purchased, setR4Purchased] = React.useState(false);
+
+    const [sorceressEquipped, setSorceressEquipped] = React.useState(0);
+    const [s1Purchased, setS1Purchased] = React.useState(false);
+    const [s2Purchased, setS2Purchased] = React.useState(false);
+    const [s3Purchased, setS3Purchased] = React.useState(false);
+    const [s4Purchased, setS4Purchased] = React.useState(false);
 
     // TODO: useEffect to get data on unlocked armor from user account ?
 
-    // TODO: onClick functions for purchasing & equipping armor sets
+    // TODO: onClick functions for purchasing armor sets
 
     function handleEquipFighter( idx ) {
         setFighterEquipped(idx);
@@ -109,10 +127,21 @@ export default function Armory()
                                 </div>
                                 <div style={{padding:'4px'}}/>
                             {
-                                (fighterEquipped === 1) ? (
-                                    <Button variant={"contained"} style={{backgroundColor:"#F4B860"}} onClick={''}>Equipped</Button>
+                                (f1Purchased) ? (
+                                    (fighterEquipped === 1) ? (
+                                        <Button variant={"contained"} style={{backgroundColor:"#F4B860"}} onClick={''}>
+                                            Equipped
+                                        </Button>
+                                    ) : (
+                                        <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={ () => handleEquipFighter(1) }>
+                                            Equip
+                                        </Button>
+                                    )
                                 ) : (
-                                    <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={ () => handleEquipFighter(1) }>Equip</Button>
+                                    <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>
+                                        <Avatar src={goldIcon} sx={{height:'24px', width:'24px'}} />
+                                        100
+                                    </Button>
                                 )
                             }
                             </div>
@@ -123,8 +152,45 @@ export default function Armory()
                         <div />
                         <b style={{color:'white'}}>Crusader</b>
                         <div />
-                        <Box bgcolor={'#E1ECF7'} padding={'3px'} borderRadius={'6px'}>
-                            <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>Equip</Button>
+                        <Box bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
+                            <div bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
+                                <text style={{fontWeight:'bold', textDecoration:'underline'}}>Moves</text>
+                                <div />
+                                [List all four moves here]
+                                <div style={{padding:'4px'}}/>
+                                <div style={{padding:'5px', textAlign:'center', backgroundColor:'#212738', outlineStyle:'outset', outlineColor:'#F4B860', borderRadius:'5px'}}>
+                                    <body>
+                                    <text style={{fontWeight:'bold', textDecoration:'underline', color:'#F4B860'}}>Stats</text>
+                                    <div />
+                                    <span style={{color:'#E1ECF7'}}>HP: </span>
+                                    <div />
+                                    <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
+                                    <div />
+                                    <span style={{color:'#E1ECF7'}}>Magical Defense: </span>
+                                    <div />
+                                    <span style={{color:'#E1ECF7'}}>Speed: </span>
+                                    </body>
+                                </div>
+                                <div style={{padding:'4px'}}/>
+                                {
+                                    (f2Purchased) ? (
+                                        (fighterEquipped === 2) ? (
+                                            <Button variant={"contained"} style={{backgroundColor:"#F4B860"}} onClick={''}>
+                                                Equipped
+                                            </Button>
+                                        ) : (
+                                            <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={ () => handleEquipFighter(2) }>
+                                                Equip
+                                            </Button>
+                                        )
+                                    ) : (
+                                        <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>
+                                            <Avatar src={goldIcon} sx={{height:'24px', width:'24px'}} />
+                                            200
+                                        </Button>
+                                    )
+                                }
+                            </div>
                         </Box>
                     </TableCell>
                     <TableCell component={"div"} align={'center'}>
