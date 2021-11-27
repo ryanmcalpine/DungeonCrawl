@@ -44,6 +44,22 @@ const userRouter = require('koa-router')({
 userRouter.use(VerifyJWT);
 userRouter.get('/all-users', UsersController.allUsers, err => console.log(`all Employees ran into an error: ${err}`));
 userRouter.get('getUser/:userName/', UsersController.getUser);
+userRouter.get('/getGold', UsersController.getGold, err => console.log(`getGold ran into an error: ${err}`));
+userRouter.get('/getFighterMaxHP/:userName/', UsersController.getFighterMaxHP, err => console.log(`getFighterMaxHP ran into an error: ${err}`));
+userRouter.get('/getfighterPhysicalAttack/:userName/', UsersController.getfighterPhysicalAttack, err => console.log(`getfighterPhysicalAttack ran into an error: ${err}`));
+userRouter.get('/getfighterMagicalAttack/:userName/', UsersController.getfighterMagicalAttack, err => console.log(`getfighterMagicalAttack ran into an error: ${err}`));
+userRouter.get('/getfighterPhysicalDefense/:userName/', UsersController.getfighterPhysicalDefense, err => console.log(`getfighterPhysicalDefense ran into an error: ${err}`));
+userRouter.get('/getfighterMagicDefense/:userName/', UsersController.getfighterMagicDefense, err => console.log(`getfighterMagicDefense ran into an error: ${err}`));
+userRouter.get('/getmageMaxHP/:userName/', UsersController.getmageMaxHP, err => console.log(`getmageMaxHP ran into an error: ${err}`));
+userRouter.get('/getmagePhysicalAttack/:userName/', UsersController.getmagePhysicalAttack, err => console.log(`getmagePhysicalAttack ran into an error: ${err}`));
+userRouter.get('/getmageMagicalAttack/:userName/', UsersController.getmageMagicalAttack, err => console.log(`getmageMagicalAttack ran into an error: ${err}`));
+userRouter.get('/getmagePhysicalDefense/:userName/', UsersController.getmagePhysicalDefense, err => console.log(`getmagePhysicalDefense ran into an error: ${err}`));
+userRouter.get('/getmageMagicDefense/:userName/', UsersController.getmageMagicDefense, err => console.log(`getmageMagicDefense ran into an error: ${err}`));
+userRouter.get('/getrogueMaxHP/:userName/', UsersController.getrogueMaxHP, err => console.log(`getrogueMaxHP ran into an error: ${err}`));
+userRouter.get('/getroguePhysicalAttack/:userName/', UsersController.getroguePhysicalAttack, err => console.log(`getroguePhysicalAttack ran into an error: ${err}`));
+userRouter.get('/getrogueMagicalAttack/:userName/', UsersController.getrogueMagicalAttack, err => console.log(`getrogueMagicalAttack ran into an error: ${err}`));
+userRouter.get('/getroguePhysicalDefense/:userName/', UsersController.getroguePhysicalDefense, err => console.log(`getroguePhysicalDefense ran into an error: ${err}`));
+userRouter.get('/getrogueMagicDefense/:userName/', UsersController.getrogueMagicDefense, err => console.log(`getrogueMagicDefense ran into an error: ${err}`));
 
 
 /**
