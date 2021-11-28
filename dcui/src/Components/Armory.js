@@ -1,6 +1,7 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useEffect} from "react";
 import {Box, Button, Table, TableCell, TableRow} from "@mui/material/";
 
+import API from "../API_Interface/API_Interface";
 import Actor from "./Actor";
 import goldIcon from '../Components/sprites/ui/GoldenCoin.png';
 import f_barbarian from "./sprites/player/fighter_barbarian.png";
@@ -28,7 +29,7 @@ const armoryTableAttributes = [
     }
 ];
 
-export default function Armory()
+export default function Armory(user)
 {
     const [fighterEquipped, setFighterEquipped] = React.useState(0);
     const [f1Purchased, setF1Purchased] = React.useState(true);
@@ -49,6 +50,19 @@ export default function Armory()
     const [s4Purchased, setS4Purchased] = React.useState(false);
 
     // TODO: useEffect to get data on unlocked armor from user account ?
+    const [goldAmount, setGoldAmount] = React.useState("0");
+
+    useEffect(() => {
+        const api = new API();
+
+        async function getUserInfo() {
+            const goldJSONString = await api.getGold(user);
+            console.log(`MainMenu.js:: current gold amount from the DB ${JSON.stringify(goldJSONString)}`);
+            setGoldAmount(goldJSONString.data);
+        }
+
+        getUserInfo();
+    }, []);
 
     // TODO: onClick functions for purchasing armor sets
 

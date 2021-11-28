@@ -1,0 +1,61 @@
+const Authorize = require('../app/Middleware/Authorize.js');
+const VerifyJWT = require('../app/Middleware/VerifyJWT.js');
+
+
+/*
+|--------------------------------------------------------------------------
+| Default router
+|--------------------------------------------------------------------------
+|
+| Default router is used to define any routes that don't belong to a
+| controller. Also used as a parent container for the other routers.
+|
+*/
+const router = require('koa-router')({
+    prefix: '/api'
+});
+
+router.get('/', function (ctx) {
+    console.log('router.get(/)');
+    return ctx.body = 'What is up?';
+});
+
+/*
+|--------------------------------------------------------------------------
+| login router
+|--------------------------------------------------------------------------
+|
+| Description
+|
+*/
+
+
+const LoginController = new (require('../app/Controllers/LoginController.js'))();
+const loginRouter = require('koa-router')({
+    prefix: '/login'
+});
+loginRouter.get('/:userName', LoginController.authorizeUser, (err) => console.log("routers.js: loginRouter error:", err));
+
+const MarketsController = new (require('../app/Controllers/ItemsController.js'))();
+const marketsRouter = require('koa-router')({
+    prefix: '/markets'
+});
+
+marketsRouter.use(VerifyJWT);
+marketsRouter.get('/all-markets', Authorize('admin'), MarketsController.allMarkets, err => console.log(`all Markets ran into an error: ${err}`));
+marketsRouter.get('/:marketID/', Authorize('admin'), MarketsController.marketWithMarketID);
+
+
+/**
+ * Register all of the controllers into the default controller.
+ */
+router.use(
+    '',
+    loginRouter.routes(),
+    marketsRouter.routes()
+);
+
+module.exports = function (app) {
+    app.use(router.routes());
+    app.use(router.allowedMethods());
+};

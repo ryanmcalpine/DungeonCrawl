@@ -30,13 +30,15 @@ import zombie from './sprites/enemy/zombie.png';
 import inventoryIcon from './sprites/ui/Bag.png';
 import heartIcon from './sprites/ui/Heart.png';
 
-export default function Battle(props)
+import testVFX from './sprites/vfx/Cartoon_FX9_idle_5.png';
+
+export default function Battle(user)
 {
     const [enemyHP,setEnemyHP] = useState(50);
     const [fighterHP,setFighterHP] = useState(500000);
     const [rogueHP,setRogueHP] = useState(50);
     const [sorceressHP,setSorceressHP] = useState(50);
-    const [statusBar,setStatusBar] = useState("Sic em!");
+    const [statusBar,setStatusBar] = useState("Sic 'em!");
     const [endOfRound, setEndOfRound] = useState(0);
     // 0 -> game is still going, 1 -> enemy died, 2 -> we died ;-;
     const [turn,setTurn] = useState(0);//0 -> players turn 1->enemy's turn
@@ -52,6 +54,9 @@ export default function Battle(props)
     const [hasUsedMove, setHasUsedMove] = useState(false);  // for use in enabling/disabling buttons
     const [currentCharacter, setCurrentCharacter] = useState(0);
     const [hasSwappedCharacter, setHasSwappedCharacter] = useState(false);  // for enabling/disabling button
+
+    const [showVFX, setShowVFX] = useState(false);
+    const [VFXSprite, setVFXSprite] = useState("");
 
     const [fHealthPercent, setFHealthPercent] = useState(100);  // Fighter health as percentage of max
     const [rHealthPercent, setRHealthPercent] = useState(100);  // Rogue health as percentage of max
@@ -91,7 +96,10 @@ export default function Battle(props)
 
         setHasUsedMove(true);
 
+        // TODO: One Moves DB API call here to get JSON string
+
         //setTimeout(null,1000);
+        // TODO: get move name from JSON
         switch (currentCharacter) {
             case 0:
                 setStatusBar("Fighter uses [MOVE 1]");
@@ -103,11 +111,15 @@ export default function Battle(props)
                 setStatusBar("Sorceress uses [MOVE 1]");
         }
         setAnimationStep(1);
+        //setVFXSprite("./sprites/vfx/" + "Cartoon_FX9_idle_5.png");    // TODO: JSON data after the +
+        setVFXSprite(testVFX);
+        setShowVFX(true);
         await sleep(1200);
-        setEnemyHP(enemyHP-10);
-        setEHealthPercent( (enemyHP/50) * 100 ); // change to (currentEnemyHP/maxEnemyHP) * 100
+        setShowVFX(false);
+        setEnemyHP(enemyHP-10); // TODO: get damage amount from JSON
+        setEHealthPercent( (enemyHP/50) * 100 ); // TODO: change to (currentEnemyHP/maxEnemyHP) * 100, from JSON
         await sleep(800);
-        setStatusBar("Enemy takes 10 damage!");
+        setStatusBar("Enemy takes 10 damage!"); // TODO: you get the idea
         setAnimationStep(0);
         await sleep(2200);
         console.log(`current enemy hp ${enemyHP}`);
@@ -345,6 +357,10 @@ export default function Battle(props)
         w: 160,
         h: 200
     }
+    const VFXSpriteData = {
+        w: 1200,
+        h: 1000
+    }
     return <Fragment>
         {
             <Box bgcolor={'#E1ECF7'} height={'660px'}>
@@ -372,6 +388,12 @@ export default function Battle(props)
                         {
                             (currentCharacter === 2) &&
                             <Actor sprite={testSorc} data={spriteData} step={animationStep}/>
+                        }
+                    </div>
+                    <div style={{position:'absolute', top:-100, left:42}}>
+                        {
+                            showVFX &&
+                            <Actor sprite={VFXSprite} data={VFXSpriteData} step={0}/>
                         }
                     </div>
                     <div style={{
