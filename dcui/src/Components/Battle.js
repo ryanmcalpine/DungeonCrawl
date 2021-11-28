@@ -67,6 +67,32 @@ export default function Battle(user)
     const [fighterSpritePath, setFighterSpritePath] = useState('./sprites/player/fighter_folk.png');
     const [rogueSpritePath, setRogueSpritePath] = useState('./sprites/player/rogue_folk.png');
     const [sorceressSpritePath, setSorceressSpritePath] = useState('./sprites/player/sorceress_folk.png');
+    const [className, setClassName] = useState("Fighter");
+    const [fighterMaxHP, setFighterMaxHP] = useState(20);
+    const [fighterPA, setFighterPA] = useState(5);
+    const [fighterMA, setFighterMA] = useState(5);
+    const [fighterPD, setFighterPD] = useState(5);
+    const [fighterMD, setFighterMD] = useState(5);
+    const [fighterSPD, setFighterSPD] = useState(10);
+    const [rogueMaxHP, setRogueMaxHP] = useState(20);
+    const [roguePA, setRoguePA] = useState(5);
+    const [rogueMA, setRogueMA] = useState(5);
+    const [roguePD, setRoguePD] = useState(5);
+    const [rogueMD, setRogueMD] = useState(5);
+    const [rogueSPD, setRogueSPD] = useState(10);
+    const [sorceressMaxHP, setSorceressMaxHP] = useState(20);
+    const [sorceressPA, setSorceressPA] = useState(5);
+    const [sorceressMA, setSorceressMA] = useState(5);
+    const [sorceressPD, setSorceressPD] = useState(5);
+    const [sorceressMD, setSorceressMD] = useState(5);
+    const [sorceressSPD, setSorceressSPD] = useState(10);
+    const [enemyMaxHP, setEnemyMaxHP] = useState(20);
+    const [enemyPA, setEnemyPA] = useState(5);
+    const [enemyMA, setEnemyMA] = useState(5);
+    const [enemyPD, setEnemyPD] = useState(5);
+    const [enemyMD, setEnemyMD] = useState(5);
+    const [enemySPD, setEnemySPD] = useState(10)
+
 
     function sleep( ms )    // Pause program execution for duration in milliseconds
     {
@@ -77,11 +103,43 @@ export default function Battle(user)
     {
         if( hasBeenInitialized === false )
         {
-            // TODO: API calls to find currently equipped armor sets
+            // TODO: API call to UsersDB find currently equipped armor sets
 
             // setFighterSpritePath(  );
             // setRogueSpritePath(  );
             // setSorceressSpritePath(  );
+
+            // TODO: API call to ArmorDB to get stats for equipped armor sets
+
+            // setFighterMaxHP(  );
+            // setFighterPA(  );
+            // setFighterMA(  );
+            // setFighterPD(  );
+            // setFighterMD(  );
+            // setFighterSPD(  );
+
+            // setRogueMaxHP(  );
+            // setRoguePA(  );
+            // setRogueMA(  );
+            // setRoguePD(  );
+            // setRogueMD(  );
+            // setRogueSPD(  );
+
+            // setSorceressMaxHP(  );
+            // setSorceressPA(  );
+            // setSorceressMA(  );
+            // setSorceressPD(  );
+            // setSorceressMD(  );
+            // setSorceressSPD(  );
+
+            // TODO: API call to MonstersDB to get stats for first enemy
+
+            // setEnemyMaxHP(  );
+            // setEnemyPA(  );
+            // setEnemyMA(  );
+            // setEnemyPD(  );
+            // setEnemyMD(  );
+            // setEnemySPD(  );
 
             setHasBeenInitialized(true);
         }
@@ -106,6 +164,53 @@ export default function Battle(user)
         console.log(`end of round: ${endOfRound}`);
         return endOfRound;
         }, [fighterHP,endOfRound,enemyHP]);
+
+    // WIP Attempt to make one function to handle all attacks
+    async function handleAttack( idx )  // idx = 0-3 for attack buttons
+    {
+        if(turn === 1 || endOfRound>0) return;
+
+        setHasUsedMove(true);
+
+        // TODO: Moves DB API call here to get JSON string
+
+        // Get the name in string to use in status bar
+        switch (currentCharacter) {
+            case 0:
+                setClassName("Fighter");
+                break;
+            case 1:
+                setClassName("Rogue");
+                break;
+            case 2:
+                setClassName("Sorceress");
+        }
+
+        setAnimationStep(1);
+        // setVFXSprite("./sprites/vfx/" + "Cartoon_FX9_idle_5.png");    // TODO: JSON data
+        setVFXSprite(testVFX);
+        setShowVFX(true);
+        await sleep(1200);
+        setShowVFX(false);
+
+        // Calculate damage to deal
+        if( true ) // if moveType === magic
+        {
+            // Use Magic Atk/Def for calculations
+        }
+        else    // strong and fast both use Physical Attack/Defense
+        {
+
+        }
+
+        setEnemyHP(enemyHP-10); // TODO: get damage amount from JSON
+        setEHealthPercent( (enemyHP/50) * 100 ); // TODO: change to (currentEnemyHP/maxEnemyHP) * 100, from JSON
+        await sleep(800);
+        setStatusBar("Enemy takes 10 damage!"); // TODO: you get the idea
+        setAnimationStep(0);
+        await sleep(2200);
+        console.log(`current enemy hp ${enemyHP}`);
+    }
 
     async function handleAttack1()
     {
@@ -323,6 +428,15 @@ export default function Battle(user)
         if(currEnemy<enemies.length-1)setCurrEnemy(currEnemy+1);
         else setCurrEnemy(0);
         setHasUsedMove(false);
+
+        // TODO: API call to MonstersDB to get stats for next enemy
+
+        // setEnemyMaxHP(  );
+        // setEnemyPA(  );
+        // setEnemyMA(  );
+        // setEnemyPD(  );
+        // setEnemyMD(  );
+        // setEnemySPD(  );
     }
 
     function handleSwapCharacter()  // Rotate through active party members (fighter->rogue->sorceress)
