@@ -43,8 +43,8 @@ const userRouter = require('koa-router')({
 
 userRouter.use(VerifyJWT);
 userRouter.get('/all-users', UsersController.allUsers, err => console.log(`all Employees ran into an error: ${err}`));
-userRouter.get('getUser/:userName/', UsersController.getUser);
-userRouter.get('/getGold', UsersController.getGold, err => console.log(`getGold ran into an error: ${err}`));
+userRouter.get('/getUser/:userName/', UsersController.getUser);
+userRouter.get('/getGold/:userName/', UsersController.getGold, err => console.log(`getGold ran into an error: ${err}`));
 userRouter.get('/getFighterMaxHP/:userName/', UsersController.getFighterMaxHP, err => console.log(`getFighterMaxHP ran into an error: ${err}`));
 userRouter.get('/getfighterPhysicalAttack/:userName/', UsersController.getfighterPhysicalAttack, err => console.log(`getfighterPhysicalAttack ran into an error: ${err}`));
 userRouter.get('/getfighterMagicalAttack/:userName/', UsersController.getfighterMagicalAttack, err => console.log(`getfighterMagicalAttack ran into an error: ${err}`));
