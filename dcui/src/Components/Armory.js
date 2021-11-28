@@ -50,26 +50,45 @@ export default function Armory(user)
     const [s4Purchased, setS4Purchased] = React.useState(false);
 
     // TODO: useEffect to get data on unlocked armor from user account ?
-    const [goldAmount, setGoldAmount] = React.useState("0");
+    const [goldAmount, setGoldAmount] = React.useState(0);
 
     useEffect(() => {
         const api = new API();
 
         async function getUserInfo() {
             const goldJSONString = await api.getGold(user);
-            console.log(`MainMenu.js:: current gold amount from the DB ${JSON.stringify(goldJSONString)}`);
+            console.log(`Armory.js:: current gold amount from the DB ${JSON.stringify(goldJSONString)}`);
             setGoldAmount(goldJSONString.data);
+
+            // TODO: get f/r/s1-4 purchased
+            // TODO: get f/r/s equipped
         }
 
         getUserInfo();
     }, []);
 
-    // TODO: onClick functions for purchasing armor sets
-
     function handleEquipFighter( idx ) {
         setFighterEquipped(idx);
-        console.log("Fighter set changed to index " + idx);
+        console.log("Armory.js:: Fighter set changed to index " + idx);
         // TODO: update Users DB entry for equipped fighter set
+    }
+    function handleEquipRogue( idx ) {
+        setRogueEquipped(idx);
+        console.log("Armory.js:: Rogue set changed to index " + idx);
+        // TODO: update Users DB entry for equipped fighter set
+    }
+    function handleEquipSorceress( idx ) {
+        setSorceressEquipped(idx);
+        console.log("Armory.js:: Sorceress set changed to index " + idx);
+        // TODO: update Users DB entry for equipped fighter set
+    }
+
+    // TODO: onClick functions for purchasing armor sets
+    function handlePurchase( idx ) {
+        if( goldAmount >= 12345 )
+        {
+
+        }
     }
 
     const spriteData = {

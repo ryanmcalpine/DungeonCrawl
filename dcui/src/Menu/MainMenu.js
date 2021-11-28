@@ -19,7 +19,7 @@ export default function MainMenu({user, logoutAction}){
     const [showArmory, setShowArmory] = React.useState(false);
     const [showHighScores, setShowHighScores] = React.useState(false);
     const [username, setUsername] = React.useState("username");
-    const [goldAmount, setGoldAmount] = React.useState("0");
+    const [goldAmount, setGoldAmount] = React.useState(0);
 
     useEffect(() => {
         const api = new API();
