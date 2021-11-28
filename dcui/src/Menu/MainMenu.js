@@ -2,7 +2,9 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import {Avatar} from "@mui/material";
 import Box from '@mui/material/Box';
+import {useEffect} from "react";
 
+import API from '../API_Interface/API_Interface';
 import Dungeon from '../Components/Dungeon.js';
 import Battle from '../Components/Battle';
 import Armory from '../Components/Armory';
@@ -16,6 +18,24 @@ export default function MainMenu({user, logoutAction}){
     const [showBattle, setShowBattle] = React.useState(false);
     const [showArmory, setShowArmory] = React.useState(false);
     const [showHighScores, setShowHighScores] = React.useState(false);
+    const [username, setUsername] = React.useState("username");
+    const [goldAmount, setGoldAmount] = React.useState("0");
+
+    useEffect(() => {
+        const api = new API();
+
+        async function getUserInfo() {
+            const usernameJSONString = await api.getUser(user);
+            console.log(`MainMenu.js:: username from the DB ${JSON.stringify(usernameJSONString)}`);
+            setUsername(usernameJSONString.data)
+
+            const goldJSONString = await api.getGold(user);
+            console.log(`MainMenu.js:: current gold amount from the DB ${JSON.stringify(goldJSONString)}`);
+            setGoldAmount(goldJSONString.data);
+        }
+
+        getUserInfo();
+    }, []);
 
     const handleStartGame = () => {
         setShowMenu(false);
@@ -48,11 +68,11 @@ export default function MainMenu({user, logoutAction}){
                 <Button variant={"outlined"} style={{backgroundColor:"black", color:"#E1ECF7"}} onClick={handleShowHighScores}>High Scores</Button>
                 <div style={{position:'absolute', left:'52%', top:'48%', display:'flex', alignItems:'center'}}>
                     <Avatar src={helmIcon} />
-                    <span>Username</span>
+                    <span>{username}</span>
                 </div>
                 <div style={{position:'absolute', left:'61%', top:'68%', display:'flex', alignItems:'center'}}>
                     <Avatar src={goldIcon} />
-                    <span>320</span>
+                    <span>{goldAmount}</span>
                 </div>
             </div>
         )
@@ -65,9 +85,9 @@ export default function MainMenu({user, logoutAction}){
                 <span style={{position:'absolute', left:'490px', top:'-28px', color:'#E1ECF7'}}><h1>DUNGEON CRAWL</h1></span>
                 <div style={{position:'absolute', left:'1178px', top:'-4px', display:'flex', alignItems:'center', backgroundColor:'#E1ECF7', borderRadius:'6px', paddingRight:'6px'}}>
                     <Avatar src={goldIcon} />
-                    <span>320</span>
+                    <span>{goldAmount}</span>
                 </div>
-                <Battle/>
+                <Battle user={user} />
             </div>
         )
     }
@@ -79,9 +99,9 @@ export default function MainMenu({user, logoutAction}){
                 <span style={{position:'absolute', left:'45%', top:'-.7%', color:'#E1ECF7'}}><h1>ARMORY</h1></span>
                 <div style={{position:'absolute', left:'91%', top:'3%', display:'flex', alignItems:'center', backgroundColor:'#E1ECF7', borderRadius:'6px', paddingRight:'6px'}}>
                     <Avatar src={goldIcon} />
-                    <span>320</span>
+                    <span>{goldAmount}</span>
                 </div>
-                <Armory/>
+                <Armory user={user} />
             </div>
         )
     }

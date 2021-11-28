@@ -32,7 +32,7 @@ import heartIcon from './sprites/ui/Heart.png';
 
 import testVFX from './sprites/vfx/Cartoon_FX9_idle_5.png';
 
-export default function Battle(props)
+export default function Battle(user)
 {
     const [enemyHP,setEnemyHP] = useState(50);
     const [fighterHP,setFighterHP] = useState(500000);
