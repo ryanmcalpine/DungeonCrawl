@@ -4,7 +4,7 @@ import Dungeon from '../Components/Dungeon.js';
 import Battle from '../Components/Battle';
 import Armory from '../Components/Armory';
 
-export default function MainMenu({}){
+export default function MainMenu({user, logoutAction}){
     const [showMenu, setShowMenu] = React.useState(true);
     const [showBattle, setShowBattle] = React.useState(false);
     const [showArmory, setShowArmory] = React.useState(false);
