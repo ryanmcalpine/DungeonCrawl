@@ -63,12 +63,29 @@ export default function Battle(user)
     const [sHealthPercent, setSHealthPercent] = useState(100);  // Sorceress health as percentage of max
     const [eHealthPercent, setEHealthPercent] = useState(100);  // Enemy health as percentage of max
 
+    const [hasBeenInitialized, setHasBeenInitialized] = useState(false);
+    const [fighterSpritePath, setFighterSpritePath] = useState('./sprites/player/fighter_folk.png');
+    const [rogueSpritePath, setRogueSpritePath] = useState('./sprites/player/rogue_folk.png');
+    const [sorceressSpritePath, setSorceressSpritePath] = useState('./sprites/player/sorceress_folk.png');
+
     function sleep( ms )    // Pause program execution for duration in milliseconds
     {
         return new Promise(resolve => setTimeout( resolve, ms ));
     }
+
      useEffect(() =>
     {
+        if( hasBeenInitialized === false )
+        {
+            // TODO: API calls to find currently equipped armor sets
+
+            // setFighterSpritePath(  );
+            // setRogueSpritePath(  );
+            // setSorceressSpritePath(  );
+
+            setHasBeenInitialized(true);
+        }
+
         console.log(`handle end of round called`);
         console.log(`enemy hp ${enemyHP}`);
         console.log(enemyHP <= 0);
@@ -379,15 +396,15 @@ export default function Battle(user)
                     }}>
                         {
                             (currentCharacter === 0) &&
-                            <Actor sprite={testFighter} data={spriteData} step={animationStep}/>
+                            <Actor sprite={fighterSpritePath} data={spriteData} step={animationStep}/>
                         }
                         {
                             (currentCharacter === 1) &&
-                            <Actor sprite={testRogue} data={spriteData} step={animationStep}/>
+                            <Actor sprite={rogueSpritePath} data={spriteData} step={animationStep}/>
                         }
                         {
                             (currentCharacter === 2) &&
-                            <Actor sprite={testSorc} data={spriteData} step={animationStep}/>
+                            <Actor sprite={sorceressSpritePath} data={spriteData} step={animationStep}/>
                         }
                     </div>
                     <div style={{position:'absolute', top:-100, left:42}}>
