@@ -42,7 +42,8 @@ const userRouter = require('koa-router')({
 });
 
 userRouter.use(VerifyJWT);
-userRouter.get('/all-users', UsersController.allUsers, err => console.log(`all Employees ran into an error: ${err}`));
+userRouter.get('/all-users', UsersController.allUsers, err => console.log(`all-users ran into an error: ${err}`));
+userRouter.get('/highScores', UsersController.getHighScore, err => console.log(`getHighScores ran into an error: ${err}`));
 userRouter.get('/getUser/:userName/', UsersController.getUser);
 userRouter.get('/getGold/:userName/', UsersController.getGold, err => console.log(`getGold ran into an error: ${err}`));
 userRouter.get('/getFighterMaxHP/:userName/', UsersController.getFighterMaxHP, err => console.log(`getFighterMaxHP ran into an error: ${err}`));
@@ -60,6 +61,9 @@ userRouter.get('/getroguePhysicalAttack/:userName/', UsersController.getroguePhy
 userRouter.get('/getrogueMagicalAttack/:userName/', UsersController.getrogueMagicalAttack, err => console.log(`getrogueMagicalAttack ran into an error: ${err}`));
 userRouter.get('/getroguePhysicalDefense/:userName/', UsersController.getroguePhysicalDefense, err => console.log(`getroguePhysicalDefense ran into an error: ${err}`));
 userRouter.get('/getrogueMagicDefense/:userName/', UsersController.getrogueMagicDefense, err => console.log(`getrogueMagicDefense ran into an error: ${err}`));
+userRouter.get('/getFighterSpeed/:userName/', UsersController.getFighterSpeed, err => console.log(`getFighterSpeed ran into an error: ${err}`));
+userRouter.get('/getMageSpeed/:userName/', UsersController.getMageSpeed, err => console.log(`getMageSpeed ran into an error: ${err}`));
+userRouter.get('/getRogueSpeed/:userName/', UsersController.getRogueSpeed, err => console.log(`getRogueSpeed ran into an error: ${err}`));
 
 
 /**

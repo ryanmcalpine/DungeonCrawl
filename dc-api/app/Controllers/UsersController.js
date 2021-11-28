@@ -8,7 +8,7 @@ function now() {
 
 class UsersController {
     constructor() {
-        console.log('Constructor of Ro0utesController is called.');
+        console.log('Constructor of UserController is called.');
     }
 
     async allUsers(ctx) {
@@ -363,6 +363,63 @@ class UsersController {
             }, (error, tuples) => {
                 if (error) {
                     console.log("Connection error in UsersController::rogueMagicDefense", error);
+                    ctx.body = [];
+                    ctx.status = 200;
+                    return reject(error);
+                }
+                ctx.body = tuples;
+                ctx.status = 200;
+                return resolve();
+            });
+        }).catch(err => console.log("Database connection error.", err));
+    }
+    async getFighterSpeed(ctx) {
+        return new Promise((resolve, reject) => {
+            const query = `SELECT fighterSpeed FROM users WHERE userName = ?`;
+            dbConnection.query({
+                sql: query,
+                values: [ctx.params.userName]
+            }, (error, tuples) => {
+                if (error) {
+                    console.log("Connection error in UsersController::getFighterSpeed", error);
+                    ctx.body = [];
+                    ctx.status = 200;
+                    return reject(error);
+                }
+                ctx.body = tuples;
+                ctx.status = 200;
+                return resolve();
+            });
+        }).catch(err => console.log("Database connection error.", err));
+    }
+    async getMageSpeed(ctx) {
+        return new Promise((resolve, reject) => {
+            const query = `SELECT mageSpeed FROM users WHERE userName = ?`;
+            dbConnection.query({
+                sql: query,
+                values: [ctx.params.userName]
+            }, (error, tuples) => {
+                if (error) {
+                    console.log("Connection error in UsersController::getMageSpeed", error);
+                    ctx.body = [];
+                    ctx.status = 200;
+                    return reject(error);
+                }
+                ctx.body = tuples;
+                ctx.status = 200;
+                return resolve();
+            });
+        }).catch(err => console.log("Database connection error.", err));
+    }
+    async getRogueSpeed(ctx) {
+        return new Promise((resolve, reject) => {
+            const query = `SELECT rogueSpeed FROM users WHERE userName = ?`;
+            dbConnection.query({
+                sql: query,
+                values: [ctx.params.userName]
+            }, (error, tuples) => {
+                if (error) {
+                    console.log("Connection error in UsersController::getRogueSpeed", error);
                     ctx.body = [];
                     ctx.status = 200;
                     return reject(error);

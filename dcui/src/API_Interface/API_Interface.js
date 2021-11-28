@@ -32,49 +32,126 @@ export default class APIInterface {
                     user: undefined
                 }));
     }
-    async highScores()
+    async gethighScores()
     {
         return axiosAgent.get('/users/highScores')
     }
+    async allUsers()
+    {
+        return axiosAgent.get('/users/all-users')
+    }
+    async getUser(user_id)
+    {
+        return axiosAgent.get(`/users/getUser/${user_id}/`)
+    }
+    async getGold(user_id)
+    {
+        return axiosAgent.get(`/users/getGold/${user_id}/`)
+    }
+    async getFighterMaxHP(user_id)
+    {
+        return axiosAgent.get(`/users/getFighterMaxHP/${user_id}/`)
+    }
+    async getfighterPhysicalAttack(user_id)
+    {
+        return axiosAgent.get(`/users/getfighterPhysicalAttack/${user_id}/`)
+    }
+    async getfighterMagicalAttack(user_id)
+    {
+        return axiosAgent.get(`/users/getfighterMagicalAttack/${user_id}/`)
+    }
+    async getfighterPhysicalDefense(user_id)
+    {
+        return axiosAgent.get(`/users/getfighterPhysicalDefense/${user_id}/`)
+    }
+    async getfighterMagicDefense(user_id)
+    {
+        return axiosAgent.get(`/users/getfighterMagicDefense/${user_id}/`)
+    }
+    async getmageMaxHP(user_id)
+    {
+        return axiosAgent.get(`/users/getmageMaxHP/${user_id}/`)
+    }
+    async getmagePhysicalAttack(user_id)
+    {
+        return axiosAgent.get(`/users/getmagePhysicalAttack/${user_id}/`)
+    }
+    async getmageMagicalAttack(user_id)
+    {
+        return axiosAgent.get(`/users/getmageMagicalAttack/${user_id}/`)
+    }
+    async getmagePhysicalDefense(user_id)
+    {
+        return axiosAgent.get(`/users/getmagePhysicalDefense/${user_id}/`)
+    }
+    async getmageMagicDefense(user_id)
+    {
+        return axiosAgent.get(`/users/getmageMagicDefense/${user_id}/`)
+    }
+    async getrogueMaxHP(user_id)
+    {
+        return axiosAgent.get(`/users/getrogueMaxHP/${user_id}/`)
+    }
+    async getroguePhysicalAttack(user_id)
+    {
+        return axiosAgent.get(`/users/getroguePhysicalAttack/${user_id}/`)
+    }
+    async getrogueMagicalAttack(user_id)
+    {
+        return axiosAgent.get(`/users/getrogueMagicalAttack/${user_id}/`)
+    }
+    async getroguePhysicalDefense(user_id)
+    {
+        return axiosAgent.get(`/users/getroguePhysicalDefense/${user_id}/`)
+    }
+    async getrogueMagicDefense(user_id)
+    {
+        return axiosAgent.get(`/users/getrogueMagicDefense/${user_id}/`)
+    }
+    async getFighterSpeed(user_id)
+    {
+        return axiosAgent.get(`/users/getFighterSpeed/${user_id}/`)
+    }
+    async getMageSpeed(user_id)
+    {
+        return axiosAgent.get(`/users/getMageSpeed/${user_id}/`)
+    }
+    async getRogueSpeed(user_id)
+    {
+        return axiosAgent.get(`/users/getRogueSpeed/${user_id}/`)
+    }
+    async allMonsters()
+    {
+        return axiosAgent.get(`/monsters/allMonsters`)
+    }
+    async getMonster(monster_id)
+    {
+        return axiosAgent.get(`/monsters/getMonster/${monster_id}/`)
+    }
+    async getMonsterMaxHP(monster_id)
+    {
+        return axiosAgent.get(`/monsters/getMaxHP/${monster_id}/`)
+    }
+    async getMonsterPhysicalATK(monster_id)
+    {
+        return axiosAgent.get(`/monsters/getPhysicalATK/${monster_id}/`)
+    }
+    async getMonsterPhysicalDEF(monster_id)
+    {
+        return axiosAgent.get(`/monsters/getPhysicalDEF/${monster_id}/`)
+    }
 
-    /*async allRoutes() {
-        return axiosAgent.get(`routes/all-routes`);
+    async getMonsterMagicATK(monster_id)
+    {
+        return axiosAgent.get(`/monsters/getMagicATK/${monster_id}/`)
     }
-    async routesWithRoutesID(routeID) {
-        return axiosAgent.get(`routes/${routeID}`);
+    async getMonsterMagicDEF(monster_id)
+    {
+        return axiosAgent.get(`/monsters/getPhysicalDEF/${monster_id}/`)
     }
-    async allMarkets(){
-        return axiosAgent.get(`markets/all-markets`);
+    async getMonsterSpeed(monster_id)
+    {
+        return axiosAgent.get(`/monsters/getSpeed/${monster_id}/`)
     }
-    async marketsWithMarketID(marketID) {
-        return axiosAgent.get(`markets/${marketID}`);
-    }
-    async allEmployees(){
-        return axiosAgent.get(`employees/all-employees`);
-    }
-    async employeesWithEmployeeID(employeeID) {
-        return axiosAgent.get(`employees/${employeeID}`);
-    }
-    async getCurrCycle() {
-        return axiosAgent.get(`transactions/get-CurrCycle/gcc`);
-    }
-    async numTransactions(cycleID) {
-        return axiosAgent.get(`transactions/${cycleID}`);
-    }
-    async one_account(cycleID,accountID) {
-        return axiosAgent.get(`transactions/${cycleID}/${accountID}/one-account`);
-    }
-    async trans_for_route(cycleID,routeID) {
-        return axiosAgent.get(`transactions/${cycleID}/${routeID}/trans-for-route`);
-    }
-    async trans_all_routes(cycleID) {
-        return axiosAgent.get(`transactions/${cycleID}/all-routes`);
-    }
-    async trans_for_market(cycleID,marketID) {
-        return axiosAgent.get(`transactions/${cycleID}/${marketID}/trans-for-market`);
-    }
-    async getAcctName(accountID) {
-        return axiosAgent.get(`transactions/getAcctName/${accountID}`);
-    }*/
 
 }
