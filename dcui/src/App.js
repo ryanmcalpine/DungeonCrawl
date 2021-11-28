@@ -27,12 +27,12 @@ const UserBanner = ({user, title, logoutAction}) => {
 
 
 export default function App({user, logoutAction}) {
-  const mainPageTitle = "Welcome to your adventure!";
+  //const mainPageTitle = "Welcome to your adventure!";
 
   return (
       <Fragment>
 
-        <MainMenu title={mainPageTitle} user={user} logoutAction={logoutAction}/>
+        <MainMenu user={user} logoutAction={logoutAction}/>
 
       </Fragment>
   )

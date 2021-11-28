@@ -11,7 +11,7 @@ import HighScores from '../Components/HighScores';
 import goldIcon from '../Components/sprites/ui/GoldenCoin.png';
 import helmIcon from '../Components/sprites/ui/Helm.png';
 
-export default function MainMenu({}){
+export default function MainMenu({user, logoutAction}){
     const [showMenu, setShowMenu] = React.useState(true);
     const [showBattle, setShowBattle] = React.useState(false);
     const [showArmory, setShowArmory] = React.useState(false);
