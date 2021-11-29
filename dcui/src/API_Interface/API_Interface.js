@@ -153,5 +153,14 @@ export default class APIInterface {
     {
         return axiosAgent.get(`/monsters/getSpeed/${monster_id}/`)
     }
+    async getFighterEquipped(user_id)
+    {
+        return axiosAgent.get(`/users/getfighterEquipped/${user_id}/`)
+    }
+    async updateGold(user_id,gold)
+    {
+        return axiosAgent.post(`/users/updateUserGold/${gold}/${user_id}/`)
+    }
+
 
 }

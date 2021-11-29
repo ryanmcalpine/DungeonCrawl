@@ -17,11 +17,12 @@
     "kcors": "^2.2.1",
     "knex": "^0.13.0",
     "koa": "^2.13.4",
+    "koa-body-parser": "^1.1.2",
     "koa-bodyparser": "^4.2.0",
     "koa-bunyan-logger": "^2.0.0",
     "koa-compress": "^2.0.0",
     "koa-jwt": "^3.3.2",
-    "koa-router": "^7.3.0",
+    "koa-router": "^7.4.0",
     "lodash": "^4.17.4",
     "mysql": "^2.15.0",
     "node": "^17.1.0"

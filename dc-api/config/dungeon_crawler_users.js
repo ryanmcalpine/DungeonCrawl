@@ -1,6 +1,7 @@
 const Authorize = require('../app/Middleware/Authorize.js');
 const VerifyJWT = require('../app/Middleware/VerifyJWT.js');
-
+const {body} = require("koa/lib/response");
+const bodyParser = require('koa-bodyparser');
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ router.get('/', function (ctx) {
     console.log('router.get(/)');
     return ctx.body = 'What is up?';
 });
+
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +66,26 @@ userRouter.get('/getrogueMagicDefense/:userName/', UsersController.getrogueMagic
 userRouter.get('/getFighterSpeed/:userName/', UsersController.getFighterSpeed, err => console.log(`getFighterSpeed ran into an error: ${err}`));
 userRouter.get('/getMageSpeed/:userName/', UsersController.getMageSpeed, err => console.log(`getMageSpeed ran into an error: ${err}`));
 userRouter.get('/getRogueSpeed/:userName/', UsersController.getRogueSpeed, err => console.log(`getRogueSpeed ran into an error: ${err}`));
+userRouter.get('/getfighterEquipped/:userName/', UsersController.getfighterEquipped, err => console.log(`getfighterEquipped ran into an error: ${err}`));
+userRouter.get('/getmageEquipped/:userName/', UsersController.getmageEquipped, err => console.log(`getmageEquipped ran into an error: ${err}`));
+userRouter.get('/getrogueEquipped/:userName/', UsersController.getrogueEquipped, err => console.log(`getrogueEquipped ran into an error: ${err}`));
+userRouter.get('/getfighter0Unlocked/:userName/', UsersController.getfighter0Unlocked, err => console.log(`getfighter0Unlocked ran into an error: ${err}`));
+userRouter.get('/getfighter1Unlocked/:userName/', UsersController.getfighter1Unlocked, err => console.log(`getfighter1Unlocked ran into an error: ${err}`));
+userRouter.get('/getfighter2Unlocked/:userName/', UsersController.getfighter2Unlocked, err => console.log(`getfighter2Unlocked ran into an error: ${err}`));
+userRouter.get('/getfighter3Unlocked/:userName/', UsersController.getfighter3Unlocked, err => console.log(`getfighter3Unlocked ran into an error: ${err}`));
+userRouter.get('/getfighter4Unlocked/:userName/', UsersController.getfighter4Unlocked, err => console.log(`getfighter4Unlocked ran into an error: ${err}`));
+userRouter.get('/getmage0Unlocked/:userName/', UsersController.getmage0Unlocked, err => console.log(`getmage0Unlocked ran into an error: ${err}`));
+userRouter.get('/getmage1Unlocked/:userName/', UsersController.getmage1Unlocked, err => console.log(`getmage1Unlocked ran into an error: ${err}`));
+userRouter.get('/getmage2Unlocked/:userName/', UsersController.getmage2Unlocked, err => console.log(`getmage2Unlocked ran into an error: ${err}`));
+userRouter.get('/getmage3Unlocked/:userName/', UsersController.getmage3Unlocked, err => console.log(`getmage3Unlocked ran into an error: ${err}`));
+userRouter.get('/getmage4Unlocked/:userName/', UsersController.getmage4Unlocked, err => console.log(`getmage4Unlocked ran into an error: ${err}`));
+userRouter.get('/getrogue0Unlocked/:userName/', UsersController.getrogue0Unlocked, err => console.log(`getrogue0Unlocked ran into an error: ${err}`));
+userRouter.get('/getrogue1Unlocked/:userName/', UsersController.getrogue1Unlocked, err => console.log(`getrogue1Unlocked ran into an error: ${err}`));
+userRouter.get('/getrogue2Unlocked/:userName/', UsersController.getrogue2Unlocked, err => console.log(`getrogue2Unlocked ran into an error: ${err}`));
+userRouter.get('/getrogue3Unlocked/:userName/', UsersController.getrogue3Unlocked, err => console.log(`getrogue3Unlocked ran into an error: ${err}`));
+userRouter.get('/getrogue4Unlocked/:userName/', UsersController.getrogue4Unlocked, err => console.log(`getrogue4Unlocked ran into an error: ${err}`));
+userRouter.post('/updateUserGold/:endOfLevelGoldToCollect/:username/',UsersController.updateGold, err => console.log(`setUserGoldAmount ran into an error: ${err}`));
+
 
 
 /**
@@ -78,4 +100,5 @@ router.use(
 module.exports = function (app) {
     app.use(router.routes());
     app.use(router.allowedMethods());
+
 };
