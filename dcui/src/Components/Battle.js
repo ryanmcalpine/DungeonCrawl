@@ -204,7 +204,7 @@ export default function Battle(user)
         }
 
         setEnemyHP(enemyHP-10); // TODO: get damage amount from JSON
-        setEHealthPercent( (enemyHP/50) * 100 ); // TODO: change to (currentEnemyHP/maxEnemyHP) * 100, from JSON
+        setEHealthPercent( (enemyHP/enemyMaxHP) * 100 );
         await sleep(800);
         setStatusBar("Enemy takes 10 damage!"); // TODO: you get the idea
         setAnimationStep(0);
@@ -239,7 +239,7 @@ export default function Battle(user)
         await sleep(1200);
         setShowVFX(false);
         setEnemyHP(enemyHP-10); // TODO: get damage amount from JSON
-        setEHealthPercent( (enemyHP/50) * 100 ); // TODO: change to (currentEnemyHP/maxEnemyHP) * 100, from JSON
+        setEHealthPercent( (enemyHP/enemyMaxHP) * 100 );
         await sleep(800);
         setStatusBar("Enemy takes 10 damage!"); // TODO: you get the idea
         setAnimationStep(0);

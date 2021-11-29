@@ -21,6 +21,7 @@ import s_mage from "./sprites/player/sorceress_mage.png";
 import s_wizard from "./sprites/player/sorceress_wizard.png";
 import {Avatar} from "@mui/material";
 
+ /*
 const armoryTableAttributes = [
     {
         attributeName: 'Total Transactions',
@@ -28,6 +29,7 @@ const armoryTableAttributes = [
         align: 'left'
     }
 ];
+ */
 
 export default function Armory(user)
 {
@@ -62,13 +64,35 @@ export default function Armory(user)
             console.log(`Armory.js:: current gold amount from the DB ${JSON.stringify(goldJSONString)}`);
             setGoldAmount(goldJSONString.data[0].gold);
 
+            //console.log(`Armory.js:: Fighter set 1 unlocked?  ->  ${JSON.stringify(await api.getF1Unlocked(username))}`);
+            console.log(`Armory.js:: Currently Equipped Fighter = ${JSON.stringify(await api.getFighterEquipped(username))}`);
+
             // TODO: get f/r/s1-4 purchased
+
             // TODO: get f/r/s equipped
         }
 
         getUserInfo();
     }, []);
 
+    function handleEquip( idx ) {
+        // TODO: update Users DB entry for equipped set
+        if( idx < 5 )
+        {
+            setFighterEquipped(idx);
+            console.log("Armory.js:: Fighter set changed to index " + idx);
+        }
+        else if( idx < 10 )
+        {
+            setFighterEquipped(idx);
+            console.log("Armory.js:: Rogue set changed to index " + idx);
+        }
+        else
+        {
+            setSorceressEquipped(idx);
+            console.log("Armory.js:: Sorceress set changed to index " + idx);
+        }
+    }
     function handleEquipFighter( idx ) {
         setFighterEquipped(idx);
         console.log("Armory.js:: Fighter set changed to index " + idx);
@@ -87,9 +111,18 @@ export default function Armory(user)
 
     // TODO: onClick functions for purchasing armor sets
     function handlePurchase( idx ) {
-        if( goldAmount >= 12345 )
+        const api = new API();
+        switch( idx )
         {
 
+            // cases for 1-4, 6-9, 11-14
+            case 1:
+                if( goldAmount >= 50 )
+                {
+                    setF1Purchased(true);
+                    api.updateGold( username, (goldAmount - 50) )
+                }
+                break;
         }
     }
 
@@ -119,6 +152,10 @@ export default function Armory(user)
                                     <div />
                                     <span style={{color:'#E1ECF7'}}>HP: </span>
                                     <div />
+                                    <span style={{color:'#E1ECF7'}}>Physical Attack: </span>
+                                    <div />
+                                    <span style={{color:'#E1ECF7'}}>Magical Attack: </span>
+                                    <div />
                                     <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
                                     <div />
                                     <span style={{color:'#E1ECF7'}}>Magical Defense: </span>
@@ -131,7 +168,7 @@ export default function Armory(user)
                                 (fighterEquipped === 0) ? (
                                     <Button variant={"contained"} style={{backgroundColor:"#F4B860"}} onClick={''}>Equipped</Button>
                                 ) : (
-                                    <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={ () => handleEquipFighter(0) }>Equip</Button>
+                                    <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={ () => handleEquip(0) }>Equip</Button>
                                 )
                             }
                         </Box>
@@ -153,6 +190,10 @@ export default function Armory(user)
                                     <div />
                                     <span style={{color:'#E1ECF7'}}>HP: </span>
                                     <div />
+                                    <span style={{color:'#E1ECF7'}}>Physical Attack: </span>
+                                    <div />
+                                    <span style={{color:'#E1ECF7'}}>Magical Attack: </span>
+                                    <div />
                                     <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
                                     <div />
                                     <span style={{color:'#E1ECF7'}}>Magical Defense: </span>
@@ -168,7 +209,7 @@ export default function Armory(user)
                                             Equipped
                                         </Button>
                                     ) : (
-                                        <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={ () => handleEquipFighter(1) }>
+                                        <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={ () => handleEquip(1) }>
                                             Equip
                                         </Button>
                                     )
