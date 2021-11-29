@@ -41,6 +41,7 @@ import worm from './sprites/enemy/worm.png';
 import zombie from './sprites/enemy/zombie.png';
 import inventoryIcon from './sprites/ui/Bag.png';
 import heartIcon from './sprites/ui/Heart.png';
+import spider from './sprites/enemy/spider.png';
 
 import testVFX from './sprites/vfx/Cartoon_FX9_idle_5.png';
 import vfx_quickAttack from './sprites/vfx/Cartoon_FX1_00.png';
@@ -62,11 +63,10 @@ export default function Battle(user)
     const [enemyAnimationStep, setEnemyAnimationStep] = useState(0);
     const [stage,setStage] = useState(0);
     const [defeated,setDefeated] = useState(0);
-    const [currEnemy,setCurrEnemy] = useState(0);
+    const [currEnemy,setCurrEnemy] = useState(1)
+    const [enemyName, setEnemyName] = useState("error");
+    const [currEnemySpritePath,setcurrEnemySpritePath] = useState(crow);
     const stages = [field,forest,cave,lavaMountain,snowMountain,lavaCave];
-    const enemies = [slime,bat,crow,rat,goblin,worm,cyclops,demon,ghost,orc,skeleton,zombie,beholder];
-    const enemyNames = ["Slime","Bat","Crow","Rat", "Gerblin","Wurm","Cyclops","Duo Mobile [demon]",
-        "Ghost of Christmas Past","Orc","Skellington","Nicholas Ivanov","Hermaeus Mora"];
     const [hasUsedMove, setHasUsedMove] = useState(false);  // for use in enabling/disabling buttons
     const [currentCharacter, setCurrentCharacter] = useState(0);
     const [hasSwappedCharacter, setHasSwappedCharacter] = useState(false);  // for enabling/disabling button
@@ -234,14 +234,60 @@ export default function Battle(user)
                 setSorceressSPD(armorStatsS.data[0].SPD);
                 setSorceressHP(sorceressMaxHP);
                 // TODO: API call to MonstersDB to get stats for first enemy
-
-                // setEnemyMaxHP(  );
-                // setEnemyPA(  );
-                // setEnemyMA(  );
-                // setEnemyPD(  );
-                // setEnemyMD(  );
-                // setEnemySPD(  );
-
+                const monsterStats = await api.getMonster(currEnemy)
+                console.log(`monsterStats: ${JSON.stringify(monsterStats.data)}`);
+                switch( monsterStats.data[0].monsterID )
+                {
+                    case 1:
+                        setcurrEnemySpritePath(crow);
+                        break;
+                    case 2:
+                        setcurrEnemySpritePath(rat);
+                        break;
+                    case 3:
+                        setcurrEnemySpritePath(slime);
+                        break;
+                    case 4:
+                        setcurrEnemySpritePath(ghost);
+                        break;
+                    case 5:
+                        setcurrEnemySpritePath(spider);
+                        break;
+                    case 6:
+                        setcurrEnemySpritePath(zombie);
+                        break;
+                    case 7:
+                        setcurrEnemySpritePath(goblin);
+                        break;
+                    case 8:
+                        setcurrEnemySpritePath(orc);
+                        break;
+                    case 9:
+                        setcurrEnemySpritePath(worm);
+                        break;
+                    case 10:
+                        setcurrEnemySpritePath(bat);
+                        break;
+                    case 11:
+                        setcurrEnemySpritePath(cyclops);
+                        break;
+                    case 12:
+                        setcurrEnemySpritePath(skeleton);
+                        break;
+                    case 13:
+                        setcurrEnemySpritePath(beholder);
+                        break;
+                    case 14:
+                        setcurrEnemySpritePath(demon);
+                }
+                setEnemyMaxHP(monsterStats.data[0].maxHP);
+                setEnemyPA(monsterStats.data[0].physicalATK);
+                setEnemyMA(monsterStats.data[0].physicalATK);
+                setEnemyPD(monsterStats.data[0].physicalDEF);
+                setEnemyMD(monsterStats.data[0].magicDEF);
+                setEnemySPD(monsterStats.data[0].speed);
+                setEnemyHP(monsterStats.data[0].maxHP);
+                setEnemyName(monsterStats.data[0].monsterName);
             }
 
             getUserInfo();
@@ -274,6 +320,7 @@ export default function Battle(user)
     // WIP Attempt to make one function to handle all attacks
     async function handleAttack( idx )  // idx = 0-3 for attack buttons
     {
+        console.log(`handleAttack(idx) called`);
         if(turn === 1 || endOfRound>0) return;
 
         setHasUsedMove(true);
@@ -312,7 +359,7 @@ export default function Battle(user)
         setEnemyHP(enemyHP - moves[idx].damage); // TODO: use stats in dmg calculation
         setEHealthPercent( (enemyHP/enemyMaxHP) * 100 );
         await sleep(800);
-        setStatusBar(`${currEnemy} takes ${moves[idx].damage} damage!`); // TODO: you get the idea
+        setStatusBar(`${enemyName} takes ${moves[idx].damage} damage!`); // TODO: you get the idea
         setAnimationStep(0);
         await sleep(2200);
         console.log(`current enemy hp ${enemyHP}`);
@@ -442,12 +489,12 @@ export default function Battle(user)
     async function enemyAttack() {
         //setEndOfRound();
         console.log(`end of round: ${endOfRound}`);
-        if (endOfRound > 0) return;
+        if (endOfRound > 0 || enemyHP<0) return;
         setStatusBar("ENEMY TURN");
         console.log('enemy attack called');
         console.log(`end of round: ${endOfRound}`);
         await sleep(2200);
-        setStatusBar(`${enemyNames[currEnemy]} attacks!`);
+        setStatusBar(`${enemyName} attacks!`);
         setEnemyAnimationStep(1);
         await sleep(1300);
         // Get randomized damage value
@@ -513,7 +560,7 @@ export default function Battle(user)
     {
         setTurn(1);
         await handleEndofRound();
-        if(endOfRound === 0) await enemyAttack();
+        if(endOfRound === 0 || enemyHP >0) await enemyAttack();
     }
     async function advance()
     {
@@ -527,22 +574,72 @@ export default function Battle(user)
         else setDefeated(defeated+1);
 
         setEndOfRound(0);
-        setEnemyHP(50);
+        //setEnemyHP(50);
         setTurn(0);
         setHasUsedMove(false);
         setHasSwappedCharacter(false);
-        if(currEnemy<enemies.length-1)setCurrEnemy(currEnemy+1);
-        else setCurrEnemy(0);
+        if(currEnemy === 1) setCurrEnemy(2);
+        else if(currEnemy<15)setCurrEnemy(currEnemy+1);
+        else setCurrEnemy(1);
         setHasUsedMove(false);
 
         // TODO: API call to MonstersDB to get stats for next enemy
+        const api = new API();
+        const newmonsterStats = await api.getMonster(currEnemy)
+        console.log(`monsterStats: ${JSON.stringify(newmonsterStats.data)}`);
+        switch( newmonsterStats.data[0].monsterID )
+        {
+            case 1:
+                setcurrEnemySpritePath(crow);
+                break;
+            case 2:
+                setcurrEnemySpritePath(rat);
+                break;
+            case 3:
+                setcurrEnemySpritePath(slime);
+                break;
+            case 4:
+                setcurrEnemySpritePath(ghost);
+                break;
+            case 5:
+                setcurrEnemySpritePath(spider);
+                break;
+            case 6:
+                setcurrEnemySpritePath(zombie);
+                break;
+            case 7:
+                setcurrEnemySpritePath(goblin);
+                break;
+            case 8:
+                setcurrEnemySpritePath(orc);
+                break;
+            case 9:
+                setcurrEnemySpritePath(worm);
+                break;
+            case 10:
+                setcurrEnemySpritePath(bat);
+                break;
+            case 11:
+                setcurrEnemySpritePath(cyclops);
+                break;
+            case 12:
+                setcurrEnemySpritePath(skeleton);
+                break;
+            case 13:
+                setcurrEnemySpritePath(beholder);
+                break;
+            case 14:
+                setcurrEnemySpritePath(demon);
+        }
+        setEnemyMaxHP(newmonsterStats.data[0].maxHP);
+        setEnemyPA(newmonsterStats.data[0].physicalATK);
+        setEnemyMA(newmonsterStats.data[0].physicalATK);
+        setEnemyPD(newmonsterStats.data[0].physicalDEF);
+        setEnemyMD(newmonsterStats.data[0].magicDEF);
+        setEnemySPD(newmonsterStats.data[0].speed);
+        setEnemyHP(newmonsterStats.data[0].maxHP);
+        setEnemyName(newmonsterStats.data[0].monsterName);
 
-        // setEnemyMaxHP(  );
-        // setEnemyPA(  );
-        // setEnemyMA(  );
-        // setEnemyPD(  );
-        // setEnemyMD(  );
-        // setEnemySPD(  );
     }
 
     function handleSwapCharacter()  // Rotate through active party members (fighter->rogue->sorceress)
@@ -642,7 +739,7 @@ export default function Battle(user)
                         top: 220,
                         left:740
                     }}>
-                        <Actor sprite={enemies[currEnemy]} data={spriteData} step={enemyAnimationStep} />
+                        <Actor sprite={currEnemySpritePath} data={spriteData} step={enemyAnimationStep} />
                     </div>
 
                         <div style={{
@@ -709,7 +806,7 @@ export default function Battle(user)
                             </Box>
                             <div style={{display:'flex', alignItems:'center'}}>
                                 <Avatar src={heartIcon} sx={{height:'20px', width:'20px'}} />
-                                <span> {enemyNames[currEnemy]}: {enemyHP}</span>
+                                <span> {enemyName}: {enemyHP}</span>
                             </div>
                         </div>
 
