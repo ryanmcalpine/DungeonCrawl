@@ -410,16 +410,28 @@ export default function Battle(user)
                         break;
                     case 1:
                         setRogueSpritePath(r_thief);
+                        setrogueAttack2(moves[10]);
 
                         break;
                     case 2:
                         setFighterSpritePath(r_archer);
+                        setrogueAttack1(moves[4]);
+                        setrogueAttack2(moves[8]);
+                        setrogueAttack3(moves[7]);
                         break;
                     case 3:
                         setFighterSpritePath(r_witchhunter);
+                        setrogueAttack1(moves[20]);
+                        setrogueAttack2(moves[20]);
+                        setrogueAttack3(moves[27]);
+                        setrogueAttack4(moves[19]);
                         break;
                     case 4:
                         setFighterSpritePath(r_ninja);
+                        setrogueAttack1(moves[21]);
+                        setrogueAttack2(moves[20]);
+                        setrogueAttack3(moves[10]);
+                        setrogueAttack4(moves[15]);
                 }
                 const seq = await api.getMageEquipped(username);
                 switch( seq.data[0].mageEquipped )
