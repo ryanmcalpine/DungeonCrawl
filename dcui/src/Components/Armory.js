@@ -114,13 +114,13 @@ export default function Armory(user)
         const api = new API();
         switch( idx )
         {
-
             // cases for 1-4, 6-9, 11-14
             case 1:
                 if( goldAmount >= 50 )
                 {
                     setF1Purchased(true);
-                    api.updateGold( username, (goldAmount - 50) )
+                    api.updateGold( username, (goldAmount - 50) );
+                    // api.setF1Purchased(  );
                 }
                 break;
         }
@@ -214,9 +214,9 @@ export default function Armory(user)
                                         </Button>
                                     )
                                 ) : (
-                                    <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>
+                                    <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={handlePurchase(1)}>
                                         <Avatar src={goldIcon} sx={{height:'24px', width:'24px'}} />
-                                        100
+                                        50
                                     </Button>
                                 )
                             }
