@@ -8,50 +8,17 @@ function now() {
 
 class ItemsController {
     constructor() {
-        console.log('Constructor of Ro0utesController is called.');
+        console.log('Constructor of Items is called.');
     }
-
-    async allMarkets(ctx) {
-        console.log('markets all markets called.');
+    async getArmor(ctx) {
         return new Promise((resolve, reject) => {
-            const query = `
-                       SELECT *
-                        FROM 
-                            markets
-                        ORDER BY marketName
-                        `;
+            const query = `SELECT * FROM armor WHERE itemID = ?`;
             dbConnection.query({
                 sql: query,
+                values: [ctx.params.itemID]
             }, (error, tuples) => {
                 if (error) {
-                    console.log("Connection error in ItemsController::allMarkets", error);
-                    ctx.body = [];
-                    ctx.status = 200;
-                    return reject(error);
-                }
-                ctx.body = tuples;
-                ctx.status = 200;
-                return resolve();
-            });
-        }).catch(err => console.log("Database connection error.", err));
-    }
-
-    async marketWithMarketID(ctx) {
-        return new Promise((resolve, reject) => {
-            const query = `
-                       SELECT *
-                        FROM 
-                            markets
-                        WHERE 
-                            marketID = ?
-                        ORDER BY marketName
-                        `;
-            dbConnection.query({
-                sql: query,
-                values: [ctx.params.marketID]
-            }, (error, tuples) => {
-                if (error) {
-                    console.log("Connection error in ItemsController::marketWithMarketID", error);
+                    console.log("Connection error in UsersController::getArmor", error);
                     ctx.body = [];
                     ctx.status = 200;
                     return reject(error);

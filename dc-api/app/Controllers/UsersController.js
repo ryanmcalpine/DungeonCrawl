@@ -10,7 +10,6 @@ class UsersController {
     constructor() {
         console.log('Constructor of UserController is called.');
     }
-
     async allUsers(ctx) {
         console.log('employees all employees called.');
         return new Promise((resolve, reject) => {
@@ -30,7 +29,6 @@ class UsersController {
             });
         }).catch(err => console.log("Database connection error.", err));
     }
-
     async getUser(ctx) {
         return new Promise((resolve, reject) => {
             const query = `SELECT * FROM users WHERE userName = ?`;
@@ -50,7 +48,6 @@ class UsersController {
             });
         }).catch(err => console.log("Database connection error.", err));
     }
-
     async getGold(ctx) {
         return new Promise((resolve, reject) => {
             const query = `SELECT gold FROM users WHERE userName = ?`;

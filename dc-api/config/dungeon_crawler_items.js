@@ -36,14 +36,13 @@ const loginRouter = require('koa-router')({
 });
 loginRouter.get('/:userName', LoginController.authorizeUser, (err) => console.log("routers.js: loginRouter error:", err));
 
-const MarketsController = new (require('../app/Controllers/ItemsController.js'))();
-const marketsRouter = require('koa-router')({
-    prefix: '/markets'
+const ItemsController = new (require('../app/Controllers/ItemsController.js'))();
+const itemsRouter = require('koa-router')({
+    prefix: '/items'
 });
 
-marketsRouter.use(VerifyJWT);
-marketsRouter.get('/all-markets', Authorize('admin'), MarketsController.allMarkets, err => console.log(`all Markets ran into an error: ${err}`));
-marketsRouter.get('/:marketID/', Authorize('admin'), MarketsController.marketWithMarketID);
+itemsRouter.use(VerifyJWT);
+itemsRouter.get('/getArmor/:itemID', ItemsController.getArmor, err => console.log(`getArmor ran into an error: ${err}`));
 
 
 /**
