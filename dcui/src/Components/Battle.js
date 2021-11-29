@@ -896,6 +896,11 @@ export default function Battle(user)
         else setCurrEnemy(1);
         setHasUsedMove(false);
 
+        let goldRewardMin = 6;
+        let goldRewardMax = 11;
+        let goldReward = Math.floor(Math.random() * (goldRewardMax - goldRewardMin) + dmgMin) + (currEnemy * Math.floor(Math.random() * 2 + 1));
+        api.updateGold( username, goldAmount+goldReward )
+
         // TODO: API call to MonstersDB to get stats for next enemy
         const api = new API();
         const newmonsterStats = await api.getMonster(currEnemy)
