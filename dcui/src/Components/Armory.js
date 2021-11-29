@@ -64,7 +64,7 @@ export default function Armory(user)
             console.log(`Armory.js:: current gold amount from the DB ${JSON.stringify(goldJSONString)}`);
             setGoldAmount(goldJSONString.data[0].gold);
 
-            //console.log(`Armory.js:: Fighter set 1 unlocked?  ->  ${JSON.stringify(await api.getF1Unlocked(username))}`);
+            // console.log(`Armory.js:: Fighter set 1 unlocked?  ->  ${JSON.stringify(await api.getF1Unlocked(username))}`);
             console.log(`Armory.js:: Currently Equipped Fighter = ${JSON.stringify(await api.getFighterEquipped(username))}`);
 
             // TODO: get f/r/s1-4 purchased
@@ -119,6 +119,7 @@ export default function Armory(user)
                 if( goldAmount >= 50 )
                 {
                     setF1Purchased(true);
+                    setGoldAmount( goldAmount - 50 )
                     api.updateGold( username, (goldAmount - 50) );
                     // api.setF1Purchased(  );
                 }
@@ -127,6 +128,7 @@ export default function Armory(user)
                 if( goldAmount >= 50 )
                 {
                     setF2Purchased(true);
+                    setGoldAmount( goldAmount - 110);
                     api.updateGold( username, (goldAmount - 110) );
                     // api.setF1Purchased(  );
                 }
