@@ -110,6 +110,16 @@ export default function Battle(user)
     const [username, setUsername] = React.useState(user.user);
     const [goldAmount, setGoldAmount] = useState(0);
 
+    const moves = [
+        // moves[0] === Quick Attack ?
+        {
+          name: 'Quick Attack',
+          type: '0',
+          damage: '6',
+          sprite: './sprites/vfx/Cartoon_FX1_00.png',
+        },
+    ];
+
     function sleep( ms )    // Pause program execution for duration in milliseconds
     {
         return new Promise(resolve => setTimeout( resolve, ms ));
@@ -263,7 +273,7 @@ export default function Battle(user)
 
         setHasUsedMove(true);
 
-        // TODO: Moves DB API call here to get JSON string
+        // TODO: get index of move we are using in moves[]
 
         // Get the name in string to use in status bar
         switch (currentCharacter) {
@@ -276,10 +286,10 @@ export default function Battle(user)
             case 2:
                 setClassName("Sorceress");
         }
-
+        setStatusBar(`${className} uses ${moves[idx].name}`)
         setAnimationStep(1);
-        // setVFXSprite("./sprites/vfx/" + "Cartoon_FX9_idle_5.png");    // TODO: JSON data
-        setVFXSprite(testVFX);
+        setVFXSprite(moves[idx].sprite);
+        //setVFXSprite(testVFX);
         setShowVFX(true);
         await sleep(1200);
         setShowVFX(false);
@@ -294,10 +304,10 @@ export default function Battle(user)
 
         }
 
-        setEnemyHP(enemyHP-10); // TODO: get damage amount from JSON
+        setEnemyHP(enemyHP - moves[idx].damage); // TODO: use stats in dmg calculation
         setEHealthPercent( (enemyHP/enemyMaxHP) * 100 );
         await sleep(800);
-        setStatusBar("Enemy takes 10 damage!"); // TODO: you get the idea
+        setStatusBar(`${currEnemy} takes ${moves[idx].damage} damage!`); // TODO: you get the idea
         setAnimationStep(0);
         await sleep(2200);
         console.log(`current enemy hp ${enemyHP}`);
@@ -705,9 +715,9 @@ export default function Battle(user)
                         }}>
                             {
                                 ( hasUsedMove || turn === 1 ) ? (
-                                    <Button onClick={handleAttack1} variant="outlined" disabled>Attack 1</Button>
+                                    <Button onClick={() => handleAttack(0)} variant="outlined" disabled>Attack 1</Button>
                                 ) : (
-                                    <Button onClick={handleAttack1} style={{backgroundColor:"#212738"}} variant="contained">Attack 1</Button>
+                                    <Button onClick={() => handleAttack(0)} style={{backgroundColor:"#212738"}} variant="contained">Attack 1</Button>
                                 )
                             }
                             {
