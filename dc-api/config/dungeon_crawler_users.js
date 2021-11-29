@@ -85,9 +85,24 @@ userRouter.get('/getrogue2Unlocked/:userName/', UsersController.getrogue2Unlocke
 userRouter.get('/getrogue3Unlocked/:userName/', UsersController.getrogue3Unlocked, err => console.log(`getrogue3Unlocked ran into an error: ${err}`));
 userRouter.get('/getrogue4Unlocked/:userName/', UsersController.getrogue4Unlocked, err => console.log(`getrogue4Unlocked ran into an error: ${err}`));
 userRouter.get('/updateUserGold/:gold/:userName/',UsersController.updateGold, err => console.log(`setUserGoldAmount ran into an error: ${err}`));
-userRouter.get('/setFighterEquipped/:fighterEquipped/:userName/',UsersController.setFighterEquipped, err => console.log(`setUserGoldAmount ran into an error: ${err}`));
+userRouter.get('/setFighterEquipped/:fighterEquipped/:userName/',UsersController.setFighterEquipped, err => console.log(`setFighterEquipped ran into an error: ${err}`));
 userRouter.get('/setMageEquipped/:mageEquipped/:userName/',UsersController.setMageEquipped, err => console.log(`setMageEquipped ran into an error: ${err}`));
 userRouter.get('/setRogueEquipped/:rogueEquipped/:userName/',UsersController.setrogueEquipped, err => console.log(`setrogueEquipped ran into an error: ${err}`));
+userRouter.get('/setfighter0Unlocked/:fighter0Unlocked/:userName/',UsersController.setfighter0Unlocked, err => console.log(`setfighter0Unlocked ran into an error: ${err}`));
+userRouter.get('/setfighter1Unlocked/:fighter1Unlocked/:userName/',UsersController.setfighter1Unlocked, err => console.log(`setfighter1Unlocked ran into an error: ${err}`));
+userRouter.get('/setfighter2Unlocked/:fighter2Unlocked/:userName/',UsersController.setfighter2Unlocked, err => console.log(`setfighter2Unlocked ran into an error: ${err}`));
+userRouter.get('/setfighter3Unlocked/:fighter3Unlocked/:userName/',UsersController.setfighter3Unlocked, err => console.log(`setfighter3Unlocked ran into an error: ${err}`));
+userRouter.get('/setfighter4Unlocked/:fighter4Unlocked/:userName/',UsersController.setfighter4Unlocked, err => console.log(`setfighter4Unlocked ran into an error: ${err}`));
+userRouter.get('/setmage0Unlocked/:mage0Unlocked/:userName/',UsersController.setmage0Unlocked, err => console.log(`setmage0Unlocked ran into an error: ${err}`));
+userRouter.get('/setmage1Unlocked/:mage1Unlocked/:userName/',UsersController.setmage1Unlocked, err => console.log(`setmage1Unlocked ran into an error: ${err}`));
+userRouter.get('/setmage2Unlocked/:mage2Unlocked/:userName/',UsersController.setmage2Unlocked, err => console.log(`setmage2Unlocked ran into an error: ${err}`));
+userRouter.get('/setmage3Unlocked/:mage3Unlocked/:userName/',UsersController.setmage3Unlocked, err => console.log(`setmage3Unlocked ran into an error: ${err}`));
+userRouter.get('/setmage4Unlocked/:mage4Unlocked/:userName/',UsersController.setmage4Unlocked, err => console.log(`setmage4Unlocked ran into an error: ${err}`));
+userRouter.get('/setrogue0Unlocked/:rogue0Unlocked/:userName/',UsersController.setrogue0Unlocked, err => console.log(`setrogue0Unlocked ran into an error: ${err}`));
+userRouter.get('/setrogue1Unlocked/:rogue1Unlocked/:userName/',UsersController.setrogue1Unlocked, err => console.log(`setrogue1Unlocked ran into an error: ${err}`));
+userRouter.get('/setrogue2Unlocked/:rogue2Unlocked/:userName/',UsersController.setrogue2Unlocked, err => console.log(`setrogue2Unlocked ran into an error: ${err}`));
+userRouter.get('/setrogue3Unlocked/:rogue3Unlocked/:userName/',UsersController.setrogue3Unlocked, err => console.log(`setrogue3Unlocked ran into an error: ${err}`));
+userRouter.get('/setrogue4Unlocked/:rogue4Unlocked/:userName/',UsersController.setrogue4Unlocked, err => console.log(`setrogue4Unlocked ran into an error: ${err}`));
 
 
 /**

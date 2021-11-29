@@ -177,14 +177,129 @@ export default class APIInterface {
     {
         return axiosAgent.get(`/users/setRogueEquipped/${rogueEquipped}/${user_id}/`)
     }
-
-
-
     async updateGold(user_id,gold)
     {
         console.log('updateGold called');
         return axiosAgent.get(`/users/updateUserGold/${gold}/${user_id}/`)
     }
-
-
+    async getF0Unlocked(user_id)
+    {
+        return axiosAgent.get(`/users/getfighter0Unlocked/${user_id}/`)
+    }
+    async getF1Unlocked(user_id)
+    {
+        return axiosAgent.get(`/users/getfighter1Unlocked/${user_id}/`)
+    }
+    async getF2Unlocked(user_id)
+    {
+        return axiosAgent.get(`/users/getfighter2Unlocked/${user_id}/`)
+    }
+    async getF3Unlocked(user_id)
+    {
+        return axiosAgent.get(`/users/getfighter3Unlocked/${user_id}/`)
+    }
+    async getF4Unlocked(user_id)
+    {
+        return axiosAgent.get(`/users/getfighter4Unlocked/${user_id}/`)
+    }
+    async getM0Unlocked(user_id)
+    {
+        return axiosAgent.get(`/users/getmage0Unlocked/${user_id}/`)
+    }
+    async getM1Unlocked(user_id)
+    {
+        return axiosAgent.get(`/users/getmage1Unlocked/${user_id}/`)
+    }
+    async getM2Unlocked(user_id)
+    {
+        return axiosAgent.get(`/users/getmage2Unlocked/${user_id}/`)
+    }
+    async getM3Unlocked(user_id)
+    {
+        return axiosAgent.get(`/users/getmage3Unlocked/${user_id}/`)
+    }
+    async getM4Unlocked(user_id)
+    {
+        return axiosAgent.get(`/users/getmage4Unlocked/${user_id}/`)
+    }
+    async getR0Unlocked(user_id)
+    {
+        return axiosAgent.get(`/users/getrogue0Unlocked/${user_id}/`)
+    }
+    async getR1Unlocked(user_id)
+    {
+        return axiosAgent.get(`/users/getrogue1Unlocked/${user_id}/`)
+    }
+    async getR2Unlocked(user_id)
+    {
+        return axiosAgent.get(`/users/getrogue2Unlocked/${user_id}/`)
+    }
+    async getR3Unlocked(user_id)
+    {
+        return axiosAgent.get(`/users/getrogue3Unlocked/${user_id}/`)
+    }
+    async getR4Unlocked(user_id)
+    {
+        return axiosAgent.get(`/users/getrogue4Unlocked/${user_id}/`)
+    }
+    async setF0Unlocked(fighter0Unlocked,user_id)
+    {
+        return axiosAgent.get(`/users/setfighter0Unlocked/${fighter0Unlocked}/${user_id}/`)
+    }
+    async setF1Unlocked(fighter1Unlocked,user_id)
+    {
+        return axiosAgent.get(`/users/setfighter1Unlocked/${fighter1Unlocked}/${user_id}/`)
+    }
+    async setF2Unlocked(fighter2Unlocked,user_id)
+    {
+        return axiosAgent.get(`/users/setfighter2Unlocked/${fighter2Unlocked}/${user_id}/`)
+    }
+    async setF3Unlocked(fighter3Unlocked,user_id)
+    {
+        return axiosAgent.get(`/users/setfighter3Unlocked/${fighter3Unlocked}/${user_id}/`)
+    }
+    async setF4Unlocked(fighter4Unlocked,user_id)
+    {
+        return axiosAgent.get(`/users/setfighter4Unlocked/${fighter4Unlocked}/${user_id}/`)
+    }
+    async setM0Unlocked(mage0Unlocked,user_id)
+    {
+        return axiosAgent.get(`/users/setmage0Unlocked/${mage0Unlocked}/${user_id}/`)
+    }
+    async setM1Unlocked(mage1Unlocked,user_id)
+    {
+        return axiosAgent.get(`/users/setmage1Unlocked/${mage1Unlocked}/${user_id}/`)
+    }
+    async setM2Unlocked(mage2Unlocked,user_id)
+    {
+        return axiosAgent.get(`/users/setmage2Unlocked/${mage2Unlocked}/${user_id}/`)
+    }
+    async setM3Unlocked(mage3Unlocked,user_id)
+    {
+        return axiosAgent.get(`/users/setmage3Unlocked/${mage3Unlocked}/${user_id}/`)
+    }
+    async setM4Unlocked(mage4Unlocked,user_id)
+    {
+        return axiosAgent.get(`/users/setmage4Unlocked/${mage4Unlocked}/${user_id}/`)
+    }
+    async setR0Unlocked(rogue0Unlocked,user_id)
+    {
+        return axiosAgent.get(`/users/setrogue0Unlocked/${rogue0Unlocked}/${user_id}/`)
+    }
+    async setR1Unlocked(rogue1Unlocked,user_id)
+    {
+        return axiosAgent.get(`/users/setrogue1Unlocked/${rogue1Unlocked}/${user_id}/`)
+    }
+    async setR2Unlocked(rogue2Unlocked,user_id)
+    {
+        return axiosAgent.get(`/users/setrogue2Unlocked/${rogue2Unlocked}/${user_id}/`)
+    }
+    async setR3Unlocked(rogue3Unlocked,user_id)
+    {
+        return axiosAgent.get(`/users/setrogue3Unlocked/${rogue3Unlocked}/${user_id}/`)
+    }
+    async setR4Unlocked(rogue4Unlocked,user_id)
+    {
+        return axiosAgent.get(`/users/setrogue4Unlocked/${rogue4Unlocked}/${user_id}/`)
+    }
 }
