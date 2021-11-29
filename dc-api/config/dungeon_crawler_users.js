@@ -84,7 +84,7 @@ userRouter.get('/getrogue1Unlocked/:userName/', UsersController.getrogue1Unlocke
 userRouter.get('/getrogue2Unlocked/:userName/', UsersController.getrogue2Unlocked, err => console.log(`getrogue2Unlocked ran into an error: ${err}`));
 userRouter.get('/getrogue3Unlocked/:userName/', UsersController.getrogue3Unlocked, err => console.log(`getrogue3Unlocked ran into an error: ${err}`));
 userRouter.get('/getrogue4Unlocked/:userName/', UsersController.getrogue4Unlocked, err => console.log(`getrogue4Unlocked ran into an error: ${err}`));
-userRouter.post('/updateUserGold/:endOfLevelGoldToCollect/:username/',UsersController.updateGold, err => console.log(`setUserGoldAmount ran into an error: ${err}`));
+userRouter.get('/updateUserGold/:gold/:userName/',UsersController.updateGold, err => console.log(`setUserGoldAmount ran into an error: ${err}`));
 
 
 

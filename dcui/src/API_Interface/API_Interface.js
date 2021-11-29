@@ -159,7 +159,8 @@ export default class APIInterface {
     }
     async updateGold(user_id,gold)
     {
-        return axiosAgent.post(`/users/updateUserGold/${gold}/${user_id}/`)
+        console.log('updateGold called');
+        return axiosAgent.get(`/users/updateUserGold/${gold}/${user_id}/`)
     }
 
 

@@ -773,11 +773,12 @@ class UsersController {
         }).catch(err => console.log("Database connection error.", err));
     }
     async updateGold(ctx) {
+        console.log(`update gold called with: ${ctx.params.gold} and ${ctx.params.userName}`);
         return new Promise((resolve, reject) => {
             const query = `UPDATE users SET gold = ?  WHERE userName = ?`;
             dbConnection.query({
                 sql: query,
-                values: [ctx.params.endOfLevelGoldToCollect, ctx.params.userName]
+                values: [ctx.params.gold, ctx.params.userName]
             }, (error, tuples) => {
                 if (error) {
                     console.log("Connection error in UsersController::setUserGoldAmount", error);
