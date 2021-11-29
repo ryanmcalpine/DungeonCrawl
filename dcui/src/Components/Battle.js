@@ -1066,7 +1066,7 @@ export default function Battle(user)
                             <Actor sprite={sorceressSpritePath} data={spriteData} step={animationStep}/>
                         }
                     </div>
-                    <div style={{position:'absolute', top:-100, left:42}}>
+                    <div style={{position:'relative', top:42%, left:42%}}>
                         {
                             showVFX &&
                             <Actor sprite={VFXSprite} data={VFXSpriteData} step={0}/>
