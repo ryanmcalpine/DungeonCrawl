@@ -40,13 +40,13 @@ export default function Armory(user)
     const [f3Purchased, setF3Purchased] = React.useState(false);
     const [f4Purchased, setF4Purchased] = React.useState(false);
 
-    const [rogueEquipped, setRogueEquipped] = React.useState(0);
+    const [rogueEquipped, setRogueEquipped] = React.useState(5);
     const [r1Purchased, setR1Purchased] = React.useState(false);
     const [r2Purchased, setR2Purchased] = React.useState(false);
     const [r3Purchased, setR3Purchased] = React.useState(false);
     const [r4Purchased, setR4Purchased] = React.useState(false);
 
-    const [sorceressEquipped, setSorceressEquipped] = React.useState(0);
+    const [sorceressEquipped, setSorceressEquipped] = React.useState(10);
     const [s1Purchased, setS1Purchased] = React.useState(false);
     const [s2Purchased, setS2Purchased] = React.useState(false);
     const [s3Purchased, setS3Purchased] = React.useState(false);
@@ -63,14 +63,43 @@ export default function Armory(user)
             const goldJSONString = await api.getGold(username);
             console.log(`Armory.js:: current gold amount from the DB ${JSON.stringify(goldJSONString)}`);
             setGoldAmount(goldJSONString.data[0].gold);
-            const f1 = await api.getF1Unlocked(username);
-            const eq = await api.getFighterEquipped(username);
-            console.log(`Armory.js:: Fighter set 1 unlocked?  ->  ${JSON.stringify(f1.data[0].fighter1Unlocked)}`);
-            console.log(`Armory.js:: Currently Equipped Fighter = ${JSON.stringify(eq.data[0].fighterEquipped)}`);
 
-            // TODO: get f/r/s1-4 purchased
+            // const f1u = await api.getF1Unlocked(username);
+            // const feq = await api.getFighterEquipped(username);
+            // console.log(`Armory.js:: Fighter set 1 unlocked?  ->  ${JSON.stringify(f1u.data[0].fighter1Unlocked)}`);
+            // console.log(`Armory.js:: Currently Equipped Fighter = ${JSON.stringify(feq.data[0].fighterEquipped)}`);
 
-            // TODO: get f/r/s equipped
+            const f1u = await api.getF1Unlocked(username);
+            setF1Purchased(f1u.data[0].fighter1Unlocked);
+            const f2u = await api.getF2Unlocked(username);
+            setF2Purchased(f2u.data[0].fighter2Unlocked);
+            const f3u = await api.getF3Unlocked(username);
+            setF3Purchased(f3u.data[0].fighter3Unlocked);
+            const f4u = await api.getF4Unlocked(username);
+            setF4Purchased(f4u.data[0].fighter4Unlocked);
+            const r1u = await api.getR1Unlocked(username);
+            setR1Purchased(r1u.data[0].rogue1Unlocked);
+            const r2u = await api.getR2Unlocked(username);
+            setR2Purchased(r2u.data[0].rogue2Unlocked);
+            const r3u = await api.getR3Unlocked(username);
+            setR3Purchased(r3u.data[0].rogue3Unlocked);
+            const r4u = await api.getR4Unlocked(username);
+            setR4Purchased(r4u.data[0].rogue4Unlocked);
+            const m1u = await api.getM1Unlocked(username);
+            setS1Purchased(m1u.data[0].mage1Unlocked);
+            const m2u = await api.getM2Unlocked(username);
+            setS2Purchased(m2u.data[0].mage2Unlocked);
+            const m3u = await api.getM3Unlocked(username);
+            setS3Purchased(m3u.data[0].mage3Unlocked);
+            const m4u = await api.getM4Unlocked(username);
+            setS4Purchased(m4u.data[0].mage4Unlocked);
+            
+            const feq = await api.getFighterEquipped(username);
+            setFighterEquipped(feq.data[0].fighterEquipped)
+            const req = await api.getRogueEquipped(username);
+            setRogueEquipped(req.data[0].rogueEquipped)
+            const meq = await api.getMageEquipped(username);
+            setSorceressEquipped(meq.data[0].mageEquipped)
         }
 
         getUserInfo();
