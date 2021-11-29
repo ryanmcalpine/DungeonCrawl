@@ -43,6 +43,8 @@ import inventoryIcon from './sprites/ui/Bag.png';
 import heartIcon from './sprites/ui/Heart.png';
 
 import testVFX from './sprites/vfx/Cartoon_FX9_idle_5.png';
+import vfx_quickAttack from './sprites/vfx/Cartoon_FX1_00.png';
+
 import goldIcon from "./sprites/ui/GoldenCoin.png";
 import API from "../API_Interface/API_Interface";
 
@@ -116,7 +118,7 @@ export default function Battle(user)
           name: 'Quick Attack',
           type: '0',
           damage: '6',
-          sprite: './sprites/vfx/Cartoon_FX1_00.png',
+          sprite: vfx_quickAttack,
         },
     ];
 
@@ -705,7 +707,7 @@ export default function Battle(user)
                         }}>
                             {
                                 ( hasUsedMove || turn === 1 ) ? (
-                                    <Button onClick={() => handleAttack(0)} variant="outlined" disabled>Attack 1</Button>
+                                    <Button onClick={() => handleAttack(0)} variant="outlined" disabled>{moves[0].name}</Button>
                                 ) : (
                                     <Button onClick={() => handleAttack(0)} style={{backgroundColor:"#212738"}} variant="contained">Attack 1</Button>
                                 )
