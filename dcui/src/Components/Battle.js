@@ -623,7 +623,14 @@ export default function Battle(user)
         {
             console.log(`enemy should be dead`);
             setEndOfRound(1);
-            setStatusBar("YOU WON!");
+            //setStatusBar("YOU WON!");
+            let goldRewardMin = 6;
+            let goldRewardMax = 11;
+            let goldReward = Math.floor(Math.random() * (goldRewardMax - goldRewardMin) + goldRewardMin) + (currEnemy * Math.floor(Math.random() * 2 + 1));
+            const api = new API();
+            api.updateGold( username, goldAmount+goldReward )
+            setStatusBar(`You have received ${goldReward} gold!`);
+            //await sleep(2500);
             //await sleep(2500)
         }
         else setEndOfRound(0);
@@ -808,9 +815,9 @@ export default function Battle(user)
         console.log('enemy attack called');
         console.log(`end of round: ${endOfRound}`);
         await sleep(2200);
-        setStatusBar(`${enemyName} attacks!`);
         setEnemyAnimationStep(1);
         await sleep(1300);
+        let dmg = 0;
         // Get randomized damage value
         /*let dmgMin = 6;
         let dmgMax = 11;
@@ -834,16 +841,100 @@ export default function Battle(user)
                 await sleep(1000);
                 setStatusBar(`Sorceress takes ${dmg} damage!`);
         }*/
+        if(enemyAttack2===moves[0] && enemyAttack3 ===moves[0])
+        {
+            setVFXSprite(enemyAttack1.sprite);
+            setShowVFX(true);
+            await sleep(1200);
+            setShowVFX(false);
+            dmg = enemyAttack1.damage;
+            setStatusBar(`${enemyName} uses ${enemyAttack1.name}!`);
+        }
+        else if(enemyAttack3 === moves[0]) {
+            let min = 1;
+            let max = 2;
+            let choice = Math.floor(Math.random() * (max - min) + min);
+            if (choice === 1)
+            {
+                setStatusBar(`${enemyName} uses ${enemyAttack1.name}!`);
+                setVFXSprite(enemyAttack1.sprite);
+                setShowVFX(true);
+                await sleep(1200);
+                setShowVFX(false);
+                dmg = enemyAttack1.damage;
+            }
+            else
+            {
+                setStatusBar(`${enemyName} uses ${enemyAttack2.name}!`);
+                setVFXSprite(enemyAttack2.sprite);
+                setShowVFX(true);
+                await sleep(1200);
+                setShowVFX(false);
+                dmg = enemyAttack2.damage;
+            }
+        }
+        else
+        {
+            let min = 1;
+            let max = 3;
+            let choice = Math.floor(Math.random() * (max - min) + min);
+            if (choice === 1)
+            {
+                setStatusBar(`${enemyName} uses ${enemyAttack1.name}!`);
+                setVFXSprite(enemyAttack1.sprite);
+                setShowVFX(true);
+                await sleep(1200);
+                setShowVFX(false);
+                dmg = enemyAttack1.damage;
+            }
+            else if(choice ===2)
+            {
+                setStatusBar(`${enemyName} uses ${enemyAttack2.name}!`);
+                setVFXSprite(enemyAttack2.sprite);
+                setShowVFX(true);
+                await sleep(1200);
+                setShowVFX(false);
+                dmg = enemyAttack2.damage;
+            }
+            else if(choice ===3)
+            {
+                setStatusBar(`${enemyName} uses ${enemyAttack3.name}!`);
+                setVFXSprite(enemyAttack3.sprite);
+                setShowVFX(true);
+                await sleep(1200);
+                setShowVFX(false);
+                dmg = enemyAttack3.damage;
+            }
+        }
+        switch (currentCharacter) {
+            case 0:
+                setFighterHP(fighterHP - dmg);
+                setFHealthPercent((fighterHP / fighterMaxHP) * 100 );
+                await sleep(1000);
+                setStatusBar(`Fighter takes ${dmg} damage!`);
+                break;
+            case 1:
+                setRogueHP(rogueHP - dmg);
+                setRHealthPercent( (rogueHP / rogueMaxHP) * 100 );
+                await sleep(1000);
+                setStatusBar(`Rogue takes ${dmg} damage!`);
+                break;
+            case 2:
+                setSorceressHP(sorceressHP - dmg);
+                setSHealthPercent( (sorceressHP / sorceressMaxHP) * 100 );
+                await sleep(1000);
+                setStatusBar(`Sorceress takes ${dmg} damage!`);
+        }
         setEnemyAnimationStep(0);
         await sleep(2500)
         setTimeout(null,500);
         await handleEndofRound();
-        /*if (fighterHP -dmg>0)
+        if (fighterHP -dmg>0)
         {
             setTurn(0);
             setStatusBar("Player Turn!");
-        }*/
-        //else handleEndofRound();
+        }
+        else await handleEndofRound();
 
     }
     async function handleEndofRound()
@@ -896,15 +987,10 @@ export default function Battle(user)
         else if(currEnemy<15)setCurrEnemy(currEnemy+1);
         else setCurrEnemy(1);
         setHasUsedMove(false);
-
-        let goldRewardMin = 6;
-        let goldRewardMax = 11;
-        let goldReward = Math.floor(Math.random() * (goldRewardMax - goldRewardMin) + dmgMin) + (currEnemy * Math.floor(Math.random() * 2 + 1));
-        api.updateGold( username, goldAmount+goldReward )
+        const api = new API();
 
         // TODO: API call to MonstersDB to get stats for next enemy
-        const api = new API();
-        const newmonsterStats = await api.getMonster(currEnemy)
+        const newmonsterStats = await api.getMonster(currEnemy);
         console.log(`newmonsterStats: ${JSON.stringify(newmonsterStats.data)}`);
         switch( newmonsterStats.data[0].monsterID )
         {
@@ -1074,7 +1160,7 @@ export default function Battle(user)
                             <Actor sprite={sorceressSpritePath} data={spriteData} step={animationStep}/>
                         }
                     </div>
-                    <div style={{position:'relative', top:'42%', left:'42%'}}>
+                    <div style={{position:'relative', top:'40%', left:'35%'}}>
                         {
                             showVFX &&
                             <Actor sprite={VFXSprite} data={VFXSpriteData} step={0}/>
