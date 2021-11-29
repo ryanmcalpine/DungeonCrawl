@@ -121,6 +121,7 @@ export default function Battle(user)
     const [fighterPD, setFighterPD] = useState(5);
     const [fighterMD, setFighterMD] = useState(5);
     const [fighterSPD, setFighterSPD] = useState(10);
+
     const [rogueMaxHP, setRogueMaxHP] = useState(20);
     const [roguePA, setRoguePA] = useState(5);
     const [rogueMA, setRogueMA] = useState(5);
@@ -165,181 +166,195 @@ export default function Battle(user)
             damage: '5',
             sprite: vfx_bite,
         },
-        {
+        {//3
             name: 'Chomp',
             type: '1',
             damage: '9',
             sprite: vfx_chomp,
         },
-        {
+        {//4
             name: 'Acid Shot',
             type: '2',
             damage: '9',
             sprite: vfx_acidShot,
         },
-        {
+        {//5
             name: 'Supernova',
             type: '2',
             damage: '24',
             sprite: vfx_supernova,
         },
-        {
+        {//6
             name: 'Holy Flame',
             type: '2',
             damage: '16',
             sprite: vfx_holyFlame,
         },
-        {
+        {//7
             name: 'Firebolt',
             type: '2',
             damage: '12',
             sprite: vfx_quickAttack,
         },
-        {
+        {//8
             name: 'Thrown Bomb',
             type: '2',
-            damage: '10',
+            damage: '15',
             sprite: vfx_thrownBomb,
         },
-        {
+        {//9
             name: 'Heavy Strike',
             type: '1',
             damage: '13',
             sprite: vfx_heavyStrike,
         },
-        {
+        {//10
             name: 'Ground Pound',
             type: '1',
             damage: '16',
             sprite: vfx_groundPound,
         },
-        {
+        {//11
             name: 'EternalFlame',
             type: '2',
             damage: '18',
             sprite: vfx_eternalFlame,
         },
-        {
+        {//12
             name: 'Flurry',
             type: '0',
             damage: '15',
             sprite: vfx_flurry,
         },
-        {
+        {//13
             name: 'Frenzy',
             type: '1',
             damage: '6',
             sprite: vfx_frenzy,
         },
-        {
+        {//14
             name: 'Hellfire',
             type: '2',
             damage: '20',
             sprite: vfx_hellfire,
         },
-        {
+        {//15
             name: 'Critical Hit',
             type: '0',
             damage: '21',
             sprite: vfx_criticalHit,
         },
-        {
+        {//16
             name: 'Astronomical Hit',
             type: '1',
             damage: '26',
             sprite: vfx_astronomicalHit,
         },
-        {
+        {//17
             name: 'Goop Ball',
             type: '2',
             damage: '13',
             sprite: vfx_goopBall,
         },
-        {
+        {//18
             name: 'Magic Missile',
             type: '2',
             damage: '17',
             sprite: vfx_magicMissile,
         },
-        {
+        {//19
             name: 'Nether Bolt',
             type: '2',
             damage: '21',
             sprite: vfx_netherBolt,
         },
-        {
+        {//20
             name: 'Explosive Force',
             type: '2',
             damage: '19',
             sprite: vfx_explosiveForce,
         },
-        {
+        {//21
             name: 'Dashing Strike',
             type: '0',
             damage: '22',
             sprite: vfx_dashingStrike,
         },
-        {
+        {//22
             name: 'Fire Fountain',
             type: '2',
             damage: '17',
             sprite: vfx_fireFountain,
         },
-        {
+        {//23
             name: 'Magma Ball',
             type: '1',
             damage: '19',
             sprite: vfx_magmaBall,
         },
-        {
+        {//24
             name: 'Tornado Slash',
             type: '2',
             damage: '19',
             sprite: vfx_tornadoSlash,
         },
-        {
+        {//25
             name: 'Chaos Orb',
             type: '2',
             damage: '17',
             sprite: vfx_chaosOrb,
         },
-        {
+        {//26
             name: 'Aura Blast',
             type: '2',
             damage: '16',
             sprite: vfx_auraBlast,
         },
-        {
+        {//27
             name: 'Starfall',
             type: '2',
             damage: '17',
             sprite: vfx_starfall,
         },
-        {
+        {//28
             name: 'Shield Bash',
             type: '1',
             damage: '18',
             sprite: vfx_shieldBash,
         },
-        {
+        {//29
             name: 'Dark Aether',
             type: '2',
             damage: '22',
             sprite: vfx_darkAether,
         },
-        {
+        {//30
             name: 'Black Atom',
             type: '2',
             damage: '23',
             sprite: vfx_blackAtom,
         },
-        {
+        {//31
             name: 'Blue Flame Eruption',
             type: '2',
             damage: '21',
             sprite: vfx_blueFlameEruption,
         }
     ];
+    const [fighterAttack1,setfighterAttack1] = useState(moves[0]);
+    const [fighterAttack2,setfighterAttack2] = useState(moves[0]);
+    const [fighterAttack3,setfighterAttack3] = useState(moves[0]);
+    const [fighterAttack4,setfighterAttack4] = useState(moves[0]);
+
+    const [mageAttack1,setmageAttack1] = useState(moves[0]);
+    const [mageAttack2,setmageAttack2] = useState(moves[0]);
+    const [mageAttack3,setmageAttack3] = useState(moves[0]);
+    const [mageAttack4,setmageAttack4] = useState(moves[0]);
+
+    const [rogueAttack1,setrogueAttack1] = useState(moves[0]);
+    const [rogueAttack2,setrogueAttack2] = useState(moves[0]);
+    const [rogueAttack3,setrogueAttack3] = useState(moves[0]);
+    const [rogueAttack4,setrogueAttack4] = useState(moves[0]);
 
     function sleep( ms )    // Pause program execution for duration in milliseconds
     {
@@ -365,15 +380,27 @@ export default function Battle(user)
                         break;
                     case 1:
                         setFighterSpritePath(f_barbarian);
+                        setfighterAttack2(moves[9]);
                         break;
                     case 2:
                         setFighterSpritePath(f_crusader);
+                        setfighterAttack2(moves[12]);
+                        setfighterAttack3(moves[13]);
                         break;
                     case 3:
                         setFighterSpritePath(f_samurai);
+                        setfighterAttack1(moves[24]);
+                        setfighterAttack2(moves[21]);
+                        setfighterAttack3(moves[10]);
+                        setfighterAttack4(moves[15]);
                         break;
                     case 4:
                         setFighterSpritePath(f_knight);
+                        setfighterAttack1(moves[28]);
+                        setfighterAttack2(moves[24]);
+                        setfighterAttack3(moves[10]);
+                        setfighterAttack4(moves[16]);
+
                 }
                 const req = await api.getRogueEquipped(username);
                 switch( req.data[0].rogueEquipped )
@@ -383,6 +410,7 @@ export default function Battle(user)
                         break;
                     case 1:
                         setRogueSpritePath(r_thief);
+
                         break;
                     case 2:
                         setFighterSpritePath(r_archer);
