@@ -114,8 +114,11 @@ export default function Battle(user)
                 setGoldAmount(goldJSONString.data[0].gold);
 
                 // TODO: API call to UsersDB find currently equipped armor sets
-
-                // setFighterSpritePath(  );
+                const feq = await api.getFighterEquipped(username);
+                const fsp = await api.getArmor( feq.data[0].fighterEquipped );
+                console.log(`Battle.js:: Fsp = ${fsp.data[0].fighterEquipped}`);
+                setFighterSpritePath( fsp.data[0].spritePath );
+                console.log(`Battle.js:: Fighter sprite path = ${fighterSpritePath}`);
                 // setRogueSpritePath(  );
                 // setSorceressSpritePath(  );
 
