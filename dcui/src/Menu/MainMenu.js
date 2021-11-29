@@ -111,8 +111,8 @@ export default function MainMenu({user, logoutAction}){
         return(
             <div style={{position: 'absolute', left: '3%', top: '2%'}}>
                 <Button variant={"outlined"} style={{backgroundColor:'#E1ECF7', color:"black"}} onClick={handleReturnToMenu}>Return to Menu</Button>
-                <span style={{position:'absolute', left:'42%', color:'#E1ECF7'}}><h1>DUNGEON CRAWL</h1></span>
-                <div style={{position: 'relative', left: '2%', top: '3%'}}>
+                <span style={{position:'relative', left:'42%', top:'-5%', color:'#E1ECF7'}}><h1>DUNGEON CRAWL</h1></span>
+                <div style={{position: 'relative', left: '5%', top: '6%'}}>
                     <HighScores/>
                 </div>
             </div>
