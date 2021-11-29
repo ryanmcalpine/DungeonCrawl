@@ -123,6 +123,14 @@ export default function Armory(user)
                     // api.setF1Purchased(  );
                 }
                 break;
+            case 2:
+                if( goldAmount >= 50 )
+                {
+                    setF2Purchased(true);
+                    api.updateGold( username, (goldAmount - 110) );
+                    // api.setF1Purchased(  );
+                }
+                break;
         }
     }
 
@@ -260,9 +268,9 @@ export default function Armory(user)
                                             </Button>
                                         )
                                     ) : (
-                                        <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={''}>
+                                        <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={handlePurchase(2)}>
                                             <Avatar src={goldIcon} sx={{height:'24px', width:'24px'}} />
-                                            200
+                                            110
                                         </Button>
                                     )
                                 }
