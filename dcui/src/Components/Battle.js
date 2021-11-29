@@ -45,6 +45,37 @@ import spider from './sprites/enemy/spider.png';
 
 import testVFX from './sprites/vfx/Cartoon_FX9_idle_5.png';
 import vfx_quickAttack from './sprites/vfx/Cartoon_FX1_00.png';
+import vfx_scratch from './sprites/vfx/Cartoon_FX21_02.png';
+import vfx_bite from './sprites/vfx/Cartoon_FX6_05.png';
+import vfx_chomp from './sprites/vfx/Cartoon_FX7_02.png';
+import vfx_acidShot from './sprites/vfx/Cartoon_FX22_hole_disappear_09.png';
+import vfx_supernova from './sprites/vfx/Cartoon_FX4_00.png';
+import vfx_holyFlame from './sprites/vfx/Cartoon_FX11_00.png';
+import vfx_firebolt from './sprites/vfx/Cartoon_FX26_missile_18.png';
+import vfx_thrownBomb from './sprites/vfx/Cartoon_FX14_idle_1.png';
+import vfx_heavyStrike from './sprites/vfx/Cartoon_FX13_idle_6.png';
+import vfx_groundPound from './sprites/vfx/Cartoon_FX38_03.png';
+import vfx_eternalFlame from './sprites/vfx/Cartoon_FX42_11.png';
+import vfx_flurry from './sprites/vfx/Cartoon_FX2_06.png';
+import vfx_frenzy from './sprites/vfx/Cartoon_FX25_05.png';
+import vfx_hellfire from './sprites/vfx/Cartoon_FX28_07.png';
+import vfx_criticalHit from './sprites/vfx/Cartoon_FX33_00.png';
+import vfx_astronomicalHit from './sprites/vfx/Cartoon_FX36_00.png';
+import vfx_goopBall from './sprites/vfx/Cartoon_FX37_15.png';
+import vfx_magicMissile from './sprites/vfx/Cartoon_FX59_0.png';
+import vfx_netherBolt from './sprites/vfx/Cartoon_FX29_05.png';
+import vfx_explosiveForce from './sprites/vfx/Cartoon_FX26_08.png';
+import vfx_dashingStrike from './sprites/vfx/Cartoon_FX4_idle_10.png';
+import vfx_fireFountain from './sprites/vfx/Cartoon_FX5_idle_19.png';
+import vfx_magmaBall from './sprites/vfx/Cartoon_FX8_idle_05.png';
+import vfx_tornadoSlash from './sprites/vfx/Cartoon_FX30_tornado_11.png';
+import vfx_chaosOrb from './sprites/vfx/Cartoon_FX23_hole_appear_05.png';
+import vfx_auraBlast from './sprites/vfx/Cartoon_FX16_idle_3.png';
+import vfx_starfall from './sprites/vfx/Cartoon_FX29_missile_effect_14.png';
+import vfx_shieldBash from './sprites/vfx/Cartoon_FX32_shield_hit_04.png';
+import vfx_darkAether from './sprites/vfx/Cartoon_FX18_steam_02_17.png';
+import vfx_blackAtom from './sprites/vfx/Cartoon_FX1_idle_04.png';
+import vfx_blueFlameEruption from './sprites/vfx/Cartoon_FX37_idle_05.png';
 
 import goldIcon from "./sprites/ui/GoldenCoin.png";
 import API from "../API_Interface/API_Interface";
@@ -113,13 +144,201 @@ export default function Battle(user)
     const [goldAmount, setGoldAmount] = useState(0);
 
     const moves = [
-        // moves[0] === Quick Attack ?
+        // moves[0] === Quick Attack
         {
           name: 'Quick Attack',
           type: '0',
           damage: '6',
           sprite: vfx_quickAttack,
         },
+        // moves[1] === Scratch
+        {
+            name: 'Scratch',
+            type: '0',
+            damage: '7',
+            sprite: vfx_scratch,
+        },
+        // moves[2] === Bite
+        {
+            name: 'Bite',
+            type: '0',
+            damage: '5',
+            sprite: vfx_bite,
+        },
+        {
+            name: 'Chomp',
+            type: '1',
+            damage: '9',
+            sprite: vfx_chomp,
+        },
+        {
+            name: 'Acid Shot',
+            type: '2',
+            damage: '9',
+            sprite: vfx_acidShot,
+        },
+        {
+            name: 'Supernova',
+            type: '2',
+            damage: '24',
+            sprite: vfx_supernova,
+        },
+        {
+            name: 'Holy Flame',
+            type: '2',
+            damage: '16',
+            sprite: vfx_holyFlame,
+        },
+        {
+            name: 'Firebolt',
+            type: '2',
+            damage: '12',
+            sprite: vfx_quickAttack,
+        },
+        {
+            name: 'Thrown Bomb',
+            type: '2',
+            damage: '10',
+            sprite: vfx_thrownBomb,
+        },
+        {
+            name: 'Heavy Strike',
+            type: '1',
+            damage: '13',
+            sprite: vfx_heavyStrike,
+        },
+        {
+            name: 'Ground Pound',
+            type: '1',
+            damage: '16',
+            sprite: vfx_groundPound,
+        },
+        {
+            name: 'EternalFlame',
+            type: '2',
+            damage: '18',
+            sprite: vfx_eternalFlame,
+        },
+        {
+            name: 'Flurry',
+            type: '0',
+            damage: '15',
+            sprite: vfx_flurry,
+        },
+        {
+            name: 'Frenzy',
+            type: '1',
+            damage: '6',
+            sprite: vfx_frenzy,
+        },
+        {
+            name: 'Hellfire',
+            type: '2',
+            damage: '20',
+            sprite: vfx_hellfire,
+        },
+        {
+            name: 'Critical Hit',
+            type: '0',
+            damage: '21',
+            sprite: vfx_criticalHit,
+        },
+        {
+            name: 'Astronomical Hit',
+            type: '1',
+            damage: '26',
+            sprite: vfx_astronomicalHit,
+        },
+        {
+            name: 'Goop Ball',
+            type: '2',
+            damage: '13',
+            sprite: vfx_goopBall,
+        },
+        {
+            name: 'Magic Missile',
+            type: '2',
+            damage: '17',
+            sprite: vfx_magicMissile,
+        },
+        {
+            name: 'Nether Bolt',
+            type: '2',
+            damage: '21',
+            sprite: vfx_netherBolt,
+        },
+        {
+            name: 'Explosive Force',
+            type: '2',
+            damage: '19',
+            sprite: vfx_explosiveForce,
+        },
+        {
+            name: 'Dashing Strike',
+            type: '0',
+            damage: '22',
+            sprite: vfx_dashingStrike,
+        },
+        {
+            name: 'Fire Fountain',
+            type: '2',
+            damage: '17',
+            sprite: vfx_fireFountain,
+        },
+        {
+            name: 'Magma Ball',
+            type: '1',
+            damage: '19',
+            sprite: vfx_magmaBall,
+        },
+        {
+            name: 'Tornado Slash',
+            type: '2',
+            damage: '19',
+            sprite: vfx_tornadoSlash,
+        },
+        {
+            name: 'Chaos Orb',
+            type: '2',
+            damage: '17',
+            sprite: vfx_chaosOrb,
+        },
+        {
+            name: 'Aura Blast',
+            type: '2',
+            damage: '16',
+            sprite: vfx_auraBlast,
+        },
+        {
+            name: 'Starfall',
+            type: '2',
+            damage: '17',
+            sprite: vfx_starfall,
+        },
+        {
+            name: 'Shield Bash',
+            type: '1',
+            damage: '18',
+            sprite: vfx_shieldBash,
+        },
+        {
+            name: 'Dark Aether',
+            type: '2',
+            damage: '22',
+            sprite: vfx_darkAether,
+        },
+        {
+            name: 'Black Atom',
+            type: '2',
+            damage: '23',
+            sprite: vfx_blackAtom,
+        },
+        {
+            name: 'Blue Flame Eruption',
+            type: '2',
+            damage: '21',
+            sprite: vfx_blueFlameEruption,
+        }
     ];
 
     function sleep( ms )    // Pause program execution for duration in milliseconds
@@ -819,7 +1038,7 @@ export default function Battle(user)
                                 ( hasUsedMove || turn === 1 ) ? (
                                     <Button onClick={() => handleAttack(0)} variant="outlined" disabled>{moves[0].name}</Button>
                                 ) : (
-                                    <Button onClick={() => handleAttack(0)} style={{backgroundColor:"#212738"}} variant="contained">Attack 1</Button>
+                                    <Button onClick={() => handleAttack(0)} style={{backgroundColor:"#212738"}} variant="contained">{moves[0].name}</Button>
                                 )
                             }
                             {
