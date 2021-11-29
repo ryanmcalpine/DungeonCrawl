@@ -399,6 +399,7 @@ export default function Battle(user)
                         setfighterAttack3(moves[13]);
                         break;
                     case 3:
+                        console.log(`This is a musketeer?`);
                         setFighterSpritePath(f_samurai);
                         setfighterAttack1(moves[24]);
                         setfighterAttack2(moves[21]);
@@ -426,20 +427,20 @@ export default function Battle(user)
 
                         break;
                     case 7:
-                        setFighterSpritePath(r_archer);
+                        setRogueSpritePath(r_archer);
                         setrogueAttack1(moves[4]);
                         setrogueAttack2(moves[8]);
                         setrogueAttack3(moves[7]);
                         break;
                     case 8:
-                        setFighterSpritePath(r_witchhunter);
+                        setRogueSpritePath(r_witchhunter);
                         setrogueAttack1(moves[20]);
-                        setrogueAttack2(moves[20]);
+                        setrogueAttack2(moves[8]);
                         setrogueAttack3(moves[27]);
                         setrogueAttack4(moves[19]);
                         break;
                     case 9:
-                        setFighterSpritePath(r_ninja);
+                        setRogueSpritePath(r_ninja);
                         setrogueAttack1(moves[21]);
                         setrogueAttack2(moves[20]);
                         setrogueAttack3(moves[10]);
@@ -811,7 +812,7 @@ export default function Battle(user)
         setEnemyAnimationStep(1);
         await sleep(1300);
         // Get randomized damage value
-        let dmgMin = 6;
+        /*let dmgMin = 6;
         let dmgMax = 11;
         let dmg = Math.floor(Math.random() * (dmgMax - dmgMin) + dmgMin);
         switch (currentCharacter) {
@@ -832,17 +833,17 @@ export default function Battle(user)
                 setSHealthPercent( (sorceressHP / 50) * 100 );
                 await sleep(1000);
                 setStatusBar(`Sorceress takes ${dmg} damage!`);
-        }
+        }*/
         setEnemyAnimationStep(0);
         await sleep(2500)
         setTimeout(null,500);
         await handleEndofRound();
-        if (fighterHP -dmg>0)
+        /*if (fighterHP -dmg>0)
         {
             setTurn(0);
             setStatusBar("Player Turn!");
-        }
-        else handleEndofRound();
+        }*/
+        //else handleEndofRound();
 
     }
     async function handleEndofRound()
@@ -1068,7 +1069,7 @@ export default function Battle(user)
                             <Actor sprite={sorceressSpritePath} data={spriteData} step={animationStep}/>
                         }
                     </div>
-                    <div style={{position:'relative', top:42%, left:42%}}>
+                    <div style={{position:'relative', top:'42%', left:'42%'}}>
                         {
                             showVFX &&
                             <Actor sprite={VFXSprite} data={VFXSpriteData} step={0}/>
