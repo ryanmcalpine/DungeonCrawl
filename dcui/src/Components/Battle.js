@@ -76,6 +76,7 @@ import vfx_shieldBash from './sprites/vfx/Cartoon_FX32_shield_hit_04.png';
 import vfx_darkAether from './sprites/vfx/Cartoon_FX18_steam_02_17.png';
 import vfx_blackAtom from './sprites/vfx/Cartoon_FX1_idle_04.png';
 import vfx_blueFlameEruption from './sprites/vfx/Cartoon_FX37_idle_05.png';
+import vfx_blackHole from './sprites/vfx/Cartoon_FX';
 
 import goldIcon from "./sprites/ui/GoldenCoin.png";
 import API from "../API_Interface/API_Interface";
@@ -339,6 +340,12 @@ export default function Battle(user)
             type: '2',
             damage: '21',
             sprite: vfx_blueFlameEruption,
+        },
+        {//32
+            name: 'Black Hole',
+            type: '2',
+            damage: '30',
+            sprite: vfx_blackHole,
         }
     ];
     const [fighterAttack1,setfighterAttack1] = useState(moves[0]);
