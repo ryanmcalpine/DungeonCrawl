@@ -29,6 +29,25 @@ class ItemsController {
             });
         }).catch(err => console.log("Database connection error.", err));
     }
+    async getConsumable(ctx) {
+        return new Promise((resolve, reject) => {
+            const query = `SELECT * FROM consumables WHERE itemID = ?`;
+            dbConnection.query({
+                sql: query,
+                values: [ctx.params.itemID]
+            }, (error, tuples) => {
+                if (error) {
+                    console.log("Connection error in UsersController::getConsumable", error);
+                    ctx.body = [];
+                    ctx.status = 200;
+                    return reject(error);
+                }
+                ctx.body = tuples;
+                ctx.status = 200;
+                return resolve();
+            });
+        }).catch(err => console.log("Database connection error.", err));
+    }
 }
 
 module.exports = ItemsController;
