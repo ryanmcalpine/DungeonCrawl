@@ -34,7 +34,7 @@ export default function HighScores(props)
 
         async function getUsers() {
             console.log(`HighScores.js::useEffect(): getUsers() called`);
-            const usersJSONString = await api.highScores();
+            const usersJSONString = await api.gethighScores();
             console.log(`HighScores.js::useEffect(): users from the database: ${JSON.stringify(usersJSONString)}`);
             setUsers(usersJSONString.data);
         }
