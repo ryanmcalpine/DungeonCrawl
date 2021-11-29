@@ -356,6 +356,10 @@ export default function Battle(user)
     const [rogueAttack3,setrogueAttack3] = useState(moves[0]);
     const [rogueAttack4,setrogueAttack4] = useState(moves[0]);
 
+    const [enemyAttack1,setenemyAttack1] = useState(moves[0]);
+    const [enemyAttack2,setenemyAttack2] = useState(moves[0]);
+    const [enemyAttack3,setenemyAttack3] = useState(moves[0]);
+
     function sleep( ms )    // Pause program execution for duration in milliseconds
     {
         return new Promise(resolve => setTimeout( resolve, ms ));
@@ -441,15 +445,29 @@ export default function Battle(user)
                         break;
                     case 1:
                         setSorceressSpritePath(s_acolyte);
+                        setmageAttack1(moves[7]);
+                        setmageAttack2(moves[22]);
                         break;
                     case 2:
                         setSorceressSpritePath(s_priestess);
+                        setmageAttack1(moves[26]);
+                        setmageAttack2(moves[20]);
+                        setmageAttack3(moves[6]);
+                        setmageAttack4(moves[18]);
                         break;
                     case 3:
                         setSorceressSpritePath(s_mage);
+                        setmageAttack1(moves[26]);
+                        setmageAttack2(moves[19]);
+                        setmageAttack3(moves[24]);
+                        setmageAttack4(moves[18]);
                         break;
                     case 4:
                         setSorceressSpritePath(s_wizard);
+                        setmageAttack1(moves[5]);
+                        setmageAttack2(moves[29]);
+                        setmageAttack3(moves[32]);
+                        setmageAttack4(moves[30]);
                 }
                 //console.log(`fsp: ${fighterSpritePath}`);
                 //console.log(`ssp: ${sorceressSpritePath}`);
@@ -499,6 +517,7 @@ export default function Battle(user)
                 {
                     case 1:
                         setcurrEnemySpritePath(crow);
+                        setenemyAttack1(2);
                         break;
                     case 2:
                         setcurrEnemySpritePath(rat);
