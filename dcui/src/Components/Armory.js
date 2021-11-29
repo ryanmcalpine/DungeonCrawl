@@ -63,9 +63,10 @@ export default function Armory(user)
             const goldJSONString = await api.getGold(username);
             console.log(`Armory.js:: current gold amount from the DB ${JSON.stringify(goldJSONString)}`);
             setGoldAmount(goldJSONString.data[0].gold);
-
-            console.log(`Armory.js:: Fighter set 1 unlocked?  ->  ${JSON.stringify(await api.getF1Unlocked(username))}`);
-            console.log(`Armory.js:: Currently Equipped Fighter = ${JSON.stringify(await api.getFighterEquipped(username))}`);
+            const f1 = await api.getF1Unlocked(username);
+            const eq = await api.getFighterEquipped(username);
+            console.log(`Armory.js:: Fighter set 1 unlocked?  ->  ${JSON.stringify(f1.data[0].fighter1Unlocked)}`);
+            console.log(`Armory.js:: Currently Equipped Fighter = ${JSON.stringify(eq.data[0].fighterEquipped)}`);
 
             // TODO: get f/r/s1-4 purchased
 
