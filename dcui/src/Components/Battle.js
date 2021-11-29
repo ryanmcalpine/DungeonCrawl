@@ -11,9 +11,21 @@ import lavaCave from './sprites/backgrounds/Lava_Cave.png';
 import lavaMountain from './sprites/backgrounds/Lava_Mountain.png';
 import snowMountain from './sprites/backgrounds/Snow_Mountain.png';
 import forest from './sprites/backgrounds/Forest.png';
-import testFighter from './sprites/player/fighter_crusader.png';
-import testRogue from './sprites/player/rogue_thief.png';
-import testSorc from './sprites/player/sorceress_mage.png';
+import f_barbarian from "./sprites/player/fighter_barbarian.png";
+import f_crusader from "./sprites/player/fighter_crusader.png";
+import f_folk from "./sprites/player/fighter_folk.png";
+import f_knight from "./sprites/player/fighter_knight.png";
+import f_samurai from "./sprites/player/fighter_samurai.png";
+import r_archer from "./sprites/player/rogue_archer.png";
+import r_folk from "./sprites/player/rogue_folk.png";
+import r_witchhunter from "./sprites/player/rogue_musketeer.png";
+import r_ninja from "./sprites/player/rogue_ninja.png";
+import r_thief from "./sprites/player/rogue_thief.png";
+import s_folk from "./sprites/player/sorceress_folk.png";
+import s_acolyte from "./sprites/player/sorceress_priest.png";
+import s_priestess from "./sprites/player/sorceress_acolyte.png";
+import s_mage from "./sprites/player/sorceress_mage.png";
+import s_wizard from "./sprites/player/sorceress_wizard.png";
 import slime from './sprites/enemy/test-slime.png';
 import bat from './sprites/enemy/bat.png';
 import beholder from './sprites/enemy/beholder.png';
@@ -113,12 +125,66 @@ export default function Battle(user)
                 const goldJSONString = await api.getGold(user);
                 setGoldAmount(goldJSONString.data[0].gold);
 
-                // TODO: API call to UsersDB find currently equipped armor sets
                 const feq = await api.getFighterEquipped(username);
-                const fsp = await api.getArmor( feq.data[0].fighterEquipped );
+                switch( feq.data[0].fighterEquipped )
+                {
+                    case 10:
+                        setFighterSpritePath(f_folk);
+                        break;
+                    case 11:
+                        setFighterSpritePath(f_barbarian);
+                        break;
+                    case 12:
+                        setFighterSpritePath(f_crusader);
+                        break;
+                    case 13:
+                        setFighterSpritePath(f_samurai);
+                        break;
+                    case 14:
+                        setFighterSpritePath(f_knight);
+                }
+                const req = await api.getRogueEquipped(username);
+                switch( req.data[0].rogueEquipped )
+                {
+                    case 20:
+                        setRogueSpritePath(r_folk);
+                        break;
+                    case 21:
+                        setRogueSpritePath(r_thief);
+                        break;
+                    case 22:
+                        setFighterSpritePath(r_archer);
+                        break;
+                    case 23:
+                        setFighterSpritePath(r_witchhunter);
+                        break;
+                    case 24:
+                        setFighterSpritePath(r_ninja);
+                }
+                const seq = await api.getMageEquipped(username);
+                switch( seq.data[0].mageEquipped )
+                {
+                    case 30:
+                        setSorceressSpritePath(s_folk);
+                        break;
+                    case 31:
+                        setSorceressSpritePath(s_acolyte);
+                        break;
+                    case 32:
+                        setSorceressSpritePath(s_priestess);
+                        break;
+                    case 33:
+                        setSorceressSpritePath(s_mage);
+                        break;
+                    case 34:
+                        setSorceressSpritePath(s_wizard);
+                }
+                /*
                 console.log(`Battle.js:: Fsp = ${fsp.data[0].fighterEquipped}`);
                 setFighterSpritePath( fsp.data[0].spritePath );
                 console.log(`Battle.js:: Fighter sprite path = ${fighterSpritePath}`);
+                */
+
                 // setRogueSpritePath(  );
                 // setSorceressSpritePath(  );
 
