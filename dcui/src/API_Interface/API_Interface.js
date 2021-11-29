@@ -157,6 +157,14 @@ export default class APIInterface {
     {
         return axiosAgent.get(`/users/getfighterEquipped/${user_id}/`)
     }
+    async getMageEquipped(user_id)
+    {
+        return axiosAgent.get(`/users/getmageEquipped/${user_id}/`)
+    }
+    async getRogueEquipped(user_id)
+    {
+        return axiosAgent.get(`/users/getrogueEquipped/${user_id}/`)
+    }
     async updateGold(user_id,gold)
     {
         console.log('updateGold called');
