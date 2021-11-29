@@ -306,5 +306,9 @@ export default class APIInterface {
     {
         return axiosAgent.get(`/items/getArmor/${itemID}`)
     }
+    async getConsumable(itemID)
+    {
+        return axiosAgent.get(`/items/getConsumable/${itemID}`)
+    }
 
 }
