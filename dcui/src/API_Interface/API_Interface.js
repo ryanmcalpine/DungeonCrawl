@@ -302,4 +302,9 @@ export default class APIInterface {
     {
         return axiosAgent.get(`/users/setrogue4Unlocked/${rogue4Unlocked}/${user_id}/`)
     }
+    async getArmor(itemID)
+    {
+        return axiosAgent.get(`/items/getArmor/${itemID}`)
+    }
+
 }
