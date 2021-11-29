@@ -537,33 +537,52 @@ export default function Battle(user)
                         break;
                     case 5:
                         setcurrEnemySpritePath(spider);
+                        setenemyAttack1(moves[2]);
                         break;
                     case 6:
                         setcurrEnemySpritePath(zombie);
+                        setenemyAttack1(moves[2]);
+                        setenemyAttack2(moves[1]);
+                        setenemyAttack3(moves[3]);
                         break;
                     case 7:
                         setcurrEnemySpritePath(goblin);
+                        setenemyAttack1(moves[0]);
+                        setenemyAttack2(moves[12]);
+                        setenemyAttack3(moves[8]);
                         break;
                     case 8:
                         setcurrEnemySpritePath(orc);
+                        setenemyAttack1(moves[13]);
+                        setenemyAttack2(moves[9]);
+                        setenemyAttack3(moves[8]);
                         break;
                     case 9:
                         setcurrEnemySpritePath(worm);
+                        setenemyAttack1(moves[2]);
                         break;
                     case 10:
                         setcurrEnemySpritePath(bat);
+                        setenemyAttack1(moves[2]);
                         break;
                     case 11:
                         setcurrEnemySpritePath(cyclops);
+                        setenemyAttack1(moves[3]);
+                        setenemyAttack2(moves[9]);
                         break;
                     case 12:
                         setcurrEnemySpritePath(skeleton);
+                        setenemyAttack1(moves[12]);
+                        setenemyAttack2(moves[13]);
                         break;
                     case 13:
                         setcurrEnemySpritePath(beholder);
+                        setenemyAttack1(moves[31]);
+                        setenemyAttack2(moves[30]);
                         break;
                     case 14:
                         setcurrEnemySpritePath(demon);
+                        setenemyAttack1(moves[5]);
                 }
                 setEnemyMaxHP(monsterStats.data[0].maxHP);
                 setEnemyPA(monsterStats.data[0].physicalATK);
@@ -871,50 +890,77 @@ export default function Battle(user)
         // TODO: API call to MonstersDB to get stats for next enemy
         const api = new API();
         const newmonsterStats = await api.getMonster(currEnemy)
-        console.log(`monsterStats: ${JSON.stringify(newmonsterStats.data)}`);
+        console.log(`newmonsterStats: ${JSON.stringify(newmonsterStats.data)}`);
         switch( newmonsterStats.data[0].monsterID )
         {
             case 1:
                 setcurrEnemySpritePath(crow);
+                setenemyAttack1(moves[2]);
+                setenemyAttack2(moves[1]);
                 break;
             case 2:
                 setcurrEnemySpritePath(rat);
+                setenemyAttack1(moves[2]);
+                setenemyAttack2(moves[1]);
                 break;
             case 3:
                 setcurrEnemySpritePath(slime);
+                setenemyAttack1(moves[2]);
+                setenemyAttack2(moves[3]);
+                setenemyAttack3(moves[4]);
                 break;
             case 4:
                 setcurrEnemySpritePath(ghost);
+                setenemyAttack1(moves[4]);
                 break;
             case 5:
                 setcurrEnemySpritePath(spider);
+                setenemyAttack1(moves[2]);
                 break;
             case 6:
                 setcurrEnemySpritePath(zombie);
+                setenemyAttack1(moves[2]);
+                setenemyAttack2(moves[1]);
+                setenemyAttack3(moves[3]);
                 break;
             case 7:
                 setcurrEnemySpritePath(goblin);
+                setenemyAttack1(moves[0]);
+                setenemyAttack2(moves[12]);
+                setenemyAttack3(moves[8]);
                 break;
             case 8:
                 setcurrEnemySpritePath(orc);
+                setenemyAttack1(moves[13]);
+                setenemyAttack2(moves[9]);
+                setenemyAttack3(moves[8]);
                 break;
             case 9:
                 setcurrEnemySpritePath(worm);
+                setenemyAttack1(moves[2]);
                 break;
             case 10:
                 setcurrEnemySpritePath(bat);
+                setenemyAttack1(moves[2]);
                 break;
             case 11:
                 setcurrEnemySpritePath(cyclops);
+                setenemyAttack1(moves[3]);
+                setenemyAttack2(moves[9]);
                 break;
             case 12:
                 setcurrEnemySpritePath(skeleton);
+                setenemyAttack1(moves[12]);
+                setenemyAttack2(moves[13]);
                 break;
             case 13:
                 setcurrEnemySpritePath(beholder);
+                setenemyAttack1(moves[31]);
+                setenemyAttack2(moves[30]);
                 break;
             case 14:
                 setcurrEnemySpritePath(demon);
+                setenemyAttack1(moves[5]);
         }
         setEnemyMaxHP(newmonsterStats.data[0].maxHP);
         setEnemyPA(newmonsterStats.data[0].physicalATK);
