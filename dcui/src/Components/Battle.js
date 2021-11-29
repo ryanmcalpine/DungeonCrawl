@@ -630,6 +630,7 @@ export default function Battle(user)
             const api = new API();
             api.updateGold( username, goldAmount+goldReward )
             setStatusBar(`You have received ${goldReward} gold!`);
+            setGoldAmount(goldAmount+goldReward);
             //await sleep(2500);
             //await sleep(2500)
         }
@@ -1245,7 +1246,7 @@ export default function Battle(user)
                         <div style={{
                             position: 'absolute',
                             top: 620,
-                            left:270
+                            left:150
                         }}>
                             {
                                 ( hasUsedMove || turn === 1 ) ? (
@@ -1278,6 +1279,12 @@ export default function Battle(user)
                                 )
                             }
                             <div />
+                        </div>
+                            <div style={{
+                                position: 'absolute',
+                                top: 620,
+                                left:350
+                            }}>
                             {
                                 ( hasUsedMove || turn === 1 ) ? (
                                     <div>
