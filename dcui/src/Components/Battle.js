@@ -211,23 +211,26 @@ export default function Battle(user)
                 setFighterPD(armorStatsF.data[0].PD);
                 setFighterMD(armorStatsF.data[0].MD);
                 setFighterSPD(armorStatsF.data[0].SPD);
+                setFighterHP(fighterMaxHP);
 
+                const armorStatsR = await api.getArmor(feq.data[0].fighterEquipped+30);
+                //console.log(`stats = ${JSON.stringify(armorStatsR)}`);
+                setRogueMaxHP(armorStatsR.data[0].HP);
+                setRoguePA(armorStatsR.data[0].SP);
+                setRogueMA(armorStatsR.data[0].MA);
+                setRoguePD(armorStatsR.data[0].PD);
+                setRogueMD(armorStatsR.data[0].MD);
+                setRogueSPD(armorStatsR.data[0].SPD);
+                setRogueHP(rogueMaxHP);
                 const armorStatsS = await api.getArmor(feq.data[0].fighterEquipped+20);
-                console.log(`stats = ${JSON.stringify(armorStatsS)}`);
-                setRogueMaxHP(armorStatsS.data[0].HP);
-                setRoguePA(armorStatsF.data[0].SP);
-                setRogueMA(armorStatsF.data[0].MA);
-                setRoguePD(armorStatsF.data[0].PD);
-                setRogueMD(armorStatsF.data[0].PD);
-                setRogueSPD(armorStatsF.data[0].SPD);
-
-                // setSorceressMaxHP(  );
-                // setSorceressPA(  );
-                // setSorceressMA(  );
-                // setSorceressPD(  );
-                // setSorceressMD(  );
-                // setSorceressSPD(  );
-
+                //console.log(`stats = ${JSON.stringify(armorStatsS)}`);
+                setSorceressMaxHP(armorStatsS.data[0].HP);
+                setSorceressPA(armorStatsS.data[0].SP);
+                setSorceressMA(armorStatsS.data[0].MA);
+                setSorceressPD(armorStatsS.data[0].PD);
+                setSorceressMD(armorStatsS.data[0].MP);
+                setSorceressSPD(armorStatsS.data[0].SPD);
+                setSorceressHP(sorceressMaxHP);
                 // TODO: API call to MonstersDB to get stats for first enemy
 
                 // setEnemyMaxHP(  );
