@@ -165,6 +165,18 @@ export default class APIInterface {
     {
         return axiosAgent.get(`/users/getrogueEquipped/${user_id}/`)
     }
+    async setFighterEquipped(fighterEquipped,user_id)
+    {
+        return axiosAgent.get(`/users/setFighterEquipped/${fighterEquipped}/${user_id}/`)
+    }
+    async setMageEquipped(mageEquipped,user_id)
+    {
+        return axiosAgent.get(`/users/setMageEquipped/${mageEquipped}/${user_id}/`)
+    }
+    async setRogueEquipped(rogueEquipped,user_id)
+    {
+        return axiosAgent.get(`/users/setRogueEquipped/${rogueEquipped}/${user_id}/`)
+    }
 
 
 
