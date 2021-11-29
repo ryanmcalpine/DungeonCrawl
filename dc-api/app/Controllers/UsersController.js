@@ -792,7 +792,66 @@ class UsersController {
             });
         }).catch(err => console.log("Database connection error.", err));
     }
-
+    async setFighterEquipped(ctx) {
+        //console.log(`update gold called with: ${ctx.params.gold} and ${ctx.params.userName}`);
+        return new Promise((resolve, reject) => {
+            const query = `UPDATE users SET fighterEquipped = ?  WHERE userName = ?`;
+            dbConnection.query({
+                sql: query,
+                values: [ctx.params.fighterEquipped, ctx.params.userName]
+            }, (error, tuples) => {
+                if (error) {
+                    console.log("Connection error in UsersController::setUserGoldAmount", error);
+                    ctx.body = [];
+                    ctx.status = 200;
+                    return reject(error);
+                }
+                ctx.body = tuples;
+                ctx.status = 200;
+                return resolve();
+            });
+        }).catch(err => console.log("Database connection error.", err));
+    }
+    async setMageEquipped(ctx) {
+        //console.log(`update gold called with: ${ctx.params.gold} and ${ctx.params.userName}`);
+        return new Promise((resolve, reject) => {
+            const query = `UPDATE users SET mageEquipped = ?  WHERE userName = ?`;
+            dbConnection.query({
+                sql: query,
+                values: [ctx.params.mageEquipped, ctx.params.userName]
+            }, (error, tuples) => {
+                if (error) {
+                    console.log("Connection error in UsersController::setUserGoldAmount", error);
+                    ctx.body = [];
+                    ctx.status = 200;
+                    return reject(error);
+                }
+                ctx.body = tuples;
+                ctx.status = 200;
+                return resolve();
+            });
+        }).catch(err => console.log("Database connection error.", err));
+    }
+    async setrogueEquipped(ctx) {
+        //console.log(`update gold called with: ${ctx.params.gold} and ${ctx.params.userName}`);
+        return new Promise((resolve, reject) => {
+            const query = `UPDATE users SET rogueEquipped = ?  WHERE userName = ?`;
+            dbConnection.query({
+                sql: query,
+                values: [ctx.params.rogueEquipped, ctx.params.userName]
+            }, (error, tuples) => {
+                if (error) {
+                    console.log("Connection error in UsersController::setUserGoldAmount", error);
+                    ctx.body = [];
+                    ctx.status = 200;
+                    return reject(error);
+                }
+                ctx.body = tuples;
+                ctx.status = 200;
+                return resolve();
+            });
+        }).catch(err => console.log("Database connection error.", err));
+    }
 }
 //TODO Make a write account function
 

@@ -165,6 +165,9 @@ export default class APIInterface {
     {
         return axiosAgent.get(`/users/getrogueEquipped/${user_id}/`)
     }
+
+
+
     async updateGold(user_id,gold)
     {
         console.log('updateGold called');
