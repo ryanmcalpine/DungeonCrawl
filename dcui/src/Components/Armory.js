@@ -222,7 +222,7 @@ export default function Armory(user)
                                         </Button>
                                     )
                                 ) : (
-                                    <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={handlePurchase(1)}>
+                                    <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={ () => handlePurchase(1)}>
                                         <Avatar src={goldIcon} sx={{height:'24px', width:'24px'}} />
                                         50
                                     </Button>
@@ -268,7 +268,7 @@ export default function Armory(user)
                                             </Button>
                                         )
                                     ) : (
-                                        <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={handlePurchase(2)}>
+                                        <Button variant={"contained"} style={{backgroundColor:"#212738"}} onClick={ () => handlePurchase(2)}>
                                             <Avatar src={goldIcon} sx={{height:'24px', width:'24px'}} />
                                             110
                                         </Button>
