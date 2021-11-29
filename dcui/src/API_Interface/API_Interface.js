@@ -46,7 +46,7 @@ export default class APIInterface {
     }
     async getGold(user_id)
     {
-        return axiosAgent.get(`/users/getGold/${user_id}/`)
+        return axiosAgent.get(`/users/getGold/${user_id}`)
     }
     async getFighterMaxHP(user_id)
     {

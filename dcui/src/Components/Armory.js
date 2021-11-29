@@ -31,6 +31,7 @@ const armoryTableAttributes = [
 
 export default function Armory(user)
 {
+    const [username,setusername] = React.useState(user.user);
     const [fighterEquipped, setFighterEquipped] = React.useState(0);
     const [f1Purchased, setF1Purchased] = React.useState(true);
     const [f2Purchased, setF2Purchased] = React.useState(false);
@@ -56,9 +57,10 @@ export default function Armory(user)
         const api = new API();
 
         async function getUserInfo() {
-            const goldJSONString = await api.getGold(user);
+            console.log(`user: ${JSON.stringify(user)}`);
+            const goldJSONString = await api.getGold(username);
             console.log(`Armory.js:: current gold amount from the DB ${JSON.stringify(goldJSONString)}`);
-            setGoldAmount(goldJSONString.data);
+            setGoldAmount(goldJSONString.data[0].gold);
 
             // TODO: get f/r/s1-4 purchased
             // TODO: get f/r/s equipped

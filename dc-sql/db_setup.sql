@@ -46,26 +46,47 @@ fighterPhysicalAttack bigint unsigned default 10,
 fighterMagicalAttack bigint unsigned default 1,
 fighterPhysicalDefense bigint unsigned default 10,
 fighterMagicDefense bigint unsigned default 5,
+fighterSpeed bigint unsigned default 10,
 mageMaxHP bigint unsigned default 30,
 magePhysicalAttack bigint unsigned default 1,
 mageMagicalAttack bigint unsigned default 10,
 magePhysicalDefense bigint unsigned default 5,
 mageMagicDefense bigint unsigned default 7,
+mageSpeed bigint unsigned default 7,
 rogueMaxHP bigint unsigned default 40,
 roguePhysicalAttack bigint unsigned default 5,
 rogueMagicalAttack bigint unsigned default 5,
 roguePhysicalDefense bigint unsigned default 7,
 rogueMagicDefense bigint unsigned default 7,
+rogueSpeed bigint unsigned default 12,
+fighterEquipped tinyint(4) default 0,
+mageEquipped tinyint(4) default 0,
+rogueEquipped tinyint(4) default 0,
+fighter0Unlocked tinyint(1) default 1,
+fighter1Unlocked tinyint(1) default 0,
+fighter2Unlocked tinyint(1) default 0,
+fighter3Unlocked tinyint(1) default 0,
+fighter4Unlocked tinyint(1) default 0,
+mage0Unlocked tinyint(1) default 1,
+mage1Unlocked tinyint(1) default 0,
+mage2Unlocked tinyint(1) default 0,
+mage3Unlocked tinyint(1) default 0,
+mage4Unlocked tinyint(1) default 0,
+rogue0Unlocked tinyint(1) default 1,
+rogue1Unlocked tinyint(1) default 0,
+rogue2Unlocked tinyint(1) default 0,
+rogue3Unlocked tinyint(1) default 0,
+rogue4Unlocked tinyint(1) default 0,
 primary key(userName)
 );
 insert into users values("testAcct",default,default,default,default,default,default,default,
-default,default,default,default,default,default,default,default,default,default);
-insert into users values("Thiccy_Niccy_Dev",50,99999,999999,999,999,999,999,
-999999,999,999,999,999,999999,999,999,999,999);
-insert into users values("Jay_The_Bae_Dev",49,99999,999999,999,999,999,999,
-999999,999,999,999,999,999999,999,999,999,999);
-insert into users values("Ryan_Aint_Lion_Dev",48,99999,999999,999,999,999,999,
-999999,999,999,999,999,999999,999,999,999,999);
+default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default);
+insert into users values("Thiccy_Niccy_Dev",50,99999,999999,999,999,999,999,999,
+999999,999,999,999,999,999,999999,999,999,999,999,999,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default);
+insert into users values("Jay_The_Bae_Dev",49,99999,999999,999,999,999,999,999,
+999999,999,999,999,999,999,999999,999,999,999,999,999,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default);
+insert into users values("Ryan_Aint_Lion_Dev",48,99999,999999,999,999,999,999,999,
+999999,999,999,999,999,999,999999,999,999,999,999,999,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default);
 drop table if exists inventory;
 create table inventory(
 itemID int unsigned not null,

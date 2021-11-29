@@ -25,13 +25,14 @@ export default function MainMenu({user, logoutAction}){
         const api = new API();
 
         async function getUserInfo() {
-            const usernameJSONString = await api.getUser(user);
-            console.log(`MainMenu.js:: username from the DB ${JSON.stringify(usernameJSONString)}`);
-            setUsername(usernameJSONString.data)
-
+            //const usernameJSONString = await api.getUser(user);
+            //console.log(`MainMenu.js:: username from the DB ${JSON.stringify(usernameJSONString)}`);
+            //setUsername(usernameJSONString.data)
+            setUsername(user);
+            //console.log(`username is ${username}`);
             const goldJSONString = await api.getGold(user);
-            console.log(`MainMenu.js:: current gold amount from the DB ${JSON.stringify(goldJSONString)}`);
-            setGoldAmount(goldJSONString.data);
+            console.log(`MainMenu.js:: current gold amount from the DB ${JSON.stringify(goldJSONString.data[0])}`);
+            setGoldAmount(goldJSONString.data[0].gold);
         }
 
         getUserInfo();
@@ -87,7 +88,7 @@ export default function MainMenu({user, logoutAction}){
                     <Avatar src={goldIcon} />
                     <span>{goldAmount}</span>
                 </div>
-                <Battle user={user} />
+                <Battle user={username} />
             </div>
         )
     }
@@ -101,7 +102,7 @@ export default function MainMenu({user, logoutAction}){
                     <Avatar src={goldIcon} />
                     <span>{goldAmount}</span>
                 </div>
-                <Armory user={user} />
+                <Armory user={username} />
             </div>
         )
     }
