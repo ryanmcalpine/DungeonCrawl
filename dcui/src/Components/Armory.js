@@ -289,17 +289,17 @@ export default function Armory(user)
                                 <body>
                                     <text style={{fontWeight:'bold', textDecoration:'underline', color:'#F4B860'}}>Stats</text>
                                     <div />
-                                    <span style={{color:'#E1ECF7'}}>HP: </span>
+                                    <span style={{color:'#E1ECF7'}}>HP: 20</span>
                                     <div />
-                                    <span style={{color:'#E1ECF7'}}>Physical Attack: </span>
+                                    <span style={{color:'#E1ECF7'}}>Physical Attack: 12</span>
                                     <div />
-                                    <span style={{color:'#E1ECF7'}}>Magical Attack: </span>
+                                    <span style={{color:'#E1ECF7'}}>Magical Attack: 3</span>
                                     <div />
-                                    <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
+                                    <span style={{color:'#E1ECF7'}}>Physical Defense: 8</span>
                                     <div />
-                                    <span style={{color:'#E1ECF7'}}>Magical Defense: </span>
+                                    <span style={{color:'#E1ECF7'}}>Magical Defense: 2</span>
                                     <div />
-                                    <span style={{color:'#E1ECF7'}}>Speed: </span>
+                                    <span style={{color:'#E1ECF7'}}>Speed: 8</span>
                                 </body>
                             </div>
                             <div style={{padding:'4px'}}/>
@@ -327,17 +327,17 @@ export default function Armory(user)
                                     <body>
                                     <text style={{fontWeight:'bold', textDecoration:'underline', color:'#F4B860'}}>Stats</text>
                                     <div />
-                                    <span style={{color:'#E1ECF7'}}>HP: </span>
+                                    <span style={{color:'#E1ECF7'}}>HP: 25</span>
                                     <div />
-                                    <span style={{color:'#E1ECF7'}}>Physical Attack: </span>
+                                    <span style={{color:'#E1ECF7'}}>Physical Attack: 15</span>
                                     <div />
-                                    <span style={{color:'#E1ECF7'}}>Magical Attack: </span>
+                                    <span style={{color:'#E1ECF7'}}>Magical Attack: 5</span>
                                     <div />
-                                    <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
+                                    <span style={{color:'#E1ECF7'}}>Physical Defense: 11</span>
                                     <div />
-                                    <span style={{color:'#E1ECF7'}}>Magical Defense: </span>
+                                    <span style={{color:'#E1ECF7'}}>Magical Defense: 4</span>
                                     <div />
-                                    <span style={{color:'#E1ECF7'}}>Speed: </span>
+                                    <span style={{color:'#E1ECF7'}}>Speed: 10</span>
                                     </body>
                                 </div>
                                 <div style={{padding:'4px'}}/>
@@ -377,17 +377,17 @@ export default function Armory(user)
                                     <body>
                                     <text style={{fontWeight:'bold', textDecoration:'underline', color:'#F4B860'}}>Stats</text>
                                     <div />
-                                    <span style={{color:'#E1ECF7'}}>HP: </span>
+                                    <span style={{color:'#E1ECF7'}}>HP: 32</span>
                                     <div />
-                                    <span style={{color:'#E1ECF7'}}>Physical Attack: </span>
+                                    <span style={{color:'#E1ECF7'}}>Physical Attack: 18</span>
                                     <div />
-                                    <span style={{color:'#E1ECF7'}}>Magical Attack: </span>
+                                    <span style={{color:'#E1ECF7'}}>Magical Attack: 7</span>
                                     <div />
-                                    <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
+                                    <span style={{color:'#E1ECF7'}}>Physical Defense: 14</span>
                                     <div />
-                                    <span style={{color:'#E1ECF7'}}>Magical Defense: </span>
+                                    <span style={{color:'#E1ECF7'}}>Magical Defense: 7</span>
                                     <div />
-                                    <span style={{color:'#E1ECF7'}}>Speed: </span>
+                                    <span style={{color:'#E1ECF7'}}>Speed: 11</span>
                                     </body>
                                 </div>
                                 <div style={{padding:'4px'}}/>
@@ -426,17 +426,17 @@ export default function Armory(user)
                                 <body>
                                 <text style={{fontWeight:'bold', textDecoration:'underline', color:'#F4B860'}}>Stats</text>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>HP: </span>
+                                <span style={{color:'#E1ECF7'}}>HP: 40</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Attack: 20</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Attack: 9</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Defense: 16</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Defense: 10</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Speed: </span>
+                                <span style={{color:'#E1ECF7'}}>Speed: 13</span>
                                 </body>
                             </div>
                             <div style={{padding:'4px'}}/>
@@ -474,17 +474,17 @@ export default function Armory(user)
                                 <body>
                                 <text style={{fontWeight:'bold', textDecoration:'underline', color:'#F4B860'}}>Stats</text>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>HP: </span>
+                                <span style={{color:'#E1ECF7'}}>HP: 50</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Attack: 23</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Attack: 13</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Defense: 19</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Defense: 13</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Speed: </span>
+                                <span style={{color:'#E1ECF7'}}>Speed: 14</span>
                                 </body>
                             </div>
                             <div style={{padding:'4px'}}/>
@@ -525,17 +525,17 @@ export default function Armory(user)
                                 <body>
                                 <text style={{fontWeight:'bold', textDecoration:'underline', color:'#F4B860'}}>Stats</text>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>HP: </span>
+                                <span style={{color:'#E1ECF7'}}>HP: 18</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Attack: 9</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Attack: 6</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Defense: 6</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Defense: 4</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Speed: </span>
+                                <span style={{color:'#E1ECF7'}}>Speed: 14</span>
                                 </body>
                             </div>
                             <div style={{padding:'4px'}}/>
@@ -562,17 +562,17 @@ export default function Armory(user)
                                 <body>
                                 <text style={{fontWeight:'bold', textDecoration:'underline', color:'#F4B860'}}>Stats</text>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>HP: </span>
+                                <span style={{color:'#E1ECF7'}}>HP: 23</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Attack: 11</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Attack: 9</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Defense: 9</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Defense: 6</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Speed: </span>
+                                <span style={{color:'#E1ECF7'}}>Speed: 15</span>
                                 </body>
                             </div>
                             <div style={{padding:'4px'}}/>
@@ -610,17 +610,17 @@ export default function Armory(user)
                                 <body>
                                 <text style={{fontWeight:'bold', textDecoration:'underline', color:'#F4B860'}}>Stats</text>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>HP: </span>
+                                <span style={{color:'#E1ECF7'}}>HP: 29</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Attack: 14</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Attack: 11</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Defense: 12</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Defense: 9</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Speed: </span>
+                                <span style={{color:'#E1ECF7'}}>Speed: 17</span>
                                 </body>
                             </div>
                             <div style={{padding:'4px'}}/>
@@ -658,17 +658,17 @@ export default function Armory(user)
                                 <body>
                                 <text style={{fontWeight:'bold', textDecoration:'underline', color:'#F4B860'}}>Stats</text>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>HP: </span>
+                                <span style={{color:'#E1ECF7'}}>HP: 36</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Attack: 16</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Attack: 13</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Defense: 14</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Defense: 12</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Speed: </span>
+                                <span style={{color:'#E1ECF7'}}>Speed: 18</span>
                                 </body>
                             </div>
                             <div style={{padding:'4px'}}/>
@@ -706,17 +706,17 @@ export default function Armory(user)
                                 <body>
                                 <text style={{fontWeight:'bold', textDecoration:'underline', color:'#F4B860'}}>Stats</text>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>HP: </span>
+                                <span style={{color:'#E1ECF7'}}>HP: 42</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Attack: 20</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Attack: 17</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Defense: 17</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Defense: 15</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Speed: </span>
+                                <span style={{color:'#E1ECF7'}}>Speed: 20</span>
                                 </body>
                             </div>
                             <div style={{padding:'4px'}}/>
@@ -757,17 +757,17 @@ export default function Armory(user)
                                 <body>
                                 <text style={{fontWeight:'bold', textDecoration:'underline', color:'#F4B860'}}>Stats</text>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>HP: </span>
+                                <span style={{color:'#E1ECF7'}}>HP: 16</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Attack: 3</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Attack: 12</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Defense: 2</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Defense: 8</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Speed: </span>
+                                <span style={{color:'#E1ECF7'}}>Speed: 11</span>
                                 </body>
                             </div>
                             <div style={{padding:'4px'}}/>
@@ -794,17 +794,17 @@ export default function Armory(user)
                                 <body>
                                 <text style={{fontWeight:'bold', textDecoration:'underline', color:'#F4B860'}}>Stats</text>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>HP: </span>
+                                <span style={{color:'#E1ECF7'}}>HP: 21</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Attack: 5</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Attack: 15</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Defense: 5</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Defense: 10</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Speed: </span>
+                                <span style={{color:'#E1ECF7'}}>Speed: 12</span>
                                 </body>
                             </div>
                             <div style={{padding:'4px'}}/>
@@ -842,17 +842,17 @@ export default function Armory(user)
                                 <body>
                                 <text style={{fontWeight:'bold', textDecoration:'underline', color:'#F4B860'}}>Stats</text>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>HP: </span>
+                                <span style={{color:'#E1ECF7'}}>HP: 26</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Attack: 7</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Attack: 18</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Defense: 8</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Defense: 13</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Speed: </span>
+                                <span style={{color:'#E1ECF7'}}>Speed: 14</span>
                                 </body>
                             </div>
                             <div style={{padding:'4px'}}/>
@@ -890,17 +890,17 @@ export default function Armory(user)
                                 <body>
                                 <text style={{fontWeight:'bold', textDecoration:'underline', color:'#F4B860'}}>Stats</text>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>HP: </span>
+                                <span style={{color:'#E1ECF7'}}>HP: 32</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Attack: 9</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Attack: 20</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Defense: 10</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Defense: 16</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Speed: </span>
+                                <span style={{color:'#E1ECF7'}}>Speed: 15</span>
                                 </body>
                             </div>
                             <div style={{padding:'4px'}}/>
@@ -938,17 +938,17 @@ export default function Armory(user)
                                 <body>
                                 <text style={{fontWeight:'bold', textDecoration:'underline', color:'#F4B860'}}>Stats</text>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>HP: </span>
+                                <span style={{color:'#E1ECF7'}}>HP: 38</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Attack: 12</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Attack: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Attack: 24</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Physical Defense: 13</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Magical Defense: </span>
+                                <span style={{color:'#E1ECF7'}}>Magical Defense: 19</span>
                                 <div />
-                                <span style={{color:'#E1ECF7'}}>Speed: </span>
+                                <span style={{color:'#E1ECF7'}}>Speed: 17</span>
                                 </body>
                             </div>
                             <div style={{padding:'4px'}}/>
