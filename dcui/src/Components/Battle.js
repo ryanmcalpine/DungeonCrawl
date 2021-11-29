@@ -1091,7 +1091,7 @@ export default function Battle(user)
                         <div style={{
                             position: 'absolute',
                             top: 620,
-                            left:300
+                            left:270
                         }}>
                             {
                                 ( hasUsedMove || turn === 1 ) ? (
@@ -1110,24 +1110,48 @@ export default function Battle(user)
                             }
                             {
                                 ( hasUsedMove || turn === 1 ) ? (
-                                    <Button onClick={handleAttack2} variant="outlined" disabled>Attack 2</Button>
+                                    <div>
+                                        {(currentCharacter === 0) && (<Button onClick={() => handleAttack(1)} variant="outlined" disabled>{fighterAttack2.name}</Button>)}
+                                        {(currentCharacter === 1) && (<Button onClick={() => handleAttack(1)} variant="outlined" disabled>{rogueAttack2.name}</Button>)}
+                                        {(currentCharacter === 2) && (<Button onClick={() => handleAttack(1)} variant="outlined" disabled>{mageAttack2.name}</Button>)}
+                                    </div>
                                 ) : (
-                                    <Button onClick={handleAttack2} style={{backgroundColor:"#212738"}}  variant="contained">Attack 2</Button>
+                                    <div>
+                                        {(currentCharacter === 0 && <Button onClick={() => handleAttack(1)} style={{backgroundColor:"#212738"}} variant="contained">{fighterAttack2.name}</Button>)}
+                                        {(currentCharacter === 1 && <Button onClick={() => handleAttack(1)} style={{backgroundColor:"#212738"}} variant="contained">{rogueAttack2.name}</Button>)}
+                                        {(currentCharacter === 2 && <Button onClick={() => handleAttack(1)} style={{backgroundColor:"#212738"}} variant="contained">{mageAttack2.name}</Button>)}
+                                    </div>
                                 )
                             }
                             <div />
                             {
                                 ( hasUsedMove || turn === 1 ) ? (
-                                    <Button onClick={handleAttack3} variant="outlined" disabled>Attack 3</Button>
+                                    <div>
+                                        {(currentCharacter === 0) && (<Button onClick={() => handleAttack(2)} variant="outlined" disabled>{fighterAttack3.name}</Button>)}
+                                        {(currentCharacter === 1) && (<Button onClick={() => handleAttack(2)} variant="outlined" disabled>{rogueAttack3.name}</Button>)}
+                                        {(currentCharacter === 2) && (<Button onClick={() => handleAttack(2)} variant="outlined" disabled>{mageAttack3.name}</Button>)}
+                                    </div>
                                 ) : (
-                                    <Button onClick={handleAttack3} style={{backgroundColor:"#212738"}} variant="contained">Attack 3</Button>
+                                    <div>
+                                        {(currentCharacter === 0 && <Button onClick={() => handleAttack(2)} style={{backgroundColor:"#212738"}} variant="contained">{fighterAttack3.name}</Button>)}
+                                        {(currentCharacter === 1 && <Button onClick={() => handleAttack(2)} style={{backgroundColor:"#212738"}} variant="contained">{rogueAttack3.name}</Button>)}
+                                        {(currentCharacter === 2 && <Button onClick={() => handleAttack(2)} style={{backgroundColor:"#212738"}} variant="contained">{mageAttack3.name}</Button>)}
+                                    </div>
                                 )
                             }
                             {
                                 ( hasUsedMove || turn === 1 ) ? (
-                                    <Button onClick={handleAttack4} variant="outlined" disabled>Attack 4</Button>
+                                    <div>
+                                        {(currentCharacter === 0) && (<Button onClick={() => handleAttack(3)} variant="outlined" disabled>{fighterAttack4.name}</Button>)}
+                                        {(currentCharacter === 1) && (<Button onClick={() => handleAttack(3)} variant="outlined" disabled>{rogueAttack4.name}</Button>)}
+                                        {(currentCharacter === 2) && (<Button onClick={() => handleAttack(3)} variant="outlined" disabled>{mageAttack4.name}</Button>)}
+                                    </div>
                                 ) : (
-                                    <Button onClick={handleAttack4} style={{backgroundColor:"#212738"}} variant="contained">Attack 4</Button>
+                                    <div>
+                                        {(currentCharacter === 0 && <Button onClick={() => handleAttack(3)} style={{backgroundColor:"#212738"}} variant="contained">{fighterAttack4.name}</Button>)}
+                                        {(currentCharacter === 1 && <Button onClick={() => handleAttack(3)} style={{backgroundColor:"#212738"}} variant="contained">{rogueAttack4.name}</Button>)}
+                                        {(currentCharacter === 2 && <Button onClick={() => handleAttack(3)} style={{backgroundColor:"#212738"}} variant="contained">{mageAttack4.name}</Button>)}
+                                    </div>
                                 )
                             }
                         </div>
