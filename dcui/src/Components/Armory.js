@@ -283,7 +283,7 @@ export default function Armory(user)
                         <Box bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
                             <text style={{fontWeight:'bold', textDecoration:'underline'}}>Moves</text>
                             <div />
-                            [List all four moves here]
+                            <span>Quick Attack</span>
                             <div style={{padding:'4px'}}/>
                             <div style={{padding:'5px', textAlign:'center', backgroundColor:'#212738', outlineStyle:'outset', outlineColor:'#F4B860', borderRadius:'5px'}}>
                                 <body>
@@ -321,7 +321,7 @@ export default function Armory(user)
                             <div bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
                                 <text style={{fontWeight:'bold', textDecoration:'underline'}}>Moves</text>
                                 <div />
-                                [List all four moves here]
+                                <span>Quick Attack | Heavy Strike</span>
                                 <div style={{padding:'4px'}}/>
                                 <div style={{padding:'5px', textAlign:'center', backgroundColor:'#212738', outlineStyle:'outset', outlineColor:'#F4B860', borderRadius:'5px'}}>
                                     <body>
@@ -371,7 +371,7 @@ export default function Armory(user)
                             <div bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
                                 <text style={{fontWeight:'bold', textDecoration:'underline'}}>Moves</text>
                                 <div />
-                                [List all four moves here]
+                                <span>Quick Attack | Flurry | Frenzy</span>
                                 <div style={{padding:'4px'}}/>
                                 <div style={{padding:'5px', textAlign:'center', backgroundColor:'#212738', outlineStyle:'outset', outlineColor:'#F4B860', borderRadius:'5px'}}>
                                     <body>
@@ -420,7 +420,7 @@ export default function Armory(user)
                         <Box bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
                             <text style={{fontWeight:'bold', textDecoration:'underline'}}>Moves</text>
                             <div />
-                            [List all four moves here]
+                            <span>Tornado Slash | Dashing Strike | Ground Pound | Critical Hit</span>
                             <div style={{padding:'4px'}}/>
                             <div style={{padding:'5px', textAlign:'center', backgroundColor:'#212738', outlineStyle:'outset', outlineColor:'#F4B860', borderRadius:'5px'}}>
                                 <body>
@@ -468,7 +468,7 @@ export default function Armory(user)
                         <Box bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
                             <text style={{fontWeight:'bold', textDecoration:'underline'}}>Moves</text>
                             <div />
-                            [List all four moves here]
+                            <span>Shield Bash | Tornado Slash | Ground Pound | Astronomical Hit</span>
                             <div style={{padding:'4px'}}/>
                             <div style={{padding:'5px', textAlign:'center', backgroundColor:'#212738', outlineStyle:'outset', outlineColor:'#F4B860', borderRadius:'5px'}}>
                                 <body>
@@ -519,7 +519,7 @@ export default function Armory(user)
                         <Box bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
                             <text style={{fontWeight:'bold', textDecoration:'underline'}}>Moves</text>
                             <div />
-                            [List all four moves here]
+                            <span>Quick Attack</span>
                             <div style={{padding:'4px'}}/>
                             <div style={{padding:'5px', textAlign:'center', backgroundColor:'#212738', outlineStyle:'outset', outlineColor:'#F4B860', borderRadius:'5px'}}>
                                 <body>
@@ -556,7 +556,7 @@ export default function Armory(user)
                         <Box bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
                             <text style={{fontWeight:'bold', textDecoration:'underline'}}>Moves</text>
                             <div />
-                            [List all four moves here]
+                            <span>Quick Attack | Thrown Bomb</span>
                             <div style={{padding:'4px'}}/>
                             <div style={{padding:'5px', textAlign:'center', backgroundColor:'#212738', outlineStyle:'outset', outlineColor:'#F4B860', borderRadius:'5px'}}>
                                 <body>
@@ -604,7 +604,7 @@ export default function Armory(user)
                         <Box bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
                             <text style={{fontWeight:'bold', textDecoration:'underline'}}>Moves</text>
                             <div />
-                            [List all four moves here]
+                            <span>Acid Shot | Thrown Bomb | Fire Bolt</span>
                             <div style={{padding:'4px'}}/>
                             <div style={{padding:'5px', textAlign:'center', backgroundColor:'#212738', outlineStyle:'outset', outlineColor:'#F4B860', borderRadius:'5px'}}>
                                 <body>
@@ -652,7 +652,7 @@ export default function Armory(user)
                         <Box bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
                             <text style={{fontWeight:'bold', textDecoration:'underline'}}>Moves</text>
                             <div />
-                            [List all four moves here]
+                            <span>Explosive Force | Thrown Bomb | Star Fall | Nether Bolt</span>
                             <div style={{padding:'4px'}}/>
                             <div style={{padding:'5px', textAlign:'center', backgroundColor:'#212738', outlineStyle:'outset', outlineColor:'#F4B860', borderRadius:'5px'}}>
                                 <body>
@@ -700,7 +700,7 @@ export default function Armory(user)
                         <Box bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
                             <text style={{fontWeight:'bold', textDecoration:'underline'}}>Moves</text>
                             <div />
-                            [List all four moves here]
+                            <span>Dashing Strike | Explosive Force | Ground Pound | Critical Hit</span>
                             <div style={{padding:'4px'}}/>
                             <div style={{padding:'5px', textAlign:'center', backgroundColor:'#212738', outlineStyle:'outset', outlineColor:'#F4B860', borderRadius:'5px'}}>
                                 <body>
@@ -751,7 +751,7 @@ export default function Armory(user)
                         <Box bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
                             <text style={{fontWeight:'bold', textDecoration:'underline'}}>Moves</text>
                             <div />
-                            [List all four moves here]
+                            <span>Quick Attack</span>
                             <div style={{padding:'4px'}}/>
                             <div style={{padding:'5px', textAlign:'center', backgroundColor:'#212738', outlineStyle:'outset', outlineColor:'#F4B860', borderRadius:'5px'}}>
                                 <body>
@@ -788,7 +788,7 @@ export default function Armory(user)
                         <Box bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
                             <text style={{fontWeight:'bold', textDecoration:'underline'}}>Moves</text>
                             <div />
-                            [List all four moves here]
+                            <span>Firebolt | Fire Fountain</span>
                             <div style={{padding:'4px'}}/>
                             <div style={{padding:'5px', textAlign:'center', backgroundColor:'#212738', outlineStyle:'outset', outlineColor:'#F4B860', borderRadius:'5px'}}>
                                 <body>
@@ -836,7 +836,7 @@ export default function Armory(user)
                         <Box bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
                             <text style={{fontWeight:'bold', textDecoration:'underline'}}>Moves</text>
                             <div />
-                            [List all four moves here]
+                            <span>Aura Blast | Explosive Force | Fire Flare | Magic Missile</span>
                             <div style={{padding:'4px'}}/>
                             <div style={{padding:'5px', textAlign:'center', backgroundColor:'#212738', outlineStyle:'outset', outlineColor:'#F4B860', borderRadius:'5px'}}>
                                 <body>
@@ -884,7 +884,7 @@ export default function Armory(user)
                         <Box bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
                             <text style={{fontWeight:'bold', textDecoration:'underline'}}>Moves</text>
                             <div />
-                            [List all four moves here]
+                            <span>Aura Blast | Nether Bolt | Star Fall | Tornado Slash</span>
                             <div style={{padding:'4px'}}/>
                             <div style={{padding:'5px', textAlign:'center', backgroundColor:'#212738', outlineStyle:'outset', outlineColor:'#F4B860', borderRadius:'5px'}}>
                                 <body>
@@ -932,7 +932,7 @@ export default function Armory(user)
                         <Box bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
                             <text style={{fontWeight:'bold', textDecoration:'underline'}}>Moves</text>
                             <div />
-                            [List all four moves here]
+                            <span>Supernova | Dark Aether | Black Hole | Black Atom</span>
                             <div style={{padding:'4px'}}/>
                             <div style={{padding:'5px', textAlign:'center', backgroundColor:'#212738', outlineStyle:'outset', outlineColor:'#F4B860', borderRadius:'5px'}}>
                                 <body>
