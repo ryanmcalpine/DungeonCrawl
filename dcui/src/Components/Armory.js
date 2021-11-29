@@ -112,19 +112,19 @@ export default function Armory(user)
         {
             setFighterEquipped(idx);
             console.log("Armory.js:: Fighter set changed to index " + idx);
-            api.setFighterEquipped( idx, user );
+            api.setFighterEquipped( idx, username );
         }
         else if( idx < 10 )
         {
             setRogueEquipped(idx);
             console.log("Armory.js:: Rogue set changed to index " + idx);
-            api.setRogueEquipped( idx, user );
+            api.setRogueEquipped( idx, username );
         }
         else
         {
             setSorceressEquipped(idx);
             console.log("Armory.js:: Sorceress set changed to index " + idx);
-            api.setMageEquipped( idx, user );
+            api.setMageEquipped( idx, username );
         }
     }
 

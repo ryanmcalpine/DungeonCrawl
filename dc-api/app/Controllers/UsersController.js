@@ -793,7 +793,7 @@ class UsersController {
         }).catch(err => console.log("Database connection error.", err));
     }
     async setFighterEquipped(ctx) {
-        //console.log(`update gold called with: ${ctx.params.gold} and ${ctx.params.userName}`);
+        console.log(`update fighter equipped called with: ${ctx.params.fighterEquipped} and ${ctx.params.userName}`);
         return new Promise((resolve, reject) => {
             const query = `UPDATE users SET fighterEquipped = ?  WHERE userName = ?`;
             dbConnection.query({
