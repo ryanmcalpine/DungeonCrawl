@@ -84,10 +84,6 @@ export default function MainMenu({user, logoutAction}){
             <div style={{position: 'absolute', left: '3%', top: '2%'}}>
                 <Button variant={"outlined"} style={{backgroundColor:'#E1ECF7', color:"black"}} onClick={handleReturnToMenu}>Return to Menu</Button>
                 <span style={{position:'absolute', left:'490px', top:'-28px', color:'#E1ECF7'}}><h1>DUNGEON CRAWL</h1></span>
-                <div style={{position:'absolute', left:'1178px', top:'-4px', display:'flex', alignItems:'center', backgroundColor:'#E1ECF7', borderRadius:'6px', paddingRight:'6px'}}>
-                    <Avatar src={goldIcon} />
-                    <span>{goldAmount}</span>
-                </div>
                 <Battle user={username} />
             </div>
         )

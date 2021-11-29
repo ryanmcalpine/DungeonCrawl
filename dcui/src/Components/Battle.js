@@ -31,6 +31,8 @@ import inventoryIcon from './sprites/ui/Bag.png';
 import heartIcon from './sprites/ui/Heart.png';
 
 import testVFX from './sprites/vfx/Cartoon_FX9_idle_5.png';
+import goldIcon from "./sprites/ui/GoldenCoin.png";
+import API from "../API_Interface/API_Interface";
 
 export default function Battle(user)
 {
@@ -93,6 +95,8 @@ export default function Battle(user)
     const [enemyMD, setEnemyMD] = useState(5);
     const [enemySPD, setEnemySPD] = useState(10)
 
+    const [username, setUsername] = React.useState(user.user);
+    const [goldAmount, setGoldAmount] = useState(0);
 
     function sleep( ms )    // Pause program execution for duration in milliseconds
     {
@@ -103,44 +107,52 @@ export default function Battle(user)
     {
         if( hasBeenInitialized === false )
         {
-            // TODO: API call to UsersDB find currently equipped armor sets
+            const api = new API();
 
-            // setFighterSpritePath(  );
-            // setRogueSpritePath(  );
-            // setSorceressSpritePath(  );
+            async function getUserInfo() {
+                const goldJSONString = await api.getGold(user);
+                setGoldAmount(goldJSONString.data[0].gold);
 
-            // TODO: API call to ArmorDB to get stats for equipped armor sets
+                // TODO: API call to UsersDB find currently equipped armor sets
 
-            // setFighterMaxHP(  );
-            // setFighterPA(  );
-            // setFighterMA(  );
-            // setFighterPD(  );
-            // setFighterMD(  );
-            // setFighterSPD(  );
+                // setFighterSpritePath(  );
+                // setRogueSpritePath(  );
+                // setSorceressSpritePath(  );
 
-            // setRogueMaxHP(  );
-            // setRoguePA(  );
-            // setRogueMA(  );
-            // setRoguePD(  );
-            // setRogueMD(  );
-            // setRogueSPD(  );
+                // TODO: API call to ArmorDB to get stats for equipped armor sets
 
-            // setSorceressMaxHP(  );
-            // setSorceressPA(  );
-            // setSorceressMA(  );
-            // setSorceressPD(  );
-            // setSorceressMD(  );
-            // setSorceressSPD(  );
+                // setFighterMaxHP(  );
+                // setFighterPA(  );
+                // setFighterMA(  );
+                // setFighterPD(  );
+                // setFighterMD(  );
+                // setFighterSPD(  );
 
-            // TODO: API call to MonstersDB to get stats for first enemy
+                // setRogueMaxHP(  );
+                // setRoguePA(  );
+                // setRogueMA(  );
+                // setRoguePD(  );
+                // setRogueMD(  );
+                // setRogueSPD(  );
 
-            // setEnemyMaxHP(  );
-            // setEnemyPA(  );
-            // setEnemyMA(  );
-            // setEnemyPD(  );
-            // setEnemyMD(  );
-            // setEnemySPD(  );
+                // setSorceressMaxHP(  );
+                // setSorceressPA(  );
+                // setSorceressMA(  );
+                // setSorceressPD(  );
+                // setSorceressMD(  );
+                // setSorceressSPD(  );
 
+                // TODO: API call to MonstersDB to get stats for first enemy
+
+                // setEnemyMaxHP(  );
+                // setEnemyPA(  );
+                // setEnemyMA(  );
+                // setEnemyPD(  );
+                // setEnemyMD(  );
+                // setEnemySPD(  );
+            }
+
+            getUserInfo();
             setHasBeenInitialized(true);
         }
 
@@ -495,6 +507,10 @@ export default function Battle(user)
     return <Fragment>
         {
             <Box bgcolor={'#E1ECF7'} height={'660px'}>
+                <div style={{position:'absolute', left:'1178px', top:'-4px', display:'flex', alignItems:'center', backgroundColor:'#E1ECF7', borderRadius:'6px', paddingRight:'6px'}}>
+                    <Avatar src={goldIcon} />
+                    <span>{goldAmount}</span>
+                </div>
                 <div style={{
                     backgroundImage: `url(${stages[stage]})`,
                     backgroundPosition: 'center',
