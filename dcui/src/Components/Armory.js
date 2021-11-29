@@ -238,6 +238,10 @@ export default function Armory(user)
     }
     return<Fragment>
         <div style={{padding:'6%'}}>
+            <div style={{position:'absolute', left:'91%', top:'3%', display:'flex', alignItems:'center', backgroundColor:'#E1ECF7', borderRadius:'6px', paddingRight:'6px'}}>
+                <Avatar src={goldIcon} />
+                <span>{goldAmount}</span>
+            </div>
             <Table sx={{border:'5px ridge #F4B860'}}>
                 <text style={{position:'relative', left:'2%', color:'white', fontSize:'18px', fontWeight:'bold'}}>FIGHTER</text>
                 <TableRow>
@@ -344,6 +348,10 @@ export default function Armory(user)
                                     <text style={{fontWeight:'bold', textDecoration:'underline', color:'#F4B860'}}>Stats</text>
                                     <div />
                                     <span style={{color:'#E1ECF7'}}>HP: </span>
+                                    <div />
+                                    <span style={{color:'#E1ECF7'}}>Physical Attack: </span>
+                                    <div />
+                                    <span style={{color:'#E1ECF7'}}>Magical Attack: </span>
                                     <div />
                                     <span style={{color:'#E1ECF7'}}>Physical Defense: </span>
                                     <div />

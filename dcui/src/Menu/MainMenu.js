@@ -98,10 +98,6 @@ export default function MainMenu({user, logoutAction}){
             <div>
                 <Button variant={"outlined"} style={{position:'absolute', left:'3%', top:'3%', backgroundColor:'#E1ECF7', color:"black"}} onClick={handleReturnToMenu}>Return to Menu</Button>
                 <span style={{position:'absolute', left:'45%', top:'-.7%', color:'#E1ECF7'}}><h1>ARMORY</h1></span>
-                <div style={{position:'absolute', left:'91%', top:'3%', display:'flex', alignItems:'center', backgroundColor:'#E1ECF7', borderRadius:'6px', paddingRight:'6px'}}>
-                    <Avatar src={goldIcon} />
-                    <span>{goldAmount}</span>
-                </div>
                 <Armory user={username} />
             </div>
         )
