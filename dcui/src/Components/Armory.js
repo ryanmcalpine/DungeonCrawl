@@ -35,7 +35,7 @@ export default function Armory(user)
 {
     const [username,setusername] = React.useState(user.user);
     const [fighterEquipped, setFighterEquipped] = React.useState(0);
-    const [f1Purchased, setF1Purchased] = React.useState(true);
+    const [f1Purchased, setF1Purchased] = React.useState(false);
     const [f2Purchased, setF2Purchased] = React.useState(false);
     const [f3Purchased, setF3Purchased] = React.useState(false);
     const [f4Purchased, setF4Purchased] = React.useState(false);
@@ -73,7 +73,7 @@ export default function Armory(user)
         }
 
         getUserInfo();
-    }, []);
+    }, [goldAmount]);
 
     function handleEquip( idx ) {
         // TODO: update Users DB entry for equipped set
