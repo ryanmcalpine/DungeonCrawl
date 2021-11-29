@@ -43,6 +43,7 @@ const itemsRouter = require('koa-router')({
 
 itemsRouter.use(VerifyJWT);
 itemsRouter.get('/getArmor/:itemID', ItemsController.getArmor, err => console.log(`getArmor ran into an error: ${err}`));
+itemsRouter.get('/getConsumable/:itemID', ItemsController.getConsumable, err => console.log(`getConsumable ran into an error: ${err}`));
 
 
 /**
@@ -51,7 +52,7 @@ itemsRouter.get('/getArmor/:itemID', ItemsController.getArmor, err => console.lo
 router.use(
     '',
     loginRouter.routes(),
-    marketsRouter.routes()
+    itemsRouter.routes()
 );
 
 module.exports = function (app) {
