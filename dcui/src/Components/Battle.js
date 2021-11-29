@@ -517,7 +517,8 @@ export default function Battle(user)
                 {
                     case 1:
                         setcurrEnemySpritePath(crow);
-                        setenemyAttack1(2);
+                        setenemyAttack1(moves[2]);
+                        setenemyAttack1(moves[1]);
                         break;
                     case 2:
                         setcurrEnemySpritePath(rat);
