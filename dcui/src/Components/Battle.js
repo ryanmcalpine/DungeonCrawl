@@ -409,28 +409,28 @@ export default function Battle(user)
                 const req = await api.getRogueEquipped(username);
                 switch( req.data[0].rogueEquipped )
                 {
-                    case 0:
+                    case 5:
                         setRogueSpritePath(r_folk);
                         break;
-                    case 1:
+                    case 6:
                         setRogueSpritePath(r_thief);
                         setrogueAttack2(moves[10]);
 
                         break;
-                    case 2:
+                    case 7:
                         setFighterSpritePath(r_archer);
                         setrogueAttack1(moves[4]);
                         setrogueAttack2(moves[8]);
                         setrogueAttack3(moves[7]);
                         break;
-                    case 3:
+                    case 8:
                         setFighterSpritePath(r_witchhunter);
                         setrogueAttack1(moves[20]);
                         setrogueAttack2(moves[20]);
                         setrogueAttack3(moves[27]);
                         setrogueAttack4(moves[19]);
                         break;
-                    case 4:
+                    case 9:
                         setFighterSpritePath(r_ninja);
                         setrogueAttack1(moves[21]);
                         setrogueAttack2(moves[20]);
@@ -440,29 +440,29 @@ export default function Battle(user)
                 const seq = await api.getMageEquipped(username);
                 switch( seq.data[0].mageEquipped )
                 {
-                    case 0:
+                    case 10:
                         setSorceressSpritePath(s_folk);
                         break;
-                    case 1:
+                    case 11:
                         setSorceressSpritePath(s_acolyte);
                         setmageAttack1(moves[7]);
                         setmageAttack2(moves[22]);
                         break;
-                    case 2:
+                    case 12:
                         setSorceressSpritePath(s_priestess);
                         setmageAttack1(moves[26]);
                         setmageAttack2(moves[20]);
                         setmageAttack3(moves[6]);
                         setmageAttack4(moves[18]);
                         break;
-                    case 3:
+                    case 13:
                         setSorceressSpritePath(s_mage);
                         setmageAttack1(moves[26]);
                         setmageAttack2(moves[19]);
                         setmageAttack3(moves[24]);
                         setmageAttack4(moves[18]);
                         break;
-                    case 4:
+                    case 14:
                         setSorceressSpritePath(s_wizard);
                         setmageAttack1(moves[5]);
                         setmageAttack2(moves[29]);
@@ -518,16 +518,22 @@ export default function Battle(user)
                     case 1:
                         setcurrEnemySpritePath(crow);
                         setenemyAttack1(moves[2]);
-                        setenemyAttack1(moves[1]);
+                        setenemyAttack2(moves[1]);
                         break;
                     case 2:
                         setcurrEnemySpritePath(rat);
+                        setenemyAttack1(moves[2]);
+                        setenemyAttack2(moves[1]);
                         break;
                     case 3:
                         setcurrEnemySpritePath(slime);
+                        setenemyAttack1(moves[2]);
+                        setenemyAttack2(moves[3]);
+                        setenemyAttack3(moves[4]);
                         break;
                     case 4:
                         setcurrEnemySpritePath(ghost);
+                        setenemyAttack1(moves[4]);
                         break;
                     case 5:
                         setcurrEnemySpritePath(spider);
