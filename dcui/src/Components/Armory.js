@@ -52,22 +52,14 @@ export default function Armory(user)
     const [s3Purchased, setS3Purchased] = React.useState(false);
     const [s4Purchased, setS4Purchased] = React.useState(false);
 
-    // TODO: useEffect to get data on unlocked armor from user account ?
     const [goldAmount, setGoldAmount] = React.useState(0);
 
     useEffect(() => {
         const api = new API();
 
         async function getUserInfo() {
-            console.log(`user: ${JSON.stringify(user)}`);
             const goldJSONString = await api.getGold(username);
-            console.log(`Armory.js:: current gold amount from the DB ${JSON.stringify(goldJSONString)}`);
             setGoldAmount(goldJSONString.data[0].gold);
-
-            // const f1u = await api.getF1Unlocked(username);
-            // const feq = await api.getFighterEquipped(username);
-            // console.log(`Armory.js:: Fighter set 1 unlocked?  ->  ${JSON.stringify(f1u.data[0].fighter1Unlocked)}`);
-            // console.log(`Armory.js:: Currently Equipped Fighter = ${JSON.stringify(feq.data[0].fighterEquipped)}`);
 
             const f1u = await api.getF1Unlocked(username);
             setF1Purchased(f1u.data[0].fighter1Unlocked);
@@ -111,42 +103,20 @@ export default function Armory(user)
         if( idx < 5 )
         {
             setFighterEquipped(idx);
-            console.log("Armory.js:: Fighter set changed to index " + idx);
             api.setFighterEquipped( idx, username );
         }
         else if( idx < 10 )
         {
             setRogueEquipped(idx);
-            console.log("Armory.js:: Rogue set changed to index " + idx);
             api.setRogueEquipped( idx, username );
         }
         else
         {
             setSorceressEquipped(idx);
-            console.log("Armory.js:: Sorceress set changed to index " + idx);
             api.setMageEquipped( idx, username );
         }
     }
 
-    /*
-    function handleEquipFighter( idx ) {
-        setFighterEquipped(idx);
-        console.log("Armory.js:: Fighter set changed to index " + idx);
-        // TODO: update Users DB entry for equipped fighter set
-    }
-    function handleEquipRogue( idx ) {
-        setRogueEquipped(idx);
-        console.log("Armory.js:: Rogue set changed to index " + idx);
-        // TODO: update Users DB entry for equipped fighter set
-    }
-    function handleEquipSorceress( idx ) {
-        setSorceressEquipped(idx);
-        console.log("Armory.js:: Sorceress set changed to index " + idx);
-        // TODO: update Users DB entry for equipped fighter set
-    }
-    */
-
-    // TODO: onClick functions for purchasing armor sets
     function handlePurchase( idx ) {
         const api = new API();
         switch( idx )
