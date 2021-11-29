@@ -80,9 +80,9 @@ export default function Battle(user)
     const [eHealthPercent, setEHealthPercent] = useState(100);  // Enemy health as percentage of max
 
     const [hasBeenInitialized, setHasBeenInitialized] = useState(false);
-    const [fighterSpritePath, setFighterSpritePath] = useState('./sprites/player/fighter_folk.png');
-    const [rogueSpritePath, setRogueSpritePath] = useState('./sprites/player/rogue_folk.png');
-    const [sorceressSpritePath, setSorceressSpritePath] = useState('./sprites/player/sorceress_folk.png');
+    const [fighterSpritePath, setFighterSpritePath] = useState(f_folk);
+    const [rogueSpritePath, setRogueSpritePath] = useState(r_folk);
+    const [sorceressSpritePath, setSorceressSpritePath] = useState(s_folk);
     const [className, setClassName] = useState("Fighter");
     const [fighterMaxHP, setFighterMaxHP] = useState(20);
     const [fighterPA, setFighterPA] = useState(5);
@@ -134,63 +134,67 @@ export default function Battle(user)
             const api = new API();
 
             async function getUserInfo() {
-                const goldJSONString = await api.getGold(user);
+                const goldJSONString = await api.getGold(username);
                 setGoldAmount(goldJSONString.data[0].gold);
 
                 const feq = await api.getFighterEquipped(username);
+                console.log(`intended FSP: ${JSON.stringify(feq.data[0].fighterEquipped)}`);
                 switch( feq.data[0].fighterEquipped )
                 {
-                    case 10:
+                    case 0:
                         setFighterSpritePath(f_folk);
                         break;
-                    case 11:
+                    case 1:
                         setFighterSpritePath(f_barbarian);
                         break;
-                    case 12:
+                    case 2:
                         setFighterSpritePath(f_crusader);
                         break;
-                    case 13:
+                    case 3:
                         setFighterSpritePath(f_samurai);
                         break;
-                    case 14:
+                    case 4:
                         setFighterSpritePath(f_knight);
                 }
                 const req = await api.getRogueEquipped(username);
                 switch( req.data[0].rogueEquipped )
                 {
-                    case 20:
+                    case 0:
                         setRogueSpritePath(r_folk);
                         break;
-                    case 21:
+                    case 1:
                         setRogueSpritePath(r_thief);
                         break;
-                    case 22:
+                    case 2:
                         setFighterSpritePath(r_archer);
                         break;
-                    case 23:
+                    case 3:
                         setFighterSpritePath(r_witchhunter);
                         break;
-                    case 24:
+                    case 4:
                         setFighterSpritePath(r_ninja);
                 }
                 const seq = await api.getMageEquipped(username);
                 switch( seq.data[0].mageEquipped )
                 {
-                    case 30:
+                    case 0:
                         setSorceressSpritePath(s_folk);
                         break;
-                    case 31:
+                    case 1:
                         setSorceressSpritePath(s_acolyte);
                         break;
-                    case 32:
+                    case 2:
                         setSorceressSpritePath(s_priestess);
                         break;
-                    case 33:
+                    case 3:
                         setSorceressSpritePath(s_mage);
                         break;
-                    case 34:
+                    case 4:
                         setSorceressSpritePath(s_wizard);
                 }
+                //console.log(`fsp: ${fighterSpritePath}`);
+                //console.log(`ssp: ${sorceressSpritePath}`);
+                //console.log(`rsp: ${rogueSpritePath}`);
                 /*
                 console.log(`Battle.js:: Fsp = ${fsp.data[0].fighterEquipped}`);
                 setFighterSpritePath( fsp.data[0].spritePath );
@@ -201,20 +205,23 @@ export default function Battle(user)
                 // setSorceressSpritePath(  );
 
                 // TODO: API call to ArmorDB to get stats for equipped armor sets
+                const armorStatsF = await api.getArmor(feq.data[0].fighterEquipped+10);
+                //console.log(`stats = ${JSON.stringify(armorStatsF)}`);
+                setFighterMaxHP(armorStatsF.data[0].HP);
+                setFighterPA(armorStatsF.data[0].PA);
+                setFighterMA(armorStatsF.data[0].MA);
+                setFighterPD(armorStatsF.data[0].PD);
+                setFighterMD(armorStatsF.data[0].MD);
+                setFighterSPD(armorStatsF.data[0].SPD);
 
-                // setFighterMaxHP(  );
-                // setFighterPA(  );
-                // setFighterMA(  );
-                // setFighterPD(  );
-                // setFighterMD(  );
-                // setFighterSPD(  );
-
-                // setRogueMaxHP(  );
-                // setRoguePA(  );
-                // setRogueMA(  );
-                // setRoguePD(  );
-                // setRogueMD(  );
-                // setRogueSPD(  );
+                const armorStatsS = await api.getArmor(feq.data[0].fighterEquipped+20);
+                console.log(`stats = ${JSON.stringify(armorStatsS)}`);
+                setRogueMaxHP(armorStatsS.data[0].HP);
+                setRoguePA(armorStatsF.data[0].SP);
+                setRogueMA(armorStatsF.data[0].MA);
+                setRoguePD(armorStatsF.data[0].PD);
+                setRogueMD(armorStatsF.data[0].PD);
+                setRogueSPD(armorStatsF.data[0].SPD);
 
                 // setSorceressMaxHP(  );
                 // setSorceressPA(  );
@@ -231,10 +238,13 @@ export default function Battle(user)
                 // setEnemyPD(  );
                 // setEnemyMD(  );
                 // setEnemySPD(  );
+
             }
 
             getUserInfo();
+
             setHasBeenInitialized(true);
+
         }
 
         console.log(`handle end of round called`);
