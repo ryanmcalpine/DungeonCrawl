@@ -60,10 +60,13 @@ export default function Login({setUser}) {
 
     return (
         <Fragment>
-            <Box bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
-                <Box display="flex" justifyContent="center" alignItems="center" width="100%" mt={10}>
+            <div style={{padding:'5%'}}>
+            <Box align={"center"} justifyContent={"center"} bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860', width:'50%'}} m={"auto"}>
+                <div style={{textAlign:'center', align:'center', alignItems:'center', justifyContent:'center'}}>
+                    <h1 style={{align:'center', mt:'1', ml:'auto', color:'#F4B860', outlineStyle:'outset', outlineColor:'#F4B860', backgroundColor:'#212738', borderRadius:'5px', padding:'5px', width:'300px', textAlign:'center'}}>DUNGEON CRAWL</h1>
+                </div>
+                <Box display="flex" justifyContent="center" alignItems="center" width="100%" mt={5}>
                     <TextField
-                        color='#212738'
                         error={authFailed}
                         id="outlined-error-helper-text"
                         label="Login name"
@@ -77,22 +80,23 @@ export default function Login({setUser}) {
 
                 <Box display="flex" justifyContent="center" alignItems="center" width="100%" mt={2}>
                     <Button
-                        style={{backgroundColor:'black', color:'#E1ECF7'}}
+                        style={{backgroundColor:'black', color:'#E1ECF7', width:'165px'}}
                         variant="outlined"
                         size="medium"
                         onClick={() => {setVerifyUser(true)}}
                     >Sign In</Button>
                 </Box>
 
-                <Box display="flex" justifyContent="center" alignItems="center" width="100%" mt={2}>
+                <Box display="flex" justifyContent="center" alignItems="center" width="100%" mt={1}>
                     <Button
-                        style={{backgroundColor:'black', color:"#E1ECF7"}}
+                        style={{backgroundColor:'black', color:"#E1ECF7", width:"165px"}}
                         variant="outlined"
                         size="medium"
                         onClick={() => {setNewUser(true)}}
                     >Create Account</Button>
                 </Box>
             </Box>
+            </div>
         </Fragment>
 
     );
