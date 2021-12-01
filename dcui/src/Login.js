@@ -12,7 +12,7 @@ export default function Login({setUser}) {
     const [userInput, setUserInput] = useState('');
     const [verifyUser, setVerifyUser] = useState(false);
     const [authFailed, setAuthFailed] = useState(false);
-
+    const [newUser, setNewUser] = useState(false);
 
     const handleInputChange = event => {
         console.log("handleInputChange called.");
@@ -29,6 +29,11 @@ export default function Login({setUser}) {
     };
 
     useEffect(() => {
+        if( newUser )
+        {
+            // api.createAccount(userInput);
+            setVerifyUser(true);
+        }
 
         if( ! verifyUser || userInput.length === 0)
             return;
@@ -55,26 +60,38 @@ export default function Login({setUser}) {
 
     return (
         <Fragment>
-            <Box display="flex" justifyContent="center" alignItems="center" width="100%" mt={10}>
+            <Box bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
+                <Box display="flex" justifyContent="center" alignItems="center" width="100%" mt={10}>
+                    <TextField
+                        color='#212738'
+                        error={authFailed}
+                        id="outlined-error-helper-text"
+                        label="Login name"
+                        placeholder=""
+                        value={userInput}
+                        helperText="Only for existing users!"
+                        onChange={handleInputChange}
+                    />
+                    <Divider />
+                </Box>
 
-                <TextField
-                    error={authFailed}
-                    id="outlined-error-helper-text"
-                    label="Login name"
-                    placeholder=""
-                    value={userInput}
-                    helperText="Only for existing users!"
-                    onChange={handleInputChange}
-                />
-                <Divider />
-            </Box>
+                <Box display="flex" justifyContent="center" alignItems="center" width="100%" mt={2}>
+                    <Button
+                        style={{backgroundColor:'black', color:'#E1ECF7'}}
+                        variant="outlined"
+                        size="medium"
+                        onClick={() => {setVerifyUser(true)}}
+                    >Sign In</Button>
+                </Box>
 
-            <Box display="flex" justifyContent="center" alignItems="center" width="100%" mt={2}>
-                <Button
-                    variant="outlined"
-                    size="medium"
-                    onClick={() => {setVerifyUser(true)}}
-                >Proceed</Button>
+                <Box display="flex" justifyContent="center" alignItems="center" width="100%" mt={2}>
+                    <Button
+                        style={{backgroundColor:'black', color:"#E1ECF7"}}
+                        variant="outlined"
+                        size="medium"
+                        onClick={() => {setNewUser(true)}}
+                    >Create Account</Button>
+                </Box>
             </Box>
         </Fragment>
 
