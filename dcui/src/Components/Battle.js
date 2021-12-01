@@ -668,7 +668,7 @@ export default function Battle(user)
         await sleep(1200);
         setShowVFX(false);
 
-        // Calculate damage to deal
+        // TODO: Calculate damage to deal
         if( true ) // if moveType === magic
         {
             // Use Magic Atk/Def for calculations
@@ -678,8 +678,8 @@ export default function Battle(user)
 
         }
 
-        setEnemyHP(enemyHP - idx.damage); // TODO: use stats in dmg calculation
-        setEHealthPercent( (enemyHP/enemyMaxHP) * 100 );
+        setEnemyHP(enemyHP - idx.damage); // TODO: use stats in dmg calculation ^
+        setEHealthPercent( ((enemyHP - idx.damage)/enemyMaxHP) * 100 );
         await sleep(800);
         setStatusBar(`${enemyName} takes ${idx.damage} damage!`); // TODO: you get the idea
         setAnimationStep(0);
@@ -687,129 +687,7 @@ export default function Battle(user)
         console.log(`current enemy hp ${enemyHP}`);
     }
 
-    async function handleAttack1()
-    {
-        if(turn === 1 || endOfRound>0) return;
-
-        setHasUsedMove(true);
-
-        // TODO: One Moves DB API call here to get JSON string
-
-        //setTimeout(null,1000);
-        // TODO: get move name from JSON
-        switch (currentCharacter) {
-            case 0:
-                setStatusBar("Fighter uses [MOVE 1]");
-                break;
-            case 1:
-                setStatusBar("Rogue uses [MOVE 1]");
-                break;
-            case 2:
-                setStatusBar("Sorceress uses [MOVE 1]");
-        }
-        setAnimationStep(1);
-        //setVFXSprite("./sprites/vfx/" + "Cartoon_FX9_idle_5.png");    // TODO: JSON data after the +
-        setVFXSprite(testVFX);
-        setShowVFX(true);
-        await sleep(1200);
-        setShowVFX(false);
-        setEnemyHP(enemyHP-10); // TODO: get damage amount from JSON
-        setEHealthPercent( (enemyHP/enemyMaxHP) * 100 );
-        await sleep(800);
-        setStatusBar("Enemy takes 10 damage!"); // TODO: you get the idea
-        setAnimationStep(0);
-        await sleep(2200);
-        console.log(`current enemy hp ${enemyHP}`);
-        //int damage = move.getDamage()
-        //setEnemyHP()
-        //await handleEndofRound();
-        //if(enemyHP-10>0)await enemyAttack();
-        //else handleEndofRound();
-    }
-    async function handleAttack2()
-    {
-        if(turn === 1 || endOfRound >0) return;
-
-        setHasUsedMove(true);
-
-        console.log('handle attack 2 called');
-        switch (currentCharacter) {
-            case 0:
-                setStatusBar("Fighter uses DEV ONE HITTER");
-                break;
-            case 1:
-                setStatusBar("Rogue uses DEV ONE HITTER");
-                break;
-            case 2:
-                setStatusBar("Sorceress uses DEV ONE HITTER");
-        }
-        setAnimationStep(1);
-        await sleep(1200);
-        setEnemyHP(enemyHP-50);
-        await sleep(800);
-        setStatusBar("Enemy takes 50 damage!");
-        setAnimationStep(0);
-        await sleep(2200);
-        //await handleEndofRound();
-       //if(enemyHP-50>0) await enemyAttack();
-       //else handleEndofRound();
-    }
-    async function handleAttack3()
-    {
-        if(turn === 1 || endOfRound >0) return;
-
-        setHasUsedMove(true);
-
-        console.log('handle attack 3 called');
-        switch (currentCharacter) {
-            case 0:
-                setStatusBar("Fighter uses [MOVE 3]");
-                break;
-            case 1:
-                setStatusBar("Rogue uses [MOVE 3]");
-                break;
-            case 2:
-                setStatusBar("Sorceress uses [MOVE 3]");
-        }
-        setAnimationStep(1);
-        await sleep(1200);
-        // set enemy hp
-        await sleep(800);
-        setStatusBar("Enemy takes [DMG] damage!");
-        setAnimationStep(0);
-        await sleep(2200);
-        //await handleEndofRound();
-        //await enemyAttack();
-    }
-    async function handleAttack4()
-    {
-        if(turn === 1 || endOfRound >0) return;
-
-        setHasUsedMove(true);
-
-        console.log('handle attack 4 called');
-        switch (currentCharacter) {
-            case 0:
-                setStatusBar("Fighter uses [MOVE 4]");
-                break;
-            case 1:
-                setStatusBar("Rogue uses [MOVE 4]");
-                break;
-            case 2:
-                setStatusBar("Sorceress uses [MOVE 4]");
-        }
-        setAnimationStep(1);
-        await sleep(1200);
-        // set enemy hp
-        await sleep(800);
-        setStatusBar("Enemy takes [DMG] damage!");
-        setAnimationStep(0);
-        await sleep(2200);
-        //await handleEndofRound();
-        //await enemyAttack();
-    }
     async function enemyAttack() {
-        //setEndOfRound();
         console.log(`end of round: ${endOfRound}`);
         if (endOfRound > 0 || enemyHP<0) return;
         setStatusBar("ENEMY TURN");
@@ -817,31 +695,9 @@ export default function Battle(user)
         console.log(`end of round: ${endOfRound}`);
         await sleep(2200);
         setEnemyAnimationStep(1);
-        await sleep(1300);
+        await sleep(200);
         let dmg = 0;
-        // Get randomized damage value
-        /*let dmgMin = 6;
-        let dmgMax = 11;
-        let dmg = Math.floor(Math.random() * (dmgMax - dmgMin) + dmgMin);
-        switch (currentCharacter) {
-            case 0:
-                setFighterHP(fighterHP - dmg);
-                setFHealthPercent((fighterHP / 500000) * 100 );
-                await sleep(1000);
-                setStatusBar(`Fighter takes ${dmg} damage!`);
-                break;
-            case 1:
-                setRogueHP(rogueHP - dmg);
-                setRHealthPercent( (rogueHP / 50) * 100 );
-                await sleep(1000);
-                setStatusBar(`Rogue takes ${dmg} damage!`);
-                break;
-            case 2:
-                setSorceressHP(sorceressHP - dmg);
-                setSHealthPercent( (sorceressHP / 50) * 100 );
-                await sleep(1000);
-                setStatusBar(`Sorceress takes ${dmg} damage!`);
-        }*/
+
         if(enemyAttack2===moves[0] && enemyAttack3 ===moves[0])
         {
             setVFXSprite(enemyAttack1.sprite);
@@ -927,7 +783,7 @@ export default function Battle(user)
                 setStatusBar(`Sorceress takes ${dmg} damage!`);
         }
         setEnemyAnimationStep(0);
-        await sleep(2500)
+        await sleep(1800)
         setTimeout(null,500);
         await handleEndofRound();
         if (fighterHP -dmg>0)
@@ -1015,13 +871,13 @@ export default function Battle(user)
         setTurn(0);
         setHasUsedMove(false);
         setHasSwappedCharacter(false);
+        setEHealthPercent(100);
         if(currEnemy === 1) setCurrEnemy(2);
         else if(currEnemy<15)setCurrEnemy(currEnemy+1);
         else setCurrEnemy(1);
         setHasUsedMove(false);
         const api = new API();
 
-        // TODO: API call to MonstersDB to get stats for next enemy
         const newmonsterStats = await api.getMonster(currEnemy);
         console.log(`newmonsterStats: ${JSON.stringify(newmonsterStats.data)}`);
         switch( newmonsterStats.data[0].monsterID )
@@ -1199,8 +1055,8 @@ export default function Battle(user)
                     }}>
                     <div style={{
                         position: 'absolute',
-                        top: 220,
-                        left: 300
+                        top: 250,
+                        left: 310
                     }}>
                         {
                             (currentCharacter === 0) &&
@@ -1215,7 +1071,7 @@ export default function Battle(user)
                             <Actor sprite={sorceressSpritePath} data={spriteData} step={animationStep}/>
                         }
                     </div>
-                    <div style={{position:'relative', top:'180px', left:'480px', display:"flex", justifyContent:'center', alignSelf:"flex-start"}}>
+                    <div style={{position:'relative', top:'40%', left:'42%', display:"flex", justifyContent:'center', alignSelf:"flex-start"}}>
                         {
                             showVFX &&
                             <Actor sprite={VFXSprite} data={VFXSpriteData} step={0}/>
@@ -1223,8 +1079,8 @@ export default function Battle(user)
                     </div>
                     <div style={{
                         position: 'absolute',
-                        top: 220,
-                        left:740
+                        top: 250,
+                        left:790
                     }}>
                         <Actor sprite={currEnemySpritePath} data={spriteData} step={enemyAnimationStep} />
                     </div>
@@ -1232,7 +1088,7 @@ export default function Battle(user)
                         <div style={{
                             position: 'absolute',
                             top: 580,
-                            left: 570
+                            left: 535
                         }}>
                             {statusBar}
                         </div>
