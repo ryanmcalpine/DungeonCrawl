@@ -312,7 +312,7 @@ export default class APIInterface {
     }
     async createAccount(user_id)
     {
-        return axiosAgent.get(`/users/createAcct/${user_id}`)
+        return axiosAgent.get(`/users/createAcct/${user_id}/`)
     }
 
 }

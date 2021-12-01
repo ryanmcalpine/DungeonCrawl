@@ -28,17 +28,20 @@ export default function Login({setUser}) {
         }
     };
 
-    useEffect(() => {
+    function handleCreateAccount()
+    {
+        if( userInput.length === 0 )
+            return;
+
         const api = new API();
+        api.createAccount(userInput);
+    }
 
-        if( newUser )
-        {
-            api.createAccount(userInput);
-            setVerifyUser(true);
-        }
-
+    useEffect(() => {
         if( ! verifyUser || userInput.length === 0)
             return;
+
+        const api = new API();
 
         async function getUserInfo() {
             api.getUserInfo(userInput)
@@ -93,7 +96,7 @@ export default function Login({setUser}) {
                         style={{backgroundColor:'black', color:"#E1ECF7", width:"165px"}}
                         variant="outlined"
                         size="medium"
-                        onClick={() => {setNewUser(true)}}
+                        onClick={() => {handleCreateAccount()}}
                     >Create Account</Button>
                 </Box>
             </Box>
