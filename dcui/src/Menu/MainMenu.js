@@ -60,21 +60,42 @@ export default function MainMenu({user, logoutAction}){
     if( showMenu === true )
     {
         return(
-            <div style={{position: 'absolute', left: '50%', top: '50%', outlineStyle:'groove', outlineColor:'#F4B860', backgroundColor: '#E1ECF7', borderRadius: '10px', padding:'10px'}}>
-                <h1 style={{color:'#F4B860', outlineStyle:'outset', outlineColor:'#F4B860', backgroundColor:'#212738', borderRadius:'5px', padding:'5px'}}>DUNGEON CRAWL</h1>
-                <Button variant={"outlined"} style={{backgroundColor:"black", color:"#E1ECF7"}} onClick={handleStartGame}>Start Game</Button>
-                <div style={{padding: '4px'}}/>
-                <Button variant={"outlined"} style={{backgroundColor:"black", color:"#E1ECF7"}} onClick={handleShowArmory}>Armory</Button>
-                <div style={{padding: '4px'}}/>
-                <Button variant={"outlined"} style={{backgroundColor:"black", color:"#E1ECF7"}} onClick={handleShowHighScores}>High Scores</Button>
-                <div style={{position:'absolute', left:'52%', top:'48%', display:'flex', alignItems:'center'}}>
+            <div style={{
+                width:'50%',
+                position: 'absolute',
+                left: '20%', top: '8%',
+                outlineStyle:'groove',
+                outlineColor:'#F4B860',
+                backgroundColor: '#E1ECF7',
+                borderRadius: '10px',
+                padding:'3%',
+                alignItems:'center',
+                justifyContent:'center'
+
+            }}>
+                <h1 style={{
+                    color:'#F4B860',
+                    outlineStyle:'outset',
+                    outlineColor:'#F4B860',
+                    backgroundColor:'#212738',
+                    borderRadius:'5px',
+                    padding:'5px',
+                    textAlign:'center'
+                }}>
+                    DUNGEON CRAWL
+                </h1>
+                <div style={{position:'relative', padding:'4%'}}/>
+                <Button variant={"outlined"} style={{position:'relative', top:'-12%', left:'10%', backgroundColor:"black", color:"#E1ECF7", width:'40%', height:'50px'}} onClick={handleStartGame}>Start Game</Button>
+                <div style={{position:'relative', marginLeft:'65%', top:'31%', display:'flex', alignItems:'center'}}>
                     <Avatar src={helmIcon} />
                     <span>{username}</span>
                 </div>
-                <div style={{position:'absolute', left:'61%', top:'68%', display:'flex', alignItems:'center'}}>
+                <Button variant={"outlined"} style={{position:'relative', top:'-12%', left:'10%', backgroundColor:"black", color:"#E1ECF7", width:'40%', height:'50px', marginTop:'5%'}} onClick={handleShowArmory}>Armory</Button>
+                <div style={{position:'relative', marginLeft:'65%', top:'41%', display:'flex', alignItems:'center'}}>
                     <Avatar src={goldIcon} />
                     <span>{goldAmount}</span>
                 </div>
+                <Button variant={"outlined"} style={{position:'relative', top:'-12%', left:'10%', backgroundColor:"black", color:"#E1ECF7", width:'40%', height:'50px', marginTop:'5%'}} onClick={handleShowHighScores}>High Scores</Button>
             </div>
         )
     }

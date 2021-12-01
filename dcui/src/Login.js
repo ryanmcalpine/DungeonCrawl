@@ -64,10 +64,10 @@ export default function Login({setUser}) {
 
     return (
         <Fragment>
-            <div style={{padding:'5%'}}>
-            <Box align={"center"} justifyContent={"center"} bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860', width:'50%'}} m={"auto"}>
+            <div style={{padding:'3%'}}>
+            <Box align={"center"} justifyContent={"center"} bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860', width:'50%', padding:'5%'}} m={"auto"}>
                 <div style={{textAlign:'center', align:'center', alignItems:'center', justifyContent:'center'}}>
-                    <h1 style={{align:'center', mt:'1', ml:'auto', color:'#F4B860', outlineStyle:'outset', outlineColor:'#F4B860', backgroundColor:'#212738', borderRadius:'5px', padding:'5px', width:'300px', textAlign:'center'}}>DUNGEON CRAWL</h1>
+                    <h1 style={{align:'center', mt:'1', ml:'auto', color:'#F4B860', outlineStyle:'outset', outlineColor:'#F4B860', backgroundColor:'#212738', borderRadius:'5px', padding:'5px', textAlign:'center'}}>DUNGEON CRAWL</h1>
                 </div>
                 <Box display="flex" justifyContent="center" alignItems="center" width="100%" mt={5}>
                     <TextField
@@ -84,7 +84,7 @@ export default function Login({setUser}) {
 
                 <Box display="flex" justifyContent="center" alignItems="center" width="100%" mt={2}>
                     <Button
-                        style={{backgroundColor:'black', color:'#E1ECF7', width:'165px'}}
+                        style={{backgroundColor:'black', color:'#E1ECF7', width:'40%', marginTop:'3%'}}
                         variant="outlined"
                         size="medium"
                         onClick={() => {setVerifyUser(true)}}
@@ -93,7 +93,7 @@ export default function Login({setUser}) {
 
                 <Box display="flex" justifyContent="center" alignItems="center" width="100%" mt={1}>
                     <Button
-                        style={{backgroundColor:'black', color:"#E1ECF7", width:"165px"}}
+                        style={{backgroundColor:'black', color:"#E1ECF7", width:"40%", marginTop:'3%'}}
                         variant="outlined"
                         size="medium"
                         onClick={() => {handleCreateAccount()}}
