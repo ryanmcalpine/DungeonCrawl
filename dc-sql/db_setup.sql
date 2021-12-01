@@ -7,6 +7,9 @@ spritePath varchar(100),
 consumeEffect smallint unsigned not null,
 primary key(itemID)
 );
+insert into consumables values(0, "./sprites/ui/RedPotion1.png", 12);
+insert into consumables values(0, "./sprites/ui/RedPotion2.png", 24);
+insert into consumables values(0, "./sprites/ui/RedPotion3.png", 36);
 drop table if exists weapons;
 create table weapons(
 itemID int unsigned not null auto_increment,
@@ -17,23 +20,44 @@ critChance smallint unsigned default 0,
 primary key(itemID)
 );
 drop table if exists armor;
+#itemID : 10 -> fighter
+#itemID : 20 -> mage
+#itemID : 30 -> rogue
 create table armor(
-itemID int unsigned not null auto_increment,
+itemID int unsigned,
 spritePath varchar(100),
 armorName varchar(100) default "we forgot to name this one lol",
-armorType int unsigned default 0,
-physicalDEF int unsigned default 0,
-magicDEF int unsigned default 0,
-passiveEffect bigint unsigned default 0,
+armorType tinyint(3) not null,
+HP bigint unsigned not null,
+PA bigint unsigned not null,
+MA bigint unsigned not null,
+PD bigint unsigned not null,
+MD bigint unsigned not null,
+SPD bigint unsigned not null,
 primary key(itemID)
 );
+insert into armor values(10,"./sprites/player/fighter_folk.png","Folk",1,20,12,3,8,2,8);
+insert into armor values(11,"./sprites/player/fighter_barbarian.png","Barbarian",1,25,15,5,11,4,10);
+insert into armor values(12,"./sprites/player/fighter_crusader.png","Crusader",1,32,18,7,14,7,11);
+insert into armor values(13,"./sprites/player/fighter_samurai.png","Samurai",1,40,20,9,16,10,13);
+insert into armor values(14,"./sprites/player/fighter_knight.png","Knight",1,50,23,13,19,13,14);
+insert into armor values(20,"./sprites/player/sorceress_folk.png","Folk",2,16,3,12,2,8,11);
+insert into armor values(21,"./sprites/player/sorceress_acolyte.png","Acolyte",2,21,5,15,5,10,12);
+insert into armor values(22,"./sprites/player/sorceress_priest.png","Priestess",2,26,7,18,8,13,14);
+insert into armor values(23,"./sprites/player/sorceress_mage.png","Mage",2,32,9,20,10,16,15);
+insert into armor values(24,"./sprites/player/sorceress_wizard.png","Dark Sorceress",2,38,12,24,13,19,17);
+insert into armor values(30,"./sprites/player/rogue_folk.png","Folk",3,18,9,6,6,4,14);
+insert into armor values(31,"./sprites/player/rogue_thief.png","Thief",3,23,11,9,9,6,15);
+insert into armor values(32,"./sprites/player/rogue_archer.png","Archer",3,29,14,11,12,9,17);
+insert into armor values(33,"./sprites/player/rogue_musketeer.png","Witch Hunter",3,36,16,13,14,12,18);
+insert into armor values(34,"./sprites/player/rogue_ninja.png","Ninja",3,42,20,17,17,15,20);
+
 drop table if exists moves;
 create table moves(
+moveID bigint not null,
 moveName varchar(40) not null,
 damageType  smallint unsigned default 0,
 damageValue bigint unsigned default 0,
-selfStatusEffects smallint unsigned default 0,
-targetStatusEffects smallint unsigned default 0,
 primary key(moveName)
 );
 drop table if exists users;
@@ -59,9 +83,9 @@ rogueMagicalAttack bigint unsigned default 5,
 roguePhysicalDefense bigint unsigned default 7,
 rogueMagicDefense bigint unsigned default 7,
 rogueSpeed bigint unsigned default 12,
-fighterEquipped tinyint(4) default 0,
-mageEquipped tinyint(4) default 0,
-rogueEquipped tinyint(4) default 0,
+fighterEquipped int default 0,
+mageEquipped int default 10,
+rogueEquipped int default 5,
 fighter0Unlocked tinyint(1) default 1,
 fighter1Unlocked tinyint(1) default 0,
 fighter2Unlocked tinyint(1) default 0,
