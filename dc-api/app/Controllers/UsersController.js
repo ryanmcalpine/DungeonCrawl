@@ -1149,6 +1149,27 @@ class UsersController {
             });
         }).catch(err => console.log("Database connection error.", err));
     }
+    async createAcct(ctx) {
+        //console.log(`update gold called with: ${ctx.params.gold} and ${ctx.params.userName}`);
+        return new Promise((resolve, reject) => {
+            const query = `insert into users values(?,default,default,default,default,default,default,default,
+default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default)`;
+            dbConnection.query({
+                sql: query,
+                values: [ ctx.params.userName]
+            }, (error, tuples) => {
+                if (error) {
+                    console.log("Connection error in UsersController::createAcct", error);
+                    ctx.body = [];
+                    ctx.status = 200;
+                    return reject(error);
+                }
+                ctx.body = tuples;
+                ctx.status = 200;
+                return resolve();
+            });
+        }).catch(err => console.log("Database connection error.", err));
+    }
 }
 //TODO Make a write account function
 
