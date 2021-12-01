@@ -69,7 +69,7 @@ export default function Login({setUser}) {
                 <div style={{textAlign:'center', align:'center', alignItems:'center', justifyContent:'center'}}>
                     <h1 style={{align:'center', mt:'1', ml:'auto', color:'#F4B860', outlineStyle:'outset', outlineColor:'#F4B860', backgroundColor:'#212738', borderRadius:'5px', padding:'5px', textAlign:'center'}}>DUNGEON CRAWL</h1>
                 </div>
-                <Box display="flex" justifyContent="center" alignItems="center" width="100%" mt={5}>
+                <Box display="flex" justifyContent="center" alignItems="center" width="100%" mt={8}>
                     <TextField
                         error={authFailed}
                         id="outlined-error-helper-text"
