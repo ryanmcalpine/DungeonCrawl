@@ -310,5 +310,9 @@ export default class APIInterface {
     {
         return axiosAgent.get(`/items/getConsumable/${itemID}`)
     }
+    async createAccount(user_id)
+    {
+        return axiosAgent.get(`/users/createAcct/${user_id}`)
+    }
 
 }

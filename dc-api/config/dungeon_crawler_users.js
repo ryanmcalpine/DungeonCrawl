@@ -103,6 +103,7 @@ userRouter.get('/setrogue1Unlocked/:rogue1Unlocked/:userName/',UsersController.s
 userRouter.get('/setrogue2Unlocked/:rogue2Unlocked/:userName/',UsersController.setrogue2Unlocked, err => console.log(`setrogue2Unlocked ran into an error: ${err}`));
 userRouter.get('/setrogue3Unlocked/:rogue3Unlocked/:userName/',UsersController.setrogue3Unlocked, err => console.log(`setrogue3Unlocked ran into an error: ${err}`));
 userRouter.get('/setrogue4Unlocked/:rogue4Unlocked/:userName/',UsersController.setrogue4Unlocked, err => console.log(`setrogue4Unlocked ran into an error: ${err}`));
+userRouter.get('/createAcct/:userName/',UsersController.createAcct, err => console.log(`createAcct ran into an error: ${err}`));
 
 
 /**
