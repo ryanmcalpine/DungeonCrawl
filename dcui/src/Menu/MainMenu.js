@@ -90,12 +90,12 @@ export default function MainMenu({user, logoutAction}){
                     <Avatar src={helmIcon} />
                     <span>{username}</span>
                 </div>
-                <Button variant={"outlined"} style={{position:'relative', top:'-12%', left:'10%', backgroundColor:"black", color:"#E1ECF7", width:'40%', height:'50px', marginTop:'5%'}} onClick={handleShowArmory}>Armory</Button>
+                <Button variant={"outlined"} style={{position:'relative', top:'-12%', left:'10%', backgroundColor:"black", color:"#E1ECF7", width:'40%', height:'50px'}} onClick={handleShowArmory}>Armory</Button>
                 <div style={{position:'relative', marginLeft:'65%', top:'41%', display:'flex', alignItems:'center'}}>
                     <Avatar src={goldIcon} />
                     <span>{goldAmount}</span>
                 </div>
-                <Button variant={"outlined"} style={{position:'relative', top:'-12%', left:'10%', backgroundColor:"black", color:"#E1ECF7", width:'40%', height:'50px', marginTop:'5%'}} onClick={handleShowHighScores}>High Scores</Button>
+                <Button variant={"outlined"} style={{position:'relative', top:'-12%', left:'10%', backgroundColor:"black", color:"#E1ECF7", width:'40%', height:'50px'}} onClick={handleShowHighScores}>High Scores</Button>
             </div>
         )
     }

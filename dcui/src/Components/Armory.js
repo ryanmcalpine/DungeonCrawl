@@ -245,7 +245,7 @@ export default function Armory(user)
             <Table sx={{border:'5px ridge #F4B860'}}>
                 <text style={{position:'relative', left:'2%', color:'white', fontSize:'18px', fontWeight:'bold'}}>FIGHTER</text>
                 <TableRow>
-                    <TableCell component={"div"} align={'center'}>
+                    <TableCell component={"div"} align={'center'} style={{width: '20%'}}>
                         <Actor sprite={f_folk} data={spriteData} />
                         <div />
                         <b style={{color:'white', fontSize:'20px'}}>Folk</b>
@@ -282,7 +282,7 @@ export default function Armory(user)
                             }
                         </Box>
                     </TableCell>
-                    <TableCell component={"div"} align={'center'}>
+                    <TableCell component={"div"} align={'center'} style={{width: '20%'}}>
                         <Actor sprite={f_barbarian} data={spriteData} />
                         <div />
                         <b style={{color:'white', fontSize:'20px'}}>Barbarian</b>
@@ -332,7 +332,7 @@ export default function Armory(user)
                             </div>
                         </Box>
                     </TableCell>
-                    <TableCell component={"div"} align={'center'}>
+                    <TableCell component={"div"} align={'center'} style={{width: '20%'}}>
                         <Actor sprite={f_crusader} data={spriteData} />
                         <div />
                         <b style={{color:'white'}}>Crusader</b>
@@ -382,7 +382,7 @@ export default function Armory(user)
                             </div>
                         </Box>
                     </TableCell>
-                    <TableCell component={"div"} align={'center'}>
+                    <TableCell component={"div"} align={'center'} style={{width: '20%'}}>
                         <Actor sprite={f_samurai} data={spriteData} />
                         <div />
                         <b style={{color:'white', fontSize:'20px'}}>Samurai</b>
@@ -430,7 +430,7 @@ export default function Armory(user)
                             }
                         </Box>
                     </TableCell>
-                    <TableCell component={"div"} align={'center'}>
+                    <TableCell component={"div"} align={'center'} style={{width: '20%'}}>
                         <Actor sprite={f_knight} data={spriteData} />
                         <div />
                         <b style={{color:'white', fontSize:'20px'}}>Knight</b>
@@ -481,7 +481,7 @@ export default function Armory(user)
                 </TableRow>
                 <text style={{position:'relative', left:'2%', color:'white', fontSize:'18px', fontWeight:'bold'}}>ROGUE</text>
                 <TableRow>
-                    <TableCell component={"div"} align={'center'}>
+                    <TableCell component={"div"} align={'center'} >
                         <Actor sprite={r_folk} data={spriteData} />
                         <div />
                         <b style={{color:'white', fontSize:'20px'}}>Folk</b>
