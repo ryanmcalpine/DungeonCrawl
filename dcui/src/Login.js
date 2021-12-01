@@ -29,16 +29,17 @@ export default function Login({setUser}) {
     };
 
     useEffect(() => {
+        const api = new API();
+
         if( newUser )
         {
-            // api.createAccount(userInput);
+            api.createAccount(userInput);
             setVerifyUser(true);
         }
 
         if( ! verifyUser || userInput.length === 0)
             return;
 
-        const api = new API();
         async function getUserInfo() {
             api.getUserInfo(userInput)
                 .then( userInfo => {
@@ -55,7 +56,7 @@ export default function Login({setUser}) {
         }
 
         getUserInfo();
-    }, [verifyUser, setUser, userInput]);
+    }, [verifyUser, setUser, userInput, newUser]);
 
 
     return (
