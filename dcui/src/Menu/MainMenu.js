@@ -28,7 +28,7 @@ export default function MainMenu({user, logoutAction}){
         }
 
         getUserInfo();
-    }, []);
+    }, [showMenu]);
 
     const handleStartGame = () => {
         setShowMenu(false);
