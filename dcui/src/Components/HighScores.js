@@ -1,5 +1,5 @@
 import React, {useState, useEffect, Fragment} from 'react';
-import {Typography, Paper} from "@mui/material";
+import {Paper, Typography} from "@mui/material";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -27,15 +27,12 @@ const nextKey = () => keyID++;
 export default function HighScores(props)
 {
     const [users, setUsers] = useState([]);
-    console.log(`HighScores table contains the following accounts: ${JSON.stringify(users)}`);
 
     useEffect( () => {
         const api = new API();
 
         async function getUsers() {
-            console.log(`HighScores.js::useEffect(): getUsers() called`);
             const usersJSONString = await api.gethighScores();
-            console.log(`HighScores.js::useEffect(): users from the database: ${JSON.stringify(usersJSONString)}`);
             setUsers(usersJSONString.data);
         }
 

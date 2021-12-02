@@ -13,11 +13,10 @@ const AxiosConfigured = () => {
     axios.defaults.withCredentials = true;
 
 
-//    axios.defaults.headers.common['X-CSRF-TOKEN'] = csrf_token;
+    // axios.defaults.headers.common['X-CSRF-TOKEN'] = csrf_token;
 
     return axios;
 };
-
 
 const axiosAgent = AxiosConfigured();
 
@@ -314,5 +313,4 @@ export default class APIInterface {
     {
         return axiosAgent.get(`/login/createAcct/${user_id}/`)
     }
-
 }

@@ -1,10 +1,9 @@
 import React, {useState, useEffect, Fragment} from 'react';
-import Button from '@mui/material/Button';
-import {Avatar} from "@mui/material";
-import LinearProgress from '@mui/material/LinearProgress';
-import Box from '@mui/material/Box';
+import {Avatar, Box, Button, LinearProgress} from "@mui/material";
 
 import Actor from "./Actor";
+import API from "../API_Interface/API_Interface";
+
 import cave from './sprites/backgrounds/Cave.png';
 import field from './sprites/backgrounds/Field.png';
 import lavaCave from './sprites/backgrounds/Lava_Cave.png';
@@ -18,7 +17,7 @@ import f_knight from "./sprites/player/fighter_knight.png";
 import f_samurai from "./sprites/player/fighter_samurai.png";
 import r_archer from "./sprites/player/rogue_archer.png";
 import r_folk from "./sprites/player/rogue_folk.png";
-import r_witchhunter from "./sprites/player/rogue_musketeer.png";
+import r_witchHunter from "./sprites/player/rogue_musketeer.png";
 import r_ninja from "./sprites/player/rogue_ninja.png";
 import r_thief from "./sprites/player/rogue_thief.png";
 import s_folk from "./sprites/player/sorceress_folk.png";
@@ -43,7 +42,6 @@ import inventoryIcon from './sprites/ui/Bag.png';
 import heartIcon from './sprites/ui/Heart.png';
 import spider from './sprites/enemy/spider.png';
 
-import testVFX from './sprites/vfx/Cartoon_FX9_idle_5.png';
 import vfx_quickAttack from './sprites/vfx/Cartoon_FX1_00.png';
 import vfx_scratch from './sprites/vfx/Cartoon_FX21_02.png';
 import vfx_bite from './sprites/vfx/Cartoon_FX6_05.png';
@@ -79,7 +77,6 @@ import vfx_blueFlameEruption from './sprites/vfx/Cartoon_FX37_idle_05.png';
 import vfx_blackHole from './sprites/vfx/Cartoon_FX25_hole_idle_08.png';
 
 import goldIcon from "./sprites/ui/GoldenCoin.png";
-import API from "../API_Interface/API_Interface";
 
 export default function Battle(user)
 {
@@ -88,9 +85,8 @@ export default function Battle(user)
     const [rogueHP,setRogueHP] = useState(50);
     const [sorceressHP,setSorceressHP] = useState(50);
     const [statusBar,setStatusBar] = useState("Sic 'em!");
-    const [endOfRound, setEndOfRound] = useState(0);
-    // 0 -> game is still going, 1 -> enemy died, 2 -> we died ;-;
-    const [turn,setTurn] = useState(0);//0 -> players turn 1->enemy's turn
+    const [endOfRound, setEndOfRound] = useState(0); // 0 -> game is ongoing, 1 -> enemy died, 2 -> we died ;-;
+    const [turn,setTurn] = useState(0); //0 -> players turn 1->enemy's turn
     const [animationStep, setAnimationStep] = useState(0); // 0 = idle, 1 = attack
     const [enemyAnimationStep, setEnemyAnimationStep] = useState(0);
     const [stage,setStage] = useState(0);
@@ -348,24 +344,24 @@ export default function Battle(user)
             sprite: vfx_blackHole,
         }
     ];
-    const [fighterAttack1,setfighterAttack1] = useState(moves[0]);
-    const [fighterAttack2,setfighterAttack2] = useState(moves[0]);
-    const [fighterAttack3,setfighterAttack3] = useState(moves[0]);
-    const [fighterAttack4,setfighterAttack4] = useState(moves[0]);
+    const [fighterAttack1,setFighterAttack1] = useState(moves[0]);
+    const [fighterAttack2,setFighterAttack2] = useState(moves[0]);
+    const [fighterAttack3,setFighterAttack3] = useState(moves[0]);
+    const [fighterAttack4,setFighterAttack4] = useState(moves[0]);
 
-    const [mageAttack1,setmageAttack1] = useState(moves[0]);
-    const [mageAttack2,setmageAttack2] = useState(moves[0]);
-    const [mageAttack3,setmageAttack3] = useState(moves[0]);
-    const [mageAttack4,setmageAttack4] = useState(moves[0]);
+    const [mageAttack1,setMageAttack1] = useState(moves[0]);
+    const [mageAttack2,setMageAttack2] = useState(moves[0]);
+    const [mageAttack3,setMageAttack3] = useState(moves[0]);
+    const [mageAttack4,setMageAttack4] = useState(moves[0]);
 
-    const [rogueAttack1,setrogueAttack1] = useState(moves[0]);
-    const [rogueAttack2,setrogueAttack2] = useState(moves[0]);
-    const [rogueAttack3,setrogueAttack3] = useState(moves[0]);
-    const [rogueAttack4,setrogueAttack4] = useState(moves[0]);
+    const [rogueAttack1,setRogueAttack1] = useState(moves[0]);
+    const [rogueAttack2,setRogueAttack2] = useState(moves[0]);
+    const [rogueAttack3,setRogueAttack3] = useState(moves[0]);
+    const [rogueAttack4,setRogueAttack4] = useState(moves[0]);
 
-    const [enemyAttack1,setenemyAttack1] = useState(moves[0]);
-    const [enemyAttack2,setenemyAttack2] = useState(moves[0]);
-    const [enemyAttack3,setenemyAttack3] = useState(moves[0]);
+    const [enemyAttack1,setEnemyAttack1] = useState(moves[0]);
+    const [enemyAttack2,setEnemyAttack2] = useState(moves[0]);
+    const [enemyAttack3,setEnemyAttack3] = useState(moves[0]);
 
     function sleep( ms )    // Pause program execution for duration in milliseconds
     {
@@ -383,7 +379,6 @@ export default function Battle(user)
                 setGoldAmount(goldJSONString.data[0].gold);
 
                 const feq = await api.getFighterEquipped(username);
-                console.log(`intended FSP: ${JSON.stringify(feq.data[0].fighterEquipped)}`);
                 switch( feq.data[0].fighterEquipped )
                 {
                     case 0:
@@ -391,31 +386,29 @@ export default function Battle(user)
                         break;
                     case 1:
                         setFighterSpritePath(f_barbarian);
-                        setfighterAttack2(moves[9]);
+                        setFighterAttack2(moves[9]);
                         break;
                     case 2:
                         setFighterSpritePath(f_crusader);
-                        setfighterAttack2(moves[12]);
-                        setfighterAttack3(moves[13]);
+                        setFighterAttack2(moves[12]);
+                        setFighterAttack3(moves[13]);
                         break;
                     case 3:
-                        console.log(`This is a musketeer?`);
                         setFighterSpritePath(f_samurai);
-                        setfighterAttack1(moves[24]);
-                        setfighterAttack2(moves[21]);
-                        setfighterAttack3(moves[10]);
-                        setfighterAttack4(moves[15]);
+                        setFighterAttack1(moves[24]);
+                        setFighterAttack2(moves[21]);
+                        setFighterAttack3(moves[10]);
+                        setFighterAttack4(moves[15]);
                         break;
                     case 4:
                         setFighterSpritePath(f_knight);
-                        setfighterAttack1(moves[28]);
-                        setfighterAttack2(moves[24]);
-                        setfighterAttack3(moves[10]);
-                        setfighterAttack4(moves[16]);
+                        setFighterAttack1(moves[28]);
+                        setFighterAttack2(moves[24]);
+                        setFighterAttack3(moves[10]);
+                        setFighterAttack4(moves[16]);
 
                 }
                 const req = await api.getRogueEquipped(username);
-                console.log(`intended FSP: ${JSON.stringify(req.data[0].rogueEquipped)}`);
                 switch( req.data[0].rogueEquipped )
                 {
                     case 5:
@@ -423,31 +416,30 @@ export default function Battle(user)
                         break;
                     case 6:
                         setRogueSpritePath(r_thief);
-                        setrogueAttack2(moves[10]);
+                        setRogueAttack2(moves[10]);
 
                         break;
                     case 7:
                         setRogueSpritePath(r_archer);
-                        setrogueAttack1(moves[4]);
-                        setrogueAttack2(moves[8]);
-                        setrogueAttack3(moves[7]);
+                        setRogueAttack1(moves[4]);
+                        setRogueAttack2(moves[8]);
+                        setRogueAttack3(moves[7]);
                         break;
                     case 8:
-                        setRogueSpritePath(r_witchhunter);
-                        setrogueAttack1(moves[20]);
-                        setrogueAttack2(moves[8]);
-                        setrogueAttack3(moves[27]);
-                        setrogueAttack4(moves[19]);
+                        setRogueSpritePath(r_witchHunter);
+                        setRogueAttack1(moves[20]);
+                        setRogueAttack2(moves[8]);
+                        setRogueAttack3(moves[27]);
+                        setRogueAttack4(moves[19]);
                         break;
                     case 9:
                         setRogueSpritePath(r_ninja);
-                        setrogueAttack1(moves[21]);
-                        setrogueAttack2(moves[20]);
-                        setrogueAttack3(moves[10]);
-                        setrogueAttack4(moves[15]);
+                        setRogueAttack1(moves[21]);
+                        setRogueAttack2(moves[20]);
+                        setRogueAttack3(moves[10]);
+                        setRogueAttack4(moves[15]);
                 }
                 const seq = await api.getMageEquipped(username);
-                console.log(`intended FSP: ${JSON.stringify(seq.data[0].mageEquipped)}`);
                 switch( seq.data[0].mageEquipped )
                 {
                     case 10:
@@ -455,45 +447,33 @@ export default function Battle(user)
                         break;
                     case 11:
                         setSorceressSpritePath(s_acolyte);
-                        setmageAttack1(moves[7]);
-                        setmageAttack2(moves[22]);
+                        setMageAttack1(moves[7]);
+                        setMageAttack2(moves[22]);
                         break;
                     case 12:
                         setSorceressSpritePath(s_priestess);
-                        setmageAttack1(moves[26]);
-                        setmageAttack2(moves[20]);
-                        setmageAttack3(moves[6]);
-                        setmageAttack4(moves[18]);
+                        setMageAttack1(moves[26]);
+                        setMageAttack2(moves[20]);
+                        setMageAttack3(moves[6]);
+                        setMageAttack4(moves[18]);
                         break;
                     case 13:
                         setSorceressSpritePath(s_mage);
-                        setmageAttack1(moves[26]);
-                        setmageAttack2(moves[19]);
-                        setmageAttack3(moves[24]);
-                        setmageAttack4(moves[18]);
+                        setMageAttack1(moves[26]);
+                        setMageAttack2(moves[19]);
+                        setMageAttack3(moves[24]);
+                        setMageAttack4(moves[18]);
                         break;
                     case 14:
                         setSorceressSpritePath(s_wizard);
-                        setmageAttack1(moves[5]);
-                        setmageAttack2(moves[29]);
-                        setmageAttack3(moves[32]);
-                        setmageAttack4(moves[30]);
+                        setMageAttack1(moves[5]);
+                        setMageAttack2(moves[29]);
+                        setMageAttack3(moves[32]);
+                        setMageAttack4(moves[30]);
                 }
-                //console.log(`fsp: ${fighterSpritePath}`);
-                //console.log(`ssp: ${sorceressSpritePath}`);
-                //console.log(`rsp: ${rogueSpritePath}`);
-                /*
-                console.log(`Battle.js:: Fsp = ${fsp.data[0].fighterEquipped}`);
-                setFighterSpritePath( fsp.data[0].spritePath );
-                console.log(`Battle.js:: Fighter sprite path = ${fighterSpritePath}`);
-                */
 
-                // setRogueSpritePath(  );
-                // setSorceressSpritePath(  );
-
-                // TODO: API call to ArmorDB to get stats for equipped armor sets
+                // API call to ArmorDB to get stats for equipped armor sets
                 const armorStatsF = await api.getArmor(feq.data[0].fighterEquipped+10);
-                //console.log(`stats = ${JSON.stringify(armorStatsF)}`);
                 setFighterMaxHP(armorStatsF.data[0].HP);
                 setFighterPA(armorStatsF.data[0].PA);
                 setFighterMA(armorStatsF.data[0].MA);
@@ -501,98 +481,98 @@ export default function Battle(user)
                 setFighterMD(armorStatsF.data[0].MD);
                 setFighterSPD(armorStatsF.data[0].SPD);
                 setFighterHP(fighterMaxHP);
-
+                // TODO: Fix max health not being set properly
+                console.log(`Fighter Max HP (JSON): ${armorStatsF.data[0].HP}`);    // prints 50 (tested with knight)
+                console.log(`Fighter Max HP: ${fighterMaxHP}`);                     // prints 20 (tested with knight)
                 const armorStatsR = await api.getArmor(feq.data[0].fighterEquipped+30);
-                //console.log(`stats = ${JSON.stringify(armorStatsR)}`);
                 setRogueMaxHP(armorStatsR.data[0].HP);
                 setRoguePA(armorStatsR.data[0].SP);
                 setRogueMA(armorStatsR.data[0].MA);
                 setRoguePD(armorStatsR.data[0].PD);
                 setRogueMD(armorStatsR.data[0].MD);
                 setRogueSPD(armorStatsR.data[0].SPD);
-                setRogueHP(rogueMaxHP);
+                setRogueHP(rogueMaxHP); // TODO ^
                 const armorStatsS = await api.getArmor(feq.data[0].fighterEquipped+20);
-                //console.log(`stats = ${JSON.stringify(armorStatsS)}`);
                 setSorceressMaxHP(armorStatsS.data[0].HP);
                 setSorceressPA(armorStatsS.data[0].SP);
                 setSorceressMA(armorStatsS.data[0].MA);
                 setSorceressPD(armorStatsS.data[0].PD);
                 setSorceressMD(armorStatsS.data[0].MP);
                 setSorceressSPD(armorStatsS.data[0].SPD);
-                setSorceressHP(sorceressMaxHP);
-                // TODO: API call to MonstersDB to get stats for first enemy
+                setSorceressHP(sorceressMaxHP); //TODO ^
+
+                // API call to MonstersDB to get stats for first enemy
                 const monsterStats = await api.getMonster(currEnemy)
-                console.log(`monsterStats: ${JSON.stringify(monsterStats.data)}`);
                 switch( monsterStats.data[0].monsterID )
                 {
                     case 1:
                         setcurrEnemySpritePath(crow);
-                        setenemyAttack1(moves[2]);
-                        setenemyAttack2(moves[1]);
+                        setEnemyAttack1(moves[2]);
+                        setEnemyAttack2(moves[1]);
                         break;
                     case 2:
                         setcurrEnemySpritePath(rat);
-                        setenemyAttack1(moves[2]);
-                        setenemyAttack2(moves[1]);
+                        setEnemyAttack1(moves[2]);
+                        setEnemyAttack2(moves[1]);
                         break;
                     case 3:
                         setcurrEnemySpritePath(slime);
-                        setenemyAttack1(moves[2]);
-                        setenemyAttack2(moves[3]);
-                        setenemyAttack3(moves[4]);
+                        setEnemyAttack1(moves[2]);
+                        setEnemyAttack2(moves[3]);
+                        setEnemyAttack3(moves[4]);
                         break;
                     case 4:
                         setcurrEnemySpritePath(ghost);
-                        setenemyAttack1(moves[4]);
+                        setEnemyAttack1(moves[4]);
                         break;
                     case 5:
                         setcurrEnemySpritePath(spider);
-                        setenemyAttack1(moves[2]);
+                        setEnemyAttack1(moves[2]);
                         break;
                     case 6:
                         setcurrEnemySpritePath(zombie);
-                        setenemyAttack1(moves[2]);
-                        setenemyAttack2(moves[1]);
-                        setenemyAttack3(moves[3]);
+                        setEnemyAttack1(moves[2]);
+                        setEnemyAttack2(moves[1]);
+                        setEnemyAttack3(moves[3]);
                         break;
                     case 7:
                         setcurrEnemySpritePath(goblin);
-                        setenemyAttack1(moves[0]);
-                        setenemyAttack2(moves[12]);
-                        setenemyAttack3(moves[8]);
+                        setEnemyAttack1(moves[0]);
+                        setEnemyAttack2(moves[12]);
+                        setEnemyAttack3(moves[8]);
                         break;
                     case 8:
                         setcurrEnemySpritePath(orc);
-                        setenemyAttack1(moves[13]);
-                        setenemyAttack2(moves[9]);
-                        setenemyAttack3(moves[8]);
+                        setEnemyAttack1(moves[13]);
+                        setEnemyAttack2(moves[9]);
+                        setEnemyAttack3(moves[8]);
                         break;
                     case 9:
                         setcurrEnemySpritePath(worm);
-                        setenemyAttack1(moves[2]);
+                        setEnemyAttack1(moves[2]);
                         break;
                     case 10:
                         setcurrEnemySpritePath(bat);
-                        setenemyAttack1(moves[2]);
+                        setEnemyAttack1(moves[2]);
                         break;
                     case 11:
                         setcurrEnemySpritePath(cyclops);
-                        setenemyAttack1(moves[3]);
-                        setenemyAttack2(moves[9]);
+                        setEnemyAttack1(moves[3]);
+                        setEnemyAttack2(moves[9]);
                         break;
                     case 12:
                         setcurrEnemySpritePath(skeleton);
-                        setenemyAttack1(moves[12]);
-                        setenemyAttack2(moves[13]);
+                        setEnemyAttack1(moves[12]);
+                        setEnemyAttack2(moves[13]);
                         break;
                     case 13:
                         setcurrEnemySpritePath(beholder);
-                        setenemyAttack1(moves[31]);
-                        setenemyAttack2(moves[30]);
+                        setEnemyAttack1(moves[31]);
+                        setEnemyAttack2(moves[30]);
                         break;
                     case 14:
                         setcurrEnemySpritePath(demon);
-                        setenemyAttack1(moves[5]);
+                        setEnemyAttack1(moves[5]);
                 }
                 setEnemyMaxHP(monsterStats.data[0].maxHP);
                 setEnemyPA(monsterStats.data[0].physicalATK);
@@ -607,47 +587,34 @@ export default function Battle(user)
             getUserInfo();
 
             setHasBeenInitialized(true);
-
         }
 
-        console.log(`handle end of round called`);
-        console.log(`enemy hp ${enemyHP}`);
-        console.log(enemyHP <= 0);
         if(fighterHP <=0)
         {
             setEndOfRound(2);
             setStatusBar("YOUR PARTY HAS BEEN DEFEATED!");
-            //await sleep(2500)
         }
         else if(enemyHP <= 0)
         {
-            console.log(`enemy should be dead`);
             setEndOfRound(1);
-            //setStatusBar("YOU WON!");
-            let goldRewardMin = 6;
+            let goldRewardMin = 4;
             let goldRewardMax = 11;
             let goldReward = Math.floor(Math.random() * (goldRewardMax - goldRewardMin) + goldRewardMin) + (currEnemy * Math.floor(Math.random() * 2 + 1));
             const api = new API();
             api.updateGold( username, goldAmount+goldReward )
             setStatusBar(`You have received ${goldReward} gold!`);
             setGoldAmount(goldAmount+goldReward);
-            //await sleep(2500);
-            //await sleep(2500)
         }
         else setEndOfRound(0);
-        console.log(`end of round: ${endOfRound}`);
         return endOfRound;
         }, [fighterHP,endOfRound,enemyHP]);
 
-    // WIP Attempt to make one function to handle all attacks
+    // One function to handle all player attacks
     async function handleAttack( idx )  // idx = 0-3 for attack buttons
     {
-        console.log(`handleAttack(idx) called`);
         if(turn === 1 || endOfRound>0) return;
 
         setHasUsedMove(true);
-
-        // TODO: get index of move we are using in moves[]
 
         // Get the name in string to use in status bar
         switch (currentCharacter) {
@@ -660,16 +627,17 @@ export default function Battle(user)
             case 2:
                 setClassName("Sorceress");
         }
+
         setStatusBar(`${className} uses ${idx.name}`)
         setAnimationStep(1);
         setVFXSprite(idx.sprite);
-        //setVFXSprite(testVFX);
         setShowVFX(true);
         await sleep(1200);
         setShowVFX(false);
 
-        // TODO: Calculate damage to deal
-        if( true ) // if moveType === magic
+        // TODO: Calculate damage to deal using character & enemy stats
+        /*
+        if( moves[idx].type === 2 ) // if moveType === magic
         {
             // Use Magic Atk/Def for calculations
         }
@@ -677,27 +645,25 @@ export default function Battle(user)
         {
 
         }
+        */
 
-        setEnemyHP(enemyHP - idx.damage); // TODO: use stats in dmg calculation ^
+        setEnemyHP(enemyHP - idx.damage); // TODO: ^
         setEHealthPercent( ((enemyHP - idx.damage)/enemyMaxHP) * 100 );
         await sleep(800);
-        setStatusBar(`${enemyName} takes ${idx.damage} damage!`); // TODO: you get the idea
+        setStatusBar(`${enemyName} takes ${idx.damage} damage!`); // TODO: ^
         setAnimationStep(0);
         await sleep(2200);
-        console.log(`current enemy hp ${enemyHP}`);
     }
 
     async function enemyAttack() {
-        console.log(`end of round: ${endOfRound}`);
         if (endOfRound > 0 || enemyHP<0) return;
+
         setStatusBar("ENEMY TURN");
-        console.log('enemy attack called');
-        console.log(`end of round: ${endOfRound}`);
         await sleep(2200);
         setEnemyAnimationStep(1);
         await sleep(200);
-        let dmg = 0;
 
+        let dmg = 0;
         if(enemyAttack2===moves[0] && enemyAttack3 ===moves[0])
         {
             setVFXSprite(enemyAttack1.sprite);
@@ -782,26 +748,24 @@ export default function Battle(user)
                 await sleep(1000);
                 setStatusBar(`Sorceress takes ${dmg} damage!`);
         }
+
         setEnemyAnimationStep(0);
         await sleep(1800)
         setTimeout(null,500);
-        await handleEndofRound();
-        if (fighterHP -dmg>0)
+        await handleEndOfRound();
+        if (fighterHP - dmg > 0)
         {
             setTurn(0);
             setStatusBar("Player Turn!");
         }
-        else await handleEndofRound();
-
+        else await handleEndOfRound();
     }
-    async function handleEndofRound()
+    async function handleEndOfRound()
     {
         setEndOfRound(3);
         setHasUsedMove(false);
         setHasSwappedCharacter(false);
-        console.log(`handle end of round called`);
-        console.log(`enemy hp ${enemyHP}`);
-        console.log(enemyHP <= 0);
+
         if( currentCharacter === 0 && fighterHP <= 0 )
         {
             if( rogueHP <= 0 && sorceressHP <= 0 )
@@ -840,7 +804,6 @@ export default function Battle(user)
         }
         else if(enemyHP <= 0)
         {
-            console.log(`enemy should be dead`);
             setEndOfRound(1);
             setStatusBar("YOU WON!");
             setTurn(0);
@@ -852,7 +815,7 @@ export default function Battle(user)
     async function endTurn()
     {
         setTurn(1);
-        await handleEndofRound();
+        await handleEndOfRound();
         if(endOfRound === 0 || enemyHP >0) await enemyAttack();
     }
     async function advance()
@@ -867,7 +830,6 @@ export default function Battle(user)
         else setDefeated(defeated+1);
 
         setEndOfRound(0);
-        //setEnemyHP(50);
         setTurn(0);
         setHasUsedMove(false);
         setHasSwappedCharacter(false);
@@ -878,94 +840,93 @@ export default function Battle(user)
         setHasUsedMove(false);
         const api = new API();
 
-        const newmonsterStats = await api.getMonster(currEnemy);
-        console.log(`newmonsterStats: ${JSON.stringify(newmonsterStats.data)}`);
-        switch( newmonsterStats.data[0].monsterID )
+        const newMonsterStats = await api.getMonster(currEnemy);
+        switch( newMonsterStats.data[0].monsterID )
         {
             case 1:
                 setcurrEnemySpritePath(crow);
-                setenemyAttack1(moves[2]);
-                setenemyAttack2(moves[1]);
+                setEnemyAttack1(moves[2]);
+                setEnemyAttack2(moves[1]);
                 break;
             case 2:
                 setcurrEnemySpritePath(rat);
-                setenemyAttack1(moves[2]);
-                setenemyAttack2(moves[1]);
+                setEnemyAttack1(moves[2]);
+                setEnemyAttack2(moves[1]);
                 break;
             case 3:
                 setcurrEnemySpritePath(slime);
-                setenemyAttack1(moves[2]);
-                setenemyAttack2(moves[3]);
-                setenemyAttack3(moves[4]);
+                setEnemyAttack1(moves[2]);
+                setEnemyAttack2(moves[3]);
+                setEnemyAttack3(moves[4]);
                 break;
             case 4:
                 setcurrEnemySpritePath(ghost);
-                setenemyAttack1(moves[4]);
+                setEnemyAttack1(moves[4]);
                 break;
             case 5:
                 setcurrEnemySpritePath(spider);
-                setenemyAttack1(moves[2]);
+                setEnemyAttack1(moves[2]);
                 break;
             case 6:
                 setcurrEnemySpritePath(zombie);
-                setenemyAttack1(moves[2]);
-                setenemyAttack2(moves[1]);
-                setenemyAttack3(moves[3]);
+                setEnemyAttack1(moves[2]);
+                setEnemyAttack2(moves[1]);
+                setEnemyAttack3(moves[3]);
                 break;
             case 7:
                 setcurrEnemySpritePath(goblin);
-                setenemyAttack1(moves[0]);
-                setenemyAttack2(moves[12]);
-                setenemyAttack3(moves[8]);
+                setEnemyAttack1(moves[0]);
+                setEnemyAttack2(moves[12]);
+                setEnemyAttack3(moves[8]);
                 break;
             case 8:
                 setcurrEnemySpritePath(orc);
-                setenemyAttack1(moves[13]);
-                setenemyAttack2(moves[9]);
-                setenemyAttack3(moves[8]);
+                setEnemyAttack1(moves[13]);
+                setEnemyAttack2(moves[9]);
+                setEnemyAttack3(moves[8]);
                 break;
             case 9:
                 setcurrEnemySpritePath(worm);
-                setenemyAttack1(moves[2]);
+                setEnemyAttack1(moves[2]);
                 break;
             case 10:
                 setcurrEnemySpritePath(bat);
-                setenemyAttack1(moves[2]);
+                setEnemyAttack1(moves[2]);
                 break;
             case 11:
                 setcurrEnemySpritePath(cyclops);
-                setenemyAttack1(moves[3]);
-                setenemyAttack2(moves[9]);
+                setEnemyAttack1(moves[3]);
+                setEnemyAttack2(moves[9]);
                 break;
             case 12:
                 setcurrEnemySpritePath(skeleton);
-                setenemyAttack1(moves[12]);
-                setenemyAttack2(moves[13]);
+                setEnemyAttack1(moves[12]);
+                setEnemyAttack2(moves[13]);
                 break;
             case 13:
                 setcurrEnemySpritePath(beholder);
-                setenemyAttack1(moves[31]);
-                setenemyAttack2(moves[30]);
+                setEnemyAttack1(moves[31]);
+                setEnemyAttack2(moves[30]);
                 break;
             case 14:
                 setcurrEnemySpritePath(demon);
-                setenemyAttack1(moves[5]);
+                setEnemyAttack1(moves[5]);
         }
-        setEnemyMaxHP(newmonsterStats.data[0].maxHP);
-        setEnemyPA(newmonsterStats.data[0].physicalATK);
-        setEnemyMA(newmonsterStats.data[0].physicalATK);
-        setEnemyPD(newmonsterStats.data[0].physicalDEF);
-        setEnemyMD(newmonsterStats.data[0].magicDEF);
-        setEnemySPD(newmonsterStats.data[0].speed);
-        setEnemyHP(newmonsterStats.data[0].maxHP);
-        setEnemyName(newmonsterStats.data[0].monsterName);
+        setEnemyMaxHP(newMonsterStats.data[0].maxHP);
+        setEnemyPA(newMonsterStats.data[0].physicalATK);
+        setEnemyMA(newMonsterStats.data[0].physicalATK);
+        setEnemyPD(newMonsterStats.data[0].physicalDEF);
+        setEnemyMD(newMonsterStats.data[0].magicDEF);
+        setEnemySPD(newMonsterStats.data[0].speed);
+        setEnemyHP(newMonsterStats.data[0].maxHP);
+        setEnemyName(newMonsterStats.data[0].monsterName);
 
     }
 
     function handleSwapCharacter()  // Rotate through active party members (fighter->rogue->sorceress)
     {
         setHasSwappedCharacter(true);
-        console.log("handleSwapCharacter():: currentCharacter=" + currentCharacter);
+
         switch(currentCharacter) {
             case 0:
             {
@@ -1001,34 +962,6 @@ export default function Battle(user)
             }
         }
     }
-    /*const handleEndofRound = () =>
-    {
-        console.log('handle end of turn is called');
-        if(fighterHP <=0)
-        {
-            setEndOfRound(2);
-            setStatusBar("YOUR PARTY HAS BEEN DEFEATED!");
-        }
-        else if(enemyHP <= 0)
-        {
-            setEndOfRound(1);
-            setStatusBar("YOU WON!");
-        }
-        else setEndOfRound(0);
-        //console.log(`turn is ${turn}`);
-        /*if(turn === 0)
-        {
-            //console.log(`hewooooooooooooo`);
-            setTurn(1);
-            //console.log(`turn should be 1: ${turn}`);
-            setTimeout(enemyAttack,1500);
-
-        }
-        else if(turn === 1)
-        {
-            setTurn(0);
-        }
-    }*/
 
     const spriteData = {
         w: 160,
@@ -1267,7 +1200,6 @@ export default function Battle(user)
                                 )
                             }
                         </div>
-
                 </div>
             </Box>
         }

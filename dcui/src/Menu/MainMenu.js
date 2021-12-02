@@ -1,11 +1,8 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import {Avatar} from "@mui/material";
-import Box from '@mui/material/Box';
+import {Avatar, Button} from "@mui/material";
 import {useEffect} from "react";
 
 import API from '../API_Interface/API_Interface';
-import Dungeon from '../Components/Dungeon.js';
 import Battle from '../Components/Battle';
 import Armory from '../Components/Armory';
 import HighScores from '../Components/HighScores';
@@ -25,13 +22,8 @@ export default function MainMenu({user, logoutAction}){
         const api = new API();
 
         async function getUserInfo() {
-            //const usernameJSONString = await api.getUser(user);
-            //console.log(`MainMenu.js:: username from the DB ${JSON.stringify(usernameJSONString)}`);
-            //setUsername(usernameJSONString.data)
             setUsername(user);
-            //console.log(`username is ${username}`);
             const goldJSONString = await api.getGold(user);
-            console.log(`MainMenu.js:: current gold amount from the DB ${JSON.stringify(goldJSONString.data[0])}`);
             setGoldAmount(goldJSONString.data[0].gold);
         }
 
@@ -85,17 +77,55 @@ export default function MainMenu({user, logoutAction}){
                     DUNGEON CRAWL
                 </h1>
                 <div style={{position:'relative', padding:'4%'}}/>
-                <Button variant={"outlined"} style={{position:'relative', top:'-12%', left:'10%', backgroundColor:"black", color:"#E1ECF7", width:'40%', height:'50px'}} onClick={handleStartGame}>Start Game</Button>
-                <div style={{position:'relative', marginLeft:'65%', top:'31%', display:'flex', alignItems:'center'}}>
+                <Button variant={"outlined"} style={{
+                    position:'relative',
+                    top:'-12%', left:'10%',
+                    backgroundColor:"black",
+                    color:"#E1ECF7", width:'40%',
+                    height:'50px'
+                }} onClick={handleStartGame}>
+                    Start Game
+                </Button>
+                <div style={{
+                    position:'relative',
+                    marginLeft:'65%',
+                    top:'31%',
+                    display:'flex',
+                    alignItems:'center'
+                }}>
                     <Avatar src={helmIcon} />
                     <span>{username}</span>
                 </div>
-                <Button variant={"outlined"} style={{position:'relative', top:'-12%', left:'10%', backgroundColor:"black", color:"#E1ECF7", width:'40%', height:'50px'}} onClick={handleShowArmory}>Armory</Button>
-                <div style={{position:'relative', marginLeft:'65%', top:'41%', display:'flex', alignItems:'center'}}>
+                <Button variant={"outlined"} style={{
+                    position:'relative',
+                    top:'-12%', left:'10%',
+                    backgroundColor:"black",
+                    color:"#E1ECF7",
+                    width:'40%',
+                    height:'50px'
+                }} onClick={handleShowArmory}>
+                    Armory
+                </Button>
+                <div style={{
+                    position:'relative',
+                    marginLeft:'65%',
+                    top:'41%',
+                    display:'flex',
+                    alignItems:'center'
+                }}>
                     <Avatar src={goldIcon} />
                     <span>{goldAmount}</span>
                 </div>
-                <Button variant={"outlined"} style={{position:'relative', top:'-12%', left:'10%', backgroundColor:"black", color:"#E1ECF7", width:'40%', height:'50px'}} onClick={handleShowHighScores}>High Scores</Button>
+                <Button variant={"outlined"} style={{
+                    position:'relative',
+                    top:'-12%', left:'10%',
+                    backgroundColor:"black",
+                    color:"#E1ECF7",
+                    width:'40%',
+                    height:'50px'
+                }} onClick={handleShowHighScores}>
+                    High Scores
+                </Button>
             </div>
         )
     }
@@ -103,8 +133,20 @@ export default function MainMenu({user, logoutAction}){
     {
         return(
             <div style={{position: 'absolute', left: '3%', top: '2%'}}>
-                <Button variant={"outlined"} style={{backgroundColor:'#E1ECF7', color:"black"}} onClick={handleReturnToMenu}>Return to Menu</Button>
-                <span style={{position:'absolute', left:'490px', top:'-28px', color:'#E1ECF7'}}><h1>DUNGEON CRAWL</h1></span>
+                <Button variant={"outlined"} style={{
+                    backgroundColor:'#E1ECF7',
+                    color:"black"
+                }} onClick={handleReturnToMenu}>
+                    Return to Menu
+                </Button>
+                <span style={{
+                    position:'absolute',
+                    left:'490px',
+                    top:'-28px',
+                    color:'#E1ECF7'
+                }}>
+                    <h1>DUNGEON CRAWL</h1>
+                </span>
                 <Battle user={username} />
             </div>
         )
@@ -113,8 +155,17 @@ export default function MainMenu({user, logoutAction}){
     {
         return(
             <div>
-                <Button variant={"outlined"} style={{position:'absolute', left:'3%', top:'3%', backgroundColor:'#E1ECF7', color:"black"}} onClick={handleReturnToMenu}>Return to Menu</Button>
-                <span style={{position:'absolute', left:'45%', top:'-.7%', color:'#E1ECF7'}}><h1>ARMORY</h1></span>
+                <Button variant={"outlined"} style={{
+                    position:'absolute',
+                    left:'3%', top:'3%',
+                    backgroundColor:'#E1ECF7',
+                    color:"black"
+                }} onClick={handleReturnToMenu}>
+                    Return to Menu
+                </Button>
+                <span style={{position:'absolute', left:'45%', top:'-.7%', color:'#E1ECF7'}}>
+                    <h1>ARMORY</h1>
+                </span>
                 <Armory user={username} />
             </div>
         )
@@ -123,7 +174,12 @@ export default function MainMenu({user, logoutAction}){
     {
         return(
             <div style={{position: 'absolute', left: '3%', top: '2%'}}>
-                <Button variant={"outlined"} style={{backgroundColor:'#E1ECF7', color:"black"}} onClick={handleReturnToMenu}>Return to Menu</Button>
+                <Button variant={"outlined"} style={{
+                    backgroundColor:'#E1ECF7',
+                    color:"black"
+                }} onClick={handleReturnToMenu}>
+                    Return to Menu
+                </Button>
                 <div style={{position: 'relative', left: '20%', top: '8%'}}>
                     <h1 style={{
                         color:'#F4B860',

@@ -1,10 +1,22 @@
 import {Fragment} from "react";
+import MainMenu from "./Menu/MainMenu";
+
+export default function App({user, logoutAction}) {
+  return (
+      <Fragment>
+        <MainMenu user={user} logoutAction={logoutAction}/>
+      </Fragment>
+  )
+}
+
+// Saving in case we decide to repurpose:
+/*
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import MainMenu from "./Menu/MainMenu";
+
 const UserBanner = ({user, title, logoutAction}) => {
 
   return (
@@ -24,18 +36,4 @@ const UserBanner = ({user, title, logoutAction}) => {
 
   )
 };
-
-
-export default function App({user, logoutAction}) {
-  //const mainPageTitle = "Welcome to your adventure!";
-
-  return (
-      <Fragment>
-
-        <MainMenu user={user} logoutAction={logoutAction}/>
-
-      </Fragment>
-  )
-
-}
-
+*/

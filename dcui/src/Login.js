@@ -15,17 +15,8 @@ export default function Login({setUser}) {
     const [newUser, setNewUser] = useState(false);
 
     const handleInputChange = event => {
-        console.log("handleInputChange called.");
-
-//        event.stopPropagation();
-//        event.preventDefault();
-
         setUserInput(event.target.value);
         setAuthFailed(false);
-
-        if(event.key === "Enter") {
-            console.log("handleKeyPress: Verify user input.");
-        }
     };
 
     function handleCreateAccount()
@@ -46,8 +37,6 @@ export default function Login({setUser}) {
         async function getUserInfo() {
             api.getUserInfo(userInput)
                 .then( userInfo => {
-                    console.log(`api returns user info and it is: ${JSON.stringify(userInfo)}`);
-                    console.log(`api returns user info and the username is: ${JSON.stringify(userInfo.user.userName)}`);
                     const user = userInfo.user.userName;
                     if( userInfo.status === "OK" ) {
                         setUser(user);
@@ -76,7 +65,7 @@ export default function Login({setUser}) {
                         label="Login name"
                         placeholder=""
                         value={userInput}
-                        helperText="Only for existing users!"
+                        helperText="Enter your username here!"
                         onChange={handleInputChange}
                     />
                     <Divider />
