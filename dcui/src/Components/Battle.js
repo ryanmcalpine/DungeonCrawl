@@ -732,19 +732,19 @@ export default function Battle(user)
         switch (currentCharacter) {
             case 0:
                 setFighterHP(fighterHP - dmg);
-                setFHealthPercent((fighterHP / fighterMaxHP) * 100 );
+                setFHealthPercent(( (fighterHP - dmg) / fighterMaxHP) * 100 );
                 await sleep(1000);
                 setStatusBar(`Fighter takes ${dmg} damage!`);
                 break;
             case 1:
                 setRogueHP(rogueHP - dmg);
-                setRHealthPercent( (rogueHP / rogueMaxHP) * 100 );
+                setRHealthPercent( ( (rogueHP - dmg) / rogueMaxHP) * 100 );
                 await sleep(1000);
                 setStatusBar(`Rogue takes ${dmg} damage!`);
                 break;
             case 2:
                 setSorceressHP(sorceressHP - dmg);
-                setSHealthPercent( (sorceressHP / sorceressMaxHP) * 100 );
+                setSHealthPercent( ( (sorceressHP - dmg) / sorceressMaxHP) * 100 );
                 await sleep(1000);
                 setStatusBar(`Sorceress takes ${dmg} damage!`);
         }
