@@ -23,8 +23,6 @@ app.use(async (ctx, next) => {
     });
 });
 
-// require('./config/courses_routes.js')(app);
-//require('./config/draught_services_routes.js')(app);
 require('./config/dungeon_crawler_items.js')(app);
 require('./config/dungeon_crawler_users.js')(app);
 require('./config/dungeon_crawler_monsters.js')(app);
