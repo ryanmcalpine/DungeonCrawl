@@ -335,7 +335,7 @@ export default function Armory(user)
                     <TableCell component={"div"} align={'center'} style={{width: '20%'}}>
                         <Actor sprite={f_crusader} data={spriteData} />
                         <div />
-                        <b style={{color:'white'}}>Crusader</b>
+                        <b style={{color:'white', fontSize:'20px'}}>Crusader</b>
                         <div />
                         <Box bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
                             <div bgcolor={'#E1ECF7'} padding={'5px'} borderRadius={'6px'} sx={{border:'3px ridge #F4B860'}}>
@@ -828,7 +828,7 @@ export default function Armory(user)
                             <div style={{padding:'4px'}}/>
                             {
                                 (s2Purchased) ? (
-                                    (sorceressEquipped === 11) ? (
+                                    (sorceressEquipped === 12) ? (
                                         <Button variant={"contained"} style={{backgroundColor:"#F4B860"}} onClick={''}>
                                             Equipped
                                         </Button>
