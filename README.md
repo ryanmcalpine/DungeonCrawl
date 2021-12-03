@@ -1,4 +1,4 @@
-### CS-470 Final Project 
+### CS-470 Final Project:  *Dungeon Crawl*
  #### by Nick Ivanov, Jason Juarez, and Ryan McAlpine
 ---
  ### Description
