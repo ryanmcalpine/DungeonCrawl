@@ -27,7 +27,7 @@
  3. run npm start
 
 ---
- ### Known Issues:
+ ### Known Issues
  - The game will crash if you input an invalid username in login
    - To create an account, enter your desired username -> press create account -> press sign in
  - The armor health states are not updating properly and as a result are not augmenting the health of player characters
