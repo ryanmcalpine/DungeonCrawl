@@ -845,8 +845,17 @@ export default function Battle(user)
         else setCurrEnemy(1);
         setHasUsedMove(false);
         const api = new API();
-
-        const newMonsterStats = await api.getMonster(currEnemy);
+        console.log(`curr enemy: ${currEnemy}`);
+        let newMonsterStats;
+        if(currEnemy + 1 <15)
+        {
+             newMonsterStats = await api.getMonster(currEnemy+1);
+        }
+        else
+        {
+            setCurrEnemy(1);
+             newMonsterStats = await api.getMonster(1);
+        }
         switch( newMonsterStats.data[0].monsterID )
         {
             case 1:
