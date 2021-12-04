@@ -595,12 +595,9 @@ export default function Battle(user)
             setHasBeenInitialized(true);
         }
 
-        if(fighterHP <=0)
-        {
-            setEndOfRound(2);
-            setStatusBar("YOUR PARTY HAS BEEN DEFEATED!");
-        }
-        else if(enemyHP <= 0)
+        handleCharacterDeath();
+
+        if(enemyHP <= 0)
         {
             setEndOfRound(1);
             let goldRewardMin = 4;
@@ -613,7 +610,7 @@ export default function Battle(user)
         }
         else setEndOfRound(0);
         return endOfRound;
-        }, [fighterHP,endOfRound,enemyHP]);
+        }, [fighterHP,rogueHP,sorceressHP,endOfRound,enemyHP]);
 
     // One function to handle all player attacks
     async function handleAttack( idx )  // idx = 0-3 for attack buttons
@@ -662,7 +659,7 @@ export default function Battle(user)
     }
 
     async function enemyAttack() {
-        if (endOfRound > 0 || enemyHP<0) return;
+        if (endOfRound > 0 || enemyHP <= 0) return;
 
         setStatusBar("ENEMY TURN");
         await sleep(2200);
@@ -755,32 +752,29 @@ export default function Battle(user)
                 setStatusBar(`Sorceress takes ${dmg} damage!`);
         }
 
+        // If party member dies, swap.
+        // If all are dead, player is defeated!
+        handleCharacterDeath();
         setEnemyAnimationStep(0);
-        await sleep(1800)
-        setTimeout(null,500);
+        await sleep(2000)
         await handleEndOfRound();
-        if (fighterHP - dmg > 0)
-        {
+        if (fighterHP - dmg > 0) {
             setTurn(0);
             setStatusBar("Player Turn!");
-        }
-        else await handleEndOfRound();
+        } else await handleEndOfRound();
     }
-    async function handleEndOfRound()
+    function handleCharacterDeath()
     {
-        setEndOfRound(3);
-        setHasUsedMove(false);
-        setHasSwappedCharacter(false);
-
         if( currentCharacter === 0 && fighterHP <= 0 )
         {
             if( rogueHP <= 0 && sorceressHP <= 0 )
             {
                 setStatusBar("YOUR PARTY HAS BEEN DEFEATED!");
-                await sleep(2500)
+                setEndOfRound(2);
             }
             else
             {
+                setStatusBar("Your fighter has been defeated!");
                 handleSwapCharacter();
             }
         }
@@ -789,10 +783,11 @@ export default function Battle(user)
             if( fighterHP <= 0 && sorceressHP <= 0 )
             {
                 setStatusBar("YOUR PARTY HAS BEEN DEFEATED!");
-                await sleep(2500)
+                setEndOfRound(2);
             }
             else
             {
+                setStatusBar("Your rogue has been defeated!");
                 handleSwapCharacter();
             }
         }
@@ -801,14 +796,29 @@ export default function Battle(user)
             if( fighterHP <= 0 && rogueHP <= 0 )
             {
                 setStatusBar("YOUR PARTY HAS BEEN DEFEATED!");
-                await sleep(2500)
+                setEndOfRound(2);
             }
             else
             {
+                setStatusBar("Your sorceress has been defeated!");
                 handleSwapCharacter();
             }
         }
-        else if(enemyHP <= 0)
+    }
+    async function handleEndOfRound()
+    {
+        /*
+        if( handleCharacterDeath() === true )
+        {
+            return;
+        }
+        */
+
+        setEndOfRound(3);
+        setHasUsedMove(false);
+        setHasSwappedCharacter(false);
+
+        if(enemyHP <= 0)
         {
             setEndOfRound(1);
             setStatusBar("YOU WON!");
@@ -822,7 +832,7 @@ export default function Battle(user)
     {
         setTurn(1);
         await handleEndOfRound();
-        if(endOfRound === 0 || enemyHP >0) await enemyAttack();
+        if(endOfRound === 0 || enemyHP > 0) await enemyAttack();
     }
     async function advance()
     {
@@ -845,7 +855,6 @@ export default function Battle(user)
         else setCurrEnemy(1);
         setHasUsedMove(false);
         const api = new API();
-        console.log(`curr enemy: ${currEnemy}`);
         let newMonsterStats;
         if(currEnemy + 1 <15)
         {
@@ -948,7 +957,7 @@ export default function Battle(user)
                 if (rogueHP > 0) {
                     setCurrentCharacter(1);
                 }
-                else
+                else if (sorceressHP > 0)
                 {
                     setCurrentCharacter(2);
                 }
@@ -959,7 +968,7 @@ export default function Battle(user)
                 if (sorceressHP > 0) {
                     setCurrentCharacter(2);
                 }
-                else
+                else if (fighterHP > 0)
                 {
                     setCurrentCharacter(0);
                 }
@@ -970,7 +979,7 @@ export default function Battle(user)
                 if (fighterHP > 0) {
                     setCurrentCharacter(0);
                 }
-                else
+                else if (rogueHP > 0)
                 {
                     setCurrentCharacter(1);
                 }
@@ -1270,7 +1279,7 @@ export default function Battle(user)
                             left: 630
                         }}>
                             {
-                                ( turn === 1 ) ? (
+                                ( turn === 1 || endOfRound === 1 ) ? (
                                     <Button onClick={endTurn} style={{width:'200px'}} variant="outlined" disabled>End Turn</Button>
                                 ) : (
                                     <Button onClick={endTurn} style={{backgroundColor:"#212738", width:'200px'}} variant="contained">End Turn</Button>
