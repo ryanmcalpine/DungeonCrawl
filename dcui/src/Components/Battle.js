@@ -474,32 +474,38 @@ export default function Battle(user)
 
                 // API call to ArmorDB to get stats for equipped armor sets
                 const armorStatsF = await api.getArmor(feq.data[0].fighterEquipped+10);
+                console.log(`${feq.data[0]}`);
                 setFighterMaxHP(armorStatsF.data[0].HP);
                 setFighterPA(armorStatsF.data[0].PA);
                 setFighterMA(armorStatsF.data[0].MA);
                 setFighterPD(armorStatsF.data[0].PD);
                 setFighterMD(armorStatsF.data[0].MD);
                 setFighterSPD(armorStatsF.data[0].SPD);
-                setFighterHP(fighterMaxHP);
+                setFighterHP(armorStatsF.data[0].HP);
                 // TODO: Fix max health not being set properly
                 console.log(`Fighter Max HP (JSON): ${armorStatsF.data[0].HP}`);    // prints 50 (tested with knight)
                 console.log(`Fighter Max HP: ${fighterMaxHP}`);                     // prints 20 (tested with knight)
-                const armorStatsR = await api.getArmor(feq.data[0].fighterEquipped+30);
+
+                const armorStatsR = await api.getArmor(30+(req.data[0].rogueEquipped-5));
+                console.log(JSON.stringify(req.data[0]));
+                console.log(JSON.stringify(armorStatsR));
                 setRogueMaxHP(armorStatsR.data[0].HP);
                 setRoguePA(armorStatsR.data[0].SP);
                 setRogueMA(armorStatsR.data[0].MA);
                 setRoguePD(armorStatsR.data[0].PD);
                 setRogueMD(armorStatsR.data[0].MD);
                 setRogueSPD(armorStatsR.data[0].SPD);
-                setRogueHP(rogueMaxHP); // TODO ^
-                const armorStatsS = await api.getArmor(feq.data[0].fighterEquipped+20);
+                setRogueHP(armorStatsR.data[0].HP); // TODO ^
+                const armorStatsS = await api.getArmor(seq.data[0].mageEquipped+10);
+                console.log(JSON.stringify(seq.data[0]));
+                console.log(JSON.stringify(armorStatsS));
                 setSorceressMaxHP(armorStatsS.data[0].HP);
                 setSorceressPA(armorStatsS.data[0].SP);
                 setSorceressMA(armorStatsS.data[0].MA);
                 setSorceressPD(armorStatsS.data[0].PD);
                 setSorceressMD(armorStatsS.data[0].MP);
                 setSorceressSPD(armorStatsS.data[0].SPD);
-                setSorceressHP(sorceressMaxHP); //TODO ^
+                setSorceressHP(armorStatsS.data[0].HP); //TODO ^
 
                 // API call to MonstersDB to get stats for first enemy
                 const monsterStats = await api.getMonster(currEnemy)
