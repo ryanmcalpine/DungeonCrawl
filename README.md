@@ -6,7 +6,9 @@
  increasingly difficult monsters while gathering loot from victorious battles. When the player’s
  party is defeated, they retain the new gold they have earned, so that better equipment can be
  purchased from the Armory and equipped to their party members. Then, next time they start a
- playthrough, their party will be stronger and ready to push deeper into the dungeon! Will you be
+ playthrough, their party will be stronger and ready to push deeper into the dungeon! 
+ 
+ Will you be
  able to guide your party members all the way from being simple townsfolk to mighty adventurers?
 
 ---
@@ -16,27 +18,33 @@
  2. edit db_setup.sql in the dc-sql directory to use the name of your database
  3. run db_setup.sql in your database
  #### API:
- 1. edit .env file to contain info for your database
- 2. edit mySQLconnect.js to contain info for your database
- 3. run npm i node
- 4. run npm i koa
- 5. run node api_server.js
+ 1. open dc-api folder as project in WebStorm
+ 2. edit .env file to contain info for your database
+ 3. edit mySQLconnect.js to contain info for your database
+ 4. run npm i node
+ 5. run npm i koa
+ 6. run node api_server.js
  #### Front End:
- 1. run npm install
- 2. run npm i axios
- 3. run npm start
+ 1. open dcui folder as project in WebStorm
+ 2. run npm install
+ 3. run npm i axios
+ 4. run npm start
 
 ---
  ### Known Issues
  - The game will crash if you input an invalid username in login
    - To create an account, enter your desired username -> press create account -> press sign in
- - The armor health states are not updating properly and as a result are not augmenting the health of player characters
- - Due to time constraints, we have yet to fully implement the logic for incorporating character stats in damage calculations.
- - The gauntlet always begins with two crows rather than one as intended
- - Some of the vfx sprites, such as for Tornado Slash, do not appear in the proper orientation
- - Updating high scores is not yet implemented properly as development time was instead spent on gameplay
  - Armory takes a second to render what is equipped and purchased due to the number of API calls
- - Battle takes a second to render due to the number of API calls
+ - Battle takes a second to render due to the number of initial API calls
+ - In Battle, Locked move buttons say "Quick Attack" during enemy turn
+ - In Battle, some of the vfx sprites, such as for Tornado Slash, do not appear in the proper orientation
+
+---
+ ### Unimplemented Features
+ - Due to time constraints, we have yet to decide on balanced logic for incorporating character stats into damage calculations.
+ - The Inventory button in Battle remains disabled as consumable items have yet to be implemented.
+ - Updating high scores at the end of each play session is not yet implemented properly.
+ - Music & Sound Effects
 
 ---
  ### Assets Used
