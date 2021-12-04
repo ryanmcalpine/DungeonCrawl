@@ -756,12 +756,39 @@ export default function Battle(user)
         // If all are dead, player is defeated!
         handleCharacterDeath();
         setEnemyAnimationStep(0);
-        await sleep(2000)
+        await sleep(2000);
         await handleEndOfRound();
-        if (fighterHP - dmg > 0) {
-            setTurn(0);
-            setStatusBar("Player Turn!");
-        } else await handleEndOfRound();
+
+        //if (fighterHP - dmg > 0) {
+        switch (currentCharacter)
+        {
+            case 0:
+            {
+                if( fighterHP - dmg > 0 || rogueHP > 0 || sorceressHP > 0 )
+                {
+                    setTurn(0);
+                    setStatusBar("Player Turn!");
+                }
+                break;
+            }
+            case 1:
+            {
+                if( fighterHP > 0 || rogueHP - dmg > 0 || sorceressHP > 0 )
+                {
+                    setTurn(0);
+                    setStatusBar("Player Turn!");
+                }
+                break;
+            }
+            case 2:
+            {
+                if( fighterHP > 0 || rogueHP > 0 || sorceressHP - dmg > 0 )
+                {
+                    setTurn(0);
+                    setStatusBar("Player Turn!");
+                }
+            }
+        }
     }
     function handleCharacterDeath()
     {
