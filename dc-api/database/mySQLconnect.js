@@ -1,5 +1,6 @@
 var mysql = require('mysql');
 
+// Leaving this commented in case we are able to use later:
 /*
 var connection = mysql.createConnection({
 //    debug: true,
@@ -12,14 +13,16 @@ var connection = mysql.createConnection({
 });
 */
 
-var connection = mysql.createConnection({
-//    debug: true,
 
+// API SETUP:
+// The last 3 lines are for local files, in this case Ryan's.
+// Modify these to represent your local database!
+var connection = mysql.createConnection({
     host: 'localhost',
     port: 3306,
     user: 'root',
-    password: 'fr33d0m',
-    database: 'dungeon_crawler'
+    password: 'sm00thies!',
+    database: 'dungeon_crawl'
 });
 
 module.exports = connection;
