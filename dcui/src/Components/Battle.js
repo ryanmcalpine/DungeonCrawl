@@ -1130,9 +1130,39 @@ export default function Battle(user)
                                     </div>
                                 ) : (
                                     <div>
-                                        {(currentCharacter === 0 && <Button onClick={() => handleAttack(fighterAttack2)} style={{backgroundColor:"#212738", width:'200px'}} variant="contained">{fighterAttack2.name}</Button>)}
-                                        {(currentCharacter === 1 && <Button onClick={() => handleAttack(rogueAttack2)} style={{backgroundColor:"#212738", width:'200px'}} variant="contained">{rogueAttack2.name}</Button>)}
-                                        {(currentCharacter === 2 && <Button onClick={() => handleAttack(mageAttack2)} style={{backgroundColor:"#212738", width:'200px'}} variant="contained">{mageAttack2.name}</Button>)}
+                                        {(currentCharacter === 0 &&
+                                            (
+                                                (fighterAttack2.name === "Quick Attack") ? (
+                                                    <Button onClick={() => handleAttack(fighterAttack2)} style={{width:'200px'}} variant="outlined" disabled>LOCKED</Button>
+                                                ) : (
+                                                    <Button onClick={() => handleAttack(fighterAttack2)} style={{backgroundColor:"#212738", width:'200px'}} variant="contained">
+                                                        {fighterAttack2.name}
+                                                    </Button>
+                                                )
+                                            )
+                                        )}
+                                        {(currentCharacter === 1 &&
+                                            (
+                                                (rogueAttack2.name === "Quick Attack") ? (
+                                                    <Button onClick={() => handleAttack(rogueAttack2)} style={{width:'200px'}} variant="outlined" disabled>LOCKED</Button>
+                                                ) : (
+                                                    <Button onClick={() => handleAttack(rogueAttack2)} style={{backgroundColor:"#212738", width:'200px'}} variant="contained">
+                                                        {rogueAttack2.name}
+                                                    </Button>
+                                                )
+                                            )
+                                        )}
+                                        {(currentCharacter === 2 &&
+                                            (
+                                                (mageAttack2.name === "Quick Attack") ? (
+                                                    <Button onClick={() => handleAttack(mageAttack2)} style={{width:'200px'}} variant="outlined" disabled>LOCKED</Button>
+                                                ) : (
+                                                    <Button onClick={() => handleAttack(mageAttack2)} style={{backgroundColor:"#212738", width:'200px'}} variant="contained">
+                                                        {mageAttack2.name}
+                                                    </Button>
+                                                )
+                                            )
+                                        )}
                                     </div>
                                 )
                             }
@@ -1152,9 +1182,39 @@ export default function Battle(user)
                                     </div>
                                 ) : (
                                     <div>
-                                        {(currentCharacter === 0 && <Button onClick={() => handleAttack(fighterAttack3)} style={{backgroundColor:"#212738", width:'200px'}} variant="contained">{fighterAttack3.name}</Button>)}
-                                        {(currentCharacter === 1 && <Button onClick={() => handleAttack(rogueAttack3)} style={{backgroundColor:"#212738", width:'200px'}} variant="contained">{rogueAttack3.name}</Button>)}
-                                        {(currentCharacter === 2 && <Button onClick={() => handleAttack(mageAttack3)} style={{backgroundColor:"#212738", width:'200px'}} variant="contained">{mageAttack3.name}</Button>)}
+                                        {(currentCharacter === 0 &&
+                                            (
+                                                (fighterAttack3.name === "Quick Attack") ? (
+                                                    <Button onClick={() => handleAttack(fighterAttack3)} style={{width:'200px'}} variant="outlined" disabled>LOCKED</Button>
+                                                ) : (
+                                                    <Button onClick={() => handleAttack(fighterAttack3)} style={{backgroundColor:"#212738", width:'200px'}} variant="contained">
+                                                        {fighterAttack3.name}
+                                                    </Button>
+                                                )
+                                            )
+                                        )}
+                                        {(currentCharacter === 1 &&
+                                            (
+                                                (rogueAttack3.name === "Quick Attack") ? (
+                                                    <Button onClick={() => handleAttack(rogueAttack3)} style={{width:'200px'}} variant="outlined" disabled>LOCKED</Button>
+                                                ) : (
+                                                    <Button onClick={() => handleAttack(rogueAttack3)} style={{backgroundColor:"#212738", width:'200px'}} variant="contained">
+                                                        {rogueAttack3.name}
+                                                    </Button>
+                                                )
+                                            )
+                                        )}
+                                        {(currentCharacter === 2 &&
+                                            (
+                                                (mageAttack3.name === "Quick Attack") ? (
+                                                    <Button onClick={() => handleAttack(mageAttack3)} style={{width:'200px'}} variant="outlined" disabled>LOCKED</Button>
+                                                ) : (
+                                                    <Button onClick={() => handleAttack(mageAttack3)} style={{backgroundColor:"#212738", width:'200px'}} variant="contained">
+                                                        {mageAttack3.name}
+                                                    </Button>
+                                                )
+                                            )
+                                        )}
                                     </div>
                                 )
                             }
@@ -1167,9 +1227,39 @@ export default function Battle(user)
                                     </div>
                                 ) : (
                                     <div>
-                                        {(currentCharacter === 0 && <Button onClick={() => handleAttack(fighterAttack4)} style={{backgroundColor:"#212738", width:'200px'}} variant="contained">{fighterAttack4.name}</Button>)}
-                                        {(currentCharacter === 1 && <Button onClick={() => handleAttack(rogueAttack4)} style={{backgroundColor:"#212738", width:'200px'}} variant="contained">{rogueAttack4.name}</Button>)}
-                                        {(currentCharacter === 2 && <Button onClick={() => handleAttack(mageAttack4)} style={{backgroundColor:"#212738", width:'200px'}} variant="contained">{mageAttack4.name}</Button>)}
+                                        {(currentCharacter === 0 &&
+                                            (
+                                                (fighterAttack4.name === "Quick Attack") ? (
+                                                    <Button onClick={() => handleAttack(fighterAttack4)} style={{width:'200px'}} variant="outlined" disabled>LOCKED</Button>
+                                                ) : (
+                                                    <Button onClick={() => handleAttack(fighterAttack4)} style={{backgroundColor:"#212738", width:'200px'}} variant="contained">
+                                                        {fighterAttack4.name}
+                                                    </Button>
+                                                )
+                                            )
+                                        )}
+                                        {(currentCharacter === 1 &&
+                                            (
+                                                (rogueAttack4.name === "Quick Attack") ? (
+                                                    <Button onClick={() => handleAttack(rogueAttack4)} style={{width:'200px'}} variant="outlined" disabled>LOCKED</Button>
+                                                ) : (
+                                                    <Button onClick={() => handleAttack(rogueAttack4)} style={{backgroundColor:"#212738", width:'200px'}} variant="contained">
+                                                        {rogueAttack4.name}
+                                                    </Button>
+                                                )
+                                            )
+                                        )}
+                                        {(currentCharacter === 2 &&
+                                            (
+                                                (mageAttack4.name === "Quick Attack") ? (
+                                                    <Button onClick={() => handleAttack(mageAttack4)} style={{width:'200px'}} variant="outlined" disabled>LOCKED</Button>
+                                                ) : (
+                                                    <Button onClick={() => handleAttack(mageAttack4)} style={{backgroundColor:"#212738", width:'200px'}} variant="contained">
+                                                        {mageAttack4.name}
+                                                    </Button>
+                                                )
+                                            )
+                                        )}
                                     </div>
                                 )
                             }
